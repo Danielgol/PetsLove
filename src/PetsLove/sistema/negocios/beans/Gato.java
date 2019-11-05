@@ -2,8 +2,8 @@ package PetsLove.sistema.negocios.beans;
 
 public class Gato extends Animal{
 	
-	public static final String FELPUDO = "FELPUDO";
-	public static final String RASO = "RASO";
+	public static final String FELPUDO = "Felpudo";
+	public static final String RASO = "Raso";
 	
 	private String pelagem;
 	

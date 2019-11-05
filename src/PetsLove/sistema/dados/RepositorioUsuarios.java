@@ -6,12 +6,12 @@ import PetsLove.sistema.negocios.beans.Usuario;
 public class RepositorioUsuarios implements IRepositorioUsuarios {
 
 	private static RepositorioUsuarios instance;
-	
+
 	private ArrayList<Usuario> usuarios;
 
 	public static IRepositorioUsuarios getInstance() {
 		if (instance == null) {
-			//TODO: Decidir como os usuarios serão guardados (Bloco de notas, ...)
+			// TODO: Decidir como os usuarios serão guardados (Bloco de notas, ...)
 		}
 		return instance;
 	}
@@ -31,6 +31,14 @@ public class RepositorioUsuarios implements IRepositorioUsuarios {
 
 	public ArrayList<Usuario> listar() {
 		return this.usuarios;
+	}
+
+	public boolean existe(String email) {
+		return this.procurar(email) != null;
+	}
+
+	public Usuario procurar(String email) {
+		return null;
 	}
 
 }
