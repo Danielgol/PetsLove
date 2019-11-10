@@ -1,31 +1,35 @@
 package PetsLove.sistema.negocios.beans;
 
+import java.util.ArrayList;
+
 public abstract class Animal {
-	
+
 	public static final String MACHO = "Macho";
-	public static final String FEMEA= "Femea";
-	
+	public static final String FEMEA = "Femea";
+
 	private int id;
-	private	int idade;
+	private int idade;
 	private String sexo;
 	private String nome;
 	private Usuario dono;
-	
-	public Animal(int id, int idade, String sexo, String nome, Usuario dono){
+	private ArrayList<Solicitacao> solicitacoes;
+
+	public Animal(int id, int idade, String sexo, String nome, Usuario dono) {
 		this.id = id;
 		this.idade = idade;
 		this.sexo = sexo;
 		this.nome = nome;
 		this.dono = dono;
+		this.solicitacoes = new ArrayList<Solicitacao>();
 	}
-	
+
 	public boolean equals(Animal outro) {
-		if(this.id == outro.id) {
+		if (this.id == outro.id) {
 			return true;
 		}
 		return false;
 	}
-	
+
 	public int getId() {
 		return id;
 	}
@@ -33,21 +37,21 @@ public abstract class Animal {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
+
 	public int getIdade() {
 		return idade;
 	}
-	
+
 	public void setIdade(int idade) {
 		this.idade = idade;
 	}
-	
+
 	public String getSexo() {
 		return this.sexo;
 	}
-	
+
 	public void setSexo(String sexo) {
-		if(MACHO.equals(sexo) || FEMEA.equals(sexo)) {
+		if (MACHO.equals(sexo) || FEMEA.equals(sexo)) {
 			this.sexo = sexo;
 		}
 	}
@@ -67,5 +71,13 @@ public abstract class Animal {
 	public void setDono(Usuario dono) {
 		this.dono = dono;
 	}
-	
+
+	public ArrayList<Solicitacao> getSolicitacoes() {
+		return solicitacoes;
+	}
+
+	public void setSolicitacoes(ArrayList<Solicitacao> solicitacoes) {
+		this.solicitacoes = solicitacoes;
+	}
+
 }
