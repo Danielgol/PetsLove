@@ -23,7 +23,9 @@ public abstract class Animal {
 		this.solicitacoes = new ArrayList<Solicitacao>();
 	}
 
-	public boolean equals(Animal outro) {
+	@Override
+	public boolean equals(Object animal) {
+		Animal outro = (Animal) animal;
 		if (this.id == outro.id) {
 			return true;
 		}

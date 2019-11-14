@@ -7,12 +7,14 @@ import PetsLove.sistema.negocios.beans.Solicitacao;
 import PetsLove.sistema.negocios.beans.Usuario;
 
 public class Teste {
+	
 	public static void main(String[] args) {
+		
 		Usuario u1 = new Usuario(123, "Ben10", "99954-4213", "rogerinho..@hotmail.com", "321anhes");
 		Usuario u2 = new Usuario(133, "Barbie", "99857-1682", "Barbiegirl@hotmail.com", "ken123");
-		Cachorro c1 = new Cachorro(321, 4, "Macho", "Bob", u1, "Pitbull", "Alto");
-		Cachorro c2 = new Cachorro(331, 3, "Femea", "Mary", u2, "Pitbull", "Alto");
-		Gato g1 = new Gato(213, 2, "Femea", "Meow", u1, "Felpudo");
+		Cachorro c1 = new Cachorro(321, 4, Animal.MACHO, "Bob", u1, "Pitbull", Cachorro.ALTO);
+		Cachorro c2 = new Cachorro(331, 3, Animal.FEMEA, "Mary", u2, "Pitbull", Cachorro.ALTO);
+		Gato g1 = new Gato(213, 2, Animal.FEMEA, "Meow", u1, Gato.FELPUDO);
 		
 		u2.setAnimais(c2);
 		u1.setAnimais(c1);
@@ -22,7 +24,9 @@ public class Teste {
 			System.out.println(a1.getNome());
 		}
 		
-		Solicitacao s1 = new Solicitacao(c1, c2, "Analisando");
+		Solicitacao s1 = new Solicitacao(c1, c2);
 		System.out.println(s1);
+		
 	}
+	
 }

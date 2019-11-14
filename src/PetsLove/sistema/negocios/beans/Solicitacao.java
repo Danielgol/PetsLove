@@ -1,27 +1,31 @@
 package PetsLove.sistema.negocios.beans;
 
 public class Solicitacao {
+	
+	public static final String RECUSADO = "Recusado";
+	public static final String ACEITADO = "Aceitado";
+	public static final String ANALISANDO = "Analisando";
+	
 	private Animal remetente;
 	private Animal destinatario;
 	private String status;
 
-	public static final String RECUSADO = "Recusado";
-	public static final String ACEITADO = "Aceitado";
-	public static final String ANALISANDO = "Analisando";
-
-	public Solicitacao(Animal remetente, Animal destinatario, String status) {
+	public Solicitacao(Animal remetente, Animal destinatario) {
 		this.remetente = remetente;
 		this.destinatario = destinatario;
-		this.status = status;
+		this.status = ANALISANDO;
 	}
 
-	public boolean equals(Solicitacao s1) {
-		if (this.remetente.equals(s1.remetente) && this.destinatario.equals(s1.destinatario)) {
+	@Override
+	public boolean equals(Object outra) {
+		Solicitacao s = (Solicitacao) outra;
+		if (this.remetente.equals(s.remetente) && this.destinatario.equals(s.destinatario)) {
 			return true;
 		}
 		return false;
 	}
 	
+	@Override
 	public String toString() {
 		String s="Status da solicitação: "+getStatus();
 		return s;
