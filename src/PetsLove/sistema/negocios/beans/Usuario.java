@@ -71,8 +71,8 @@ public class Usuario {
 		return animais;
 	}
 
-	public void setAnimais(ArrayList<Animal> animais) {
-		this.animais = animais;
+	public void setAnimais(Animal animais) {
+		this.animais.add(animais);
 	}
 	
 }

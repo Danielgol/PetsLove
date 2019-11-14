@@ -21,6 +21,11 @@ public class Solicitacao {
 		}
 		return false;
 	}
+	
+	public String toString() {
+		String s="Status da solicitação: "+getStatus();
+		return s;
+	}
 
 	public Animal getRemetente() {
 		return remetente;
