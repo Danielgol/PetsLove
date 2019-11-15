@@ -20,6 +20,14 @@ public class ControladorUsuario {
 	}
 
 	// TODO: Colocar as regras de negócio em cada um dos métodos abaixo.
+	
+	public Usuario login(String email, String senha) {
+		Usuario usuario = this.procurar(email);
+		if(usuario.getSenha().equals(senha)) {
+			return usuario;
+		}
+		return null;
+	}
 
 	public void cadastrar(Usuario usuario) throws UsuarioJaExisteException {
 		if (usuario == null) {
@@ -44,83 +52,6 @@ public class ControladorUsuario {
 		this.repositorioUsuarios.atualizar(usuario);
 	}
 
-	public ArrayList<Usuario> listar() {
-		return this.repositorioUsuarios.listar();
-	}
-
-	public ArrayList<Animal> listarAnimais() {
-		ArrayList<Usuario> usuarios = this.listar();
-		ArrayList<Animal> animais = new ArrayList<Animal>();
-		for (Usuario user : usuarios) {
-			for (Animal animal : user.getAnimais()) {
-				animais.add(animal);
-			}
-		}
-		return animais;
-	}
-
-	public ArrayList<Animal> listarAnimaisPorTipo(Class<?> tipo) {
-		ArrayList<Usuario> usuarios = this.listar();
-		ArrayList<Animal> animais = new ArrayList<Animal>();
-		for (Usuario user : usuarios) {
-			for (Animal animal : user.getAnimais()) {
-				if (animal.getClass() == tipo) {
-					animais.add(animal);
-				}
-			}
-		}
-		return animais;
-	}
-
-	public ArrayList<Animal> listarCachorrosPorRaca(String raca) throws RacaNaoExisteException {
-		ArrayList<Animal> cachorros = this.listarAnimaisPorTipo(Cachorro.class);
-		if (raca != null) {
-			boolean achou = false;
-			for (Animal cachorro : cachorros) {
-				if (((Cachorro) cachorro).getRaca().equals(raca)) {
-					cachorros.add(cachorro);
-					achou = true;
-				}
-			}
-			if (!achou) {
-				throw new RacaNaoExisteException(raca);
-			}
-			return cachorros;
-		} else {
-			throw new IllegalArgumentException("Parâmetro inválido");
-		}
-	}
-
-	public ArrayList<Animal> listarCachorrosPorTamanho(String tamanho) {
-		ArrayList<Animal> cachorros = this.listarAnimaisPorTipo(Cachorro.class);
-		for (Animal cachorro : cachorros) {
-			if (((Cachorro) cachorro).getTamanho().equals(tamanho)) {
-				cachorros.add(cachorro);
-			}
-		}
-		return cachorros;
-	}
-
-	public ArrayList<Animal> listarCachorrosPorRacaETamanho(String raca, String tamanho) throws RacaNaoExisteException {
-		ArrayList<Animal> cachorros = this.listarCachorrosPorRaca(raca);
-		for (Animal cachorro : cachorros) {
-			if (!((Cachorro) cachorro).getTamanho().equals(tamanho)) {
-				cachorros.remove(cachorro);
-			}
-		}
-		return cachorros;
-	}
-
-	public ArrayList<Animal> listarGatosPorPelagem(String pelagem) {
-		ArrayList<Animal> gatos = this.listarAnimaisPorTipo(Gato.class);
-		for (Animal gato : gatos) {
-			if (((Gato) gato).getPelagem().equals(pelagem)) {
-				gatos.add(gato);
-			}
-		}
-		return gatos;
-	}
-
 	public boolean existe(String email) {
 		return this.repositorioUsuarios.existe(email);
 	}
@@ -128,4 +59,5 @@ public class ControladorUsuario {
 	public Usuario procurar(String email) {
 		return this.repositorioUsuarios.procurar(email);
 	}
+	
 }

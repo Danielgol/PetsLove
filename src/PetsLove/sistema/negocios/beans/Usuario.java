@@ -9,7 +9,6 @@ public class Usuario {
 	private String numero;
 	private String email;
 	private String senha;
-	private ArrayList<Animal> animais;
 	
 	public Usuario(int id, String nome, String numero, String email, String senha) {
 		this.id = id;
@@ -17,7 +16,6 @@ public class Usuario {
 		this.numero = numero;
 		this.email = email;
 		this.senha = senha;
-		this.animais = new ArrayList<Animal>();
 	}
 	
 	public boolean equals(Usuario outro) {
@@ -65,14 +63,6 @@ public class Usuario {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
-	}
-
-	public ArrayList<Animal> getAnimais() {
-		return animais;
-	}
-
-	public void setAnimais(Animal animais) {
-		this.animais.add(animais);
 	}
 	
 }
