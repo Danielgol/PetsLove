@@ -5,21 +5,19 @@ public class Gato extends Animal{
 	public static final String FELPUDO = "Felpudo";
 	public static final String RASO = "Raso";
 	
-	private String pelagem;
+	private EnumPelagem pelagem;
 	
-	public Gato(int id, int idade, String sexo, String nome, Usuario dono, String pelagem) {
+	public Gato(int id, int idade, EnumSexo sexo, String nome, Usuario dono, EnumPelagem pelagem) {
 		super(id, idade, sexo, nome, dono);
 		this.pelagem = pelagem;
 	}
 	
-	public String getPelagem() {
+	public EnumPelagem getPelagem() {
 		return this.pelagem;
 	}
 	
-	public void setPelagem(String pelagem) {
-		if(pelagem.equals(FELPUDO) || pelagem.equals(RASO)) {
-			this.pelagem = pelagem;
-		}
+	public void setPelagem(EnumPelagem pelagem) {
+		this.pelagem = pelagem;
 	}
 	
 }

@@ -1,14 +1,8 @@
 package PetsLove.sistema.negocios;
 
-import java.util.ArrayList;
-
 import PetsLove.sistema.dados.IRepositorioUsuarios;
-import PetsLove.sistema.exceptions.RacaNaoExisteException;
 import PetsLove.sistema.exceptions.UsuarioJaExisteException;
 import PetsLove.sistema.exceptions.UsuarioNaoExisteException;
-import PetsLove.sistema.negocios.beans.Animal;
-import PetsLove.sistema.negocios.beans.Cachorro;
-import PetsLove.sistema.negocios.beans.Gato;
 import PetsLove.sistema.negocios.beans.Usuario;
 
 public class ControladorUsuario {

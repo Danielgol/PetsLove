@@ -31,22 +31,31 @@ public class FachadaPL {
 		return instance;
 	}
 	
-	
-	
-	
-	public Usuario login(String email, String senha) {
-		if(usuarioLogado == null) {
-			usuarioLogado = this.controladorUsuario.login(email, senha);
-		}
+	public static Usuario getUsuarioLogado() {
 		return usuarioLogado;
 	}
 	
-	public void logout() {
-		if(usuarioLogado != null) {
+	public static void login(String email, String senha) {
+		if(instance != null && usuarioLogado == null) {
+			usuarioLogado = instance.controladorUsuario.login(email, senha);
+		}
+	}
+	
+	public static void logout() {
+		if(instance != null && usuarioLogado != null) {
 			usuarioLogado = null;
 		}
 	}
-
+	
+	
+	
+	//TODO: Verificar os metodos que so podem ser chamados se alguem estiver logado.
+	//Talvez a verificacao seja feita no botao de clicar, nao aqui.
+	
+	
+	
+	
+	//USUARIO
 	public void cadastrarUsuario(Usuario usuario) throws UsuarioJaExisteException {
 		this.controladorUsuario.cadastrar(usuario);
 	}
@@ -56,8 +65,7 @@ public class FachadaPL {
 	}
 
 
-	
-	
+	//ANIMAL
 	public void cadastrarAnimal(Animal animal) {
 		this.controladorAnimal.cadastrar(animal);
 	}

@@ -1,26 +1,19 @@
 package PetsLove.sistema.negocios.beans;
 
-import java.util.ArrayList;
-
 public abstract class Animal {
-
-	public static final String MACHO = "Macho";
-	public static final String FEMEA = "Femea";
 
 	private int id;
 	private int idade;
-	private String sexo;
+	private EnumSexo sexo;
 	private String nome;
 	private Usuario dono;
-	private ArrayList<Solicitacao> solicitacoes;
 
-	public Animal(int id, int idade, String sexo, String nome, Usuario dono) {
+	public Animal(int id, int idade, EnumSexo sexo, String nome, Usuario dono) {
 		this.id = id;
 		this.idade = idade;
 		this.sexo = sexo;
 		this.nome = nome;
 		this.dono = dono;
-		this.solicitacoes = new ArrayList<Solicitacao>();
 	}
 
 	@Override
@@ -48,14 +41,12 @@ public abstract class Animal {
 		this.idade = idade;
 	}
 
-	public String getSexo() {
+	public EnumSexo getSexo() {
 		return this.sexo;
 	}
 
-	public void setSexo(String sexo) {
-		if (MACHO.equals(sexo) || FEMEA.equals(sexo)) {
-			this.sexo = sexo;
-		}
+	public void setSexo(EnumSexo sexo) {
+		this.sexo = sexo;
 	}
 
 	public String getNome() {
@@ -72,14 +63,6 @@ public abstract class Animal {
 
 	public void setDono(Usuario dono) {
 		this.dono = dono;
-	}
-
-	public ArrayList<Solicitacao> getSolicitacoes() {
-		return solicitacoes;
-	}
-
-	public void setSolicitacoes(ArrayList<Solicitacao> solicitacoes) {
-		this.solicitacoes = solicitacoes;
 	}
 
 }

@@ -1,7 +1,5 @@
 package PetsLove.sistema.negocios.beans;
 
-import java.util.ArrayList;
-
 public class Usuario {
 	
 	private int id;
