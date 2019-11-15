@@ -1,6 +1,8 @@
-package PetsLove.sistema.dados;
+package PetsLove.sistema.dados.Repositorios;
 
 import java.util.ArrayList;
+
+import PetsLove.sistema.dados.IRepositorioUsuarios;
 import PetsLove.sistema.negocios.beans.Usuario;
 
 public class RepositorioUsuarios implements IRepositorioUsuarios {

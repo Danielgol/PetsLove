@@ -1,14 +1,20 @@
 package PetsLove.sistema;
 
 import java.util.ArrayList;
-import PetsLove.sistema.dados.RepositorioAnimais;
-import PetsLove.sistema.dados.RepositorioUsuarios;
+
+import PetsLove.sistema.dados.Repositorios.RepositorioAnimais;
+import PetsLove.sistema.dados.Repositorios.RepositorioSolicitacoes;
+import PetsLove.sistema.dados.Repositorios.RepositorioUsuarios;
 import PetsLove.sistema.exceptions.RacaNaoExisteException;
+import PetsLove.sistema.exceptions.SolicitacaoJaExisteException;
+import PetsLove.sistema.exceptions.SolicitacaoNaoExisteException;
 import PetsLove.sistema.exceptions.UsuarioJaExisteException;
 import PetsLove.sistema.exceptions.UsuarioNaoExisteException;
 import PetsLove.sistema.negocios.ControladorAnimal;
+import PetsLove.sistema.negocios.ControladorSolicitacao;
 import PetsLove.sistema.negocios.ControladorUsuario;
 import PetsLove.sistema.negocios.beans.Animal;
+import PetsLove.sistema.negocios.beans.Solicitacao;
 import PetsLove.sistema.negocios.beans.Usuario;
 
 public class FachadaPL {
@@ -18,10 +24,12 @@ public class FachadaPL {
 
 	private ControladorAnimal controladorAnimal;
 	private ControladorUsuario controladorUsuario;
+	private ControladorSolicitacao controladorSolicitacao;
 
 	private FachadaPL() {
 		this.controladorAnimal = new ControladorAnimal(RepositorioAnimais.getInstance());
 		this.controladorUsuario = new ControladorUsuario(RepositorioUsuarios.getInstance());
+		this.controladorSolicitacao = new ControladorSolicitacao(RepositorioSolicitacoes.getInstance());
 	}
 
 	public static FachadaPL getInstance() {
@@ -101,5 +109,30 @@ public class FachadaPL {
 	public ArrayList<Animal> listarGatosPorPelagem(String pelagem) {
 		return this.controladorAnimal.listarGatosPorPelagem(pelagem);
 	}
+
+	
+	//SOLICITACAO
+	public void CriarSolicitacao(Solicitacao s) throws SolicitacaoJaExisteException {
+		this.controladorSolicitacao.CriarSolicitacao(s);
+	}
+
+	public void RemoverSolicitacao(Solicitacao s) throws SolicitacaoNaoExisteException {
+		this.controladorSolicitacao.RemoverSolicitacao(s);
+	}
+
+	public void AceitarSolicitacao(Solicitacao s) throws SolicitacaoNaoExisteException {
+		this.controladorSolicitacao.AceitarSolicitacao(s);
+	}
+
+	public void RecusarSolicitacao(Solicitacao s) throws SolicitacaoNaoExisteException {
+		this.controladorSolicitacao.RecusarSolicitacao(s);
+	}
+
+	public void atualizar(Solicitacao s) throws SolicitacaoNaoExisteException {
+		controladorSolicitacao.atualizar(s);
+	}
+	
+	
+	
 
 }
