@@ -1,7 +1,6 @@
 package PetsLove.sistema.dados.Repositorios;
 
 import java.util.ArrayList;
-
 import PetsLove.sistema.dados.IRepositorioSolicitacoes;
 import PetsLove.sistema.negocios.beans.Solicitacao;
 
@@ -10,6 +9,10 @@ public class RepositorioSolicitacoes implements IRepositorioSolicitacoes {
 	private static RepositorioSolicitacoes instance;
 
 	private ArrayList<Solicitacao> solicitacoes;
+	
+	private RepositorioSolicitacoes() {
+		this.solicitacoes = new ArrayList<Solicitacao>();
+	}
 
 	public static IRepositorioSolicitacoes getInstance() {
 		if (instance == null) {
@@ -19,25 +22,20 @@ public class RepositorioSolicitacoes implements IRepositorioSolicitacoes {
 		return instance;
 	}
 
-	public void CriarSolicitacao(Solicitacao s) {
+	public void criarSolicitacao(Solicitacao s) {
 		this.solicitacoes.add(s);
 	}
 
-	public void RemoverSolicitacao(Solicitacao s) {
+	public void removerSolicitacao(Solicitacao s) {
 		this.solicitacoes.remove(s);
 	}
 	
-	public void AceitarSolicitacao(Solicitacao s) {
-		s.setStatus("Aceitado");
+	public void aceitarSolicitacao(Solicitacao s) {
+		s.setStatus(Solicitacao.ACEITO);
 	}
 	
-	public void RecusarSolicitacao(Solicitacao s) {
-		s.setStatus("Recusado");
-	}
-	
-	public void atualizar(Solicitacao s) {
-		int indexUsuario = this.solicitacoes.indexOf(s);
-		this.solicitacoes.set(indexUsuario, s);
+	public void recusarSolicitacao(Solicitacao s) {
+		s.setStatus(Solicitacao.RECUSADO);
 	}
 	
 	public boolean existe(Solicitacao s) {
@@ -46,6 +44,10 @@ public class RepositorioSolicitacoes implements IRepositorioSolicitacoes {
 		} else {
 			return false;
 		}
+	}
+	
+	public ArrayList<Solicitacao> listar(){
+		return this.solicitacoes;
 	}
 	
 }

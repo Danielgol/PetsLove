@@ -2,6 +2,8 @@ package PetsLove.sistema.negocios;
 
 import java.util.ArrayList;
 import PetsLove.sistema.FachadaPL;
+import PetsLove.sistema.exceptions.SolicitacaoJaExisteException;
+import PetsLove.sistema.exceptions.SolicitacaoNaoExisteException;
 import PetsLove.sistema.exceptions.UsuarioJaExisteException;
 import PetsLove.sistema.negocios.beans.Animal;
 import PetsLove.sistema.negocios.beans.Cachorro;
@@ -15,7 +17,7 @@ import PetsLove.sistema.negocios.beans.Usuario;
 
 public class Teste {
 	
-	public static void main(String[] args) throws UsuarioJaExisteException {
+	public static void main(String[] args) throws UsuarioJaExisteException, SolicitacaoJaExisteException, SolicitacaoNaoExisteException {
 		
 		FachadaPL fachada = FachadaPL.getInstance();
 		
@@ -43,16 +45,35 @@ public class Teste {
 		
 		FachadaPL.login("rogerinho..@hotmail.com", "321anhes");
 		System.out.println(FachadaPL.getUsuarioLogado().getNome());
-		
+		System.out.println();
 		
 		
 		ArrayList<Animal> animais = fachada.listarAnimais();
 		for(Animal animal : animais) {
 			System.out.println(animal.getNome());
 		}
+		System.out.println();
+		
+		
 		
 		Solicitacao s1 = new Solicitacao(c1, c2);
-		System.out.println(s1);
+		Solicitacao s2 = new Solicitacao(c2, c1);
+		fachada.criarSolicitacao(s1);
+		fachada.criarSolicitacao(s2);
+		
+		fachada.aceitarSolicitacao(s1);
+		fachada.recusarSolicitacao(s2);
+		fachada.removerSolicitacao(s2);
+		
+		ArrayList<Solicitacao> solicitacoes = fachada.listarSolicitacoesRecebidas(FachadaPL.getUsuarioLogado());
+		for(Solicitacao solicitacao : solicitacoes) {
+			System.out.println(solicitacao);
+		}
+		
+		solicitacoes = fachada.listarSolicitacoesEnviadas(FachadaPL.getUsuarioLogado());
+		for(Solicitacao solicitacao : solicitacoes) {
+			System.out.println(solicitacao);
+		}
 		
 	}
 	

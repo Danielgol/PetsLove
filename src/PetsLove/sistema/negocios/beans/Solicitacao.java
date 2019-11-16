@@ -3,7 +3,7 @@ package PetsLove.sistema.negocios.beans;
 public class Solicitacao {
 	
 	public static final String RECUSADO = "Recusado";
-	public static final String ACEITADO = "Aceitado";
+	public static final String ACEITO = "Aceito";
 	public static final String ANALISANDO = "Analisando";
 	
 	private Animal remetente;
@@ -52,7 +52,7 @@ public class Solicitacao {
 	}
 
 	public void setStatus(String status) {
-		if (RECUSADO.equals(status) || ACEITADO.equals(status) || ANALISANDO.equals(status)) {
+		if (RECUSADO.equals(status) || ACEITO.equals(status) || ANALISANDO.equals(status)) {
 			this.status = status;
 		}
 	}

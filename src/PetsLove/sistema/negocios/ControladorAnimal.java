@@ -5,6 +5,9 @@ import PetsLove.sistema.dados.IRepositorioAnimais;
 import PetsLove.sistema.exceptions.RacaNaoExisteException;
 import PetsLove.sistema.negocios.beans.Animal;
 import PetsLove.sistema.negocios.beans.Cachorro;
+import PetsLove.sistema.negocios.beans.EnumPelagem;
+import PetsLove.sistema.negocios.beans.EnumRaca;
+import PetsLove.sistema.negocios.beans.EnumTamanho;
 import PetsLove.sistema.negocios.beans.Gato;
 import PetsLove.sistema.negocios.beans.Usuario;
 
@@ -31,30 +34,33 @@ public class ControladorAnimal {
 	}
 	
 	public ArrayList<Animal> listarPorDono(Usuario usuario) {
-		ArrayList<Animal> animais = this.listar();
-		for (Animal animal : animais) {
-			if (!animal.getDono().equals(usuario)) {
-				animais.remove(animal);
+		ArrayList<Animal> repo = this.listar();
+		ArrayList<Animal> animais = new ArrayList<Animal>();
+		for (Animal animal : repo) {
+			if (animal.getDono().equals(usuario)) {
+				animais.add(animal);
 			}
 		}
 		return animais;
 	}
 
 	public ArrayList<Animal> listarPorTipo(Class<?> tipo) {
-		ArrayList<Animal> animais = this.listar();
-		for (Animal animal : animais) {
-			if (animal.getClass() != tipo) {
-				animais.remove(animal);
+		ArrayList<Animal> repo = this.listar();
+		ArrayList<Animal> animais = new ArrayList<Animal>();
+		for (Animal animal : repo) {
+			if (animal.getClass() == tipo) {
+				animais.add(animal);
 			}
 		}
 		return animais;
 	}
 	
-	public ArrayList<Animal> listarCachorrosPorRaca(String raca) throws RacaNaoExisteException {
-		ArrayList<Animal> cachorros = this.listarPorTipo(Cachorro.class);
+	public ArrayList<Animal> listarCachorrosPorRaca(EnumRaca raca) throws RacaNaoExisteException {
+		ArrayList<Animal> repoCachorros = this.listarPorTipo(Cachorro.class);
+		ArrayList<Animal> cachorros = new ArrayList<Animal>();
 		if (raca != null) {
 			boolean achou = false;
-			for (Animal cachorro : cachorros) {
+			for (Animal cachorro : repoCachorros) {
 				if (((Cachorro) cachorro).getRaca().equals(raca)) {
 					cachorros.add(cachorro);
 					achou = true;
@@ -69,9 +75,10 @@ public class ControladorAnimal {
 		}
 	}
 
-	public ArrayList<Animal> listarCachorrosPorTamanho(String tamanho) {
-		ArrayList<Animal> cachorros = this.listarPorTipo(Cachorro.class);
-		for (Animal cachorro : cachorros) {
+	public ArrayList<Animal> listarCachorrosPorTamanho(EnumTamanho tamanho) {
+		ArrayList<Animal> repoCachorros = this.listarPorTipo(Cachorro.class);
+		ArrayList<Animal> cachorros = new ArrayList<Animal>();
+		for (Animal cachorro : repoCachorros) {
 			if (((Cachorro) cachorro).getTamanho().equals(tamanho)) {
 				cachorros.add(cachorro);
 			}
@@ -79,19 +86,21 @@ public class ControladorAnimal {
 		return cachorros;
 	}
 
-	public ArrayList<Animal> listarCachorrosPorRacaETamanho(String raca, String tamanho) throws RacaNaoExisteException {
-		ArrayList<Animal> cachorros = this.listarCachorrosPorRaca(raca);
-		for (Animal cachorro : cachorros) {
-			if (!((Cachorro) cachorro).getTamanho().equals(tamanho)) {
-				cachorros.remove(cachorro);
+	public ArrayList<Animal> listarCachorrosPorRacaETamanho(EnumRaca raca, EnumTamanho tamanho) throws RacaNaoExisteException {
+		ArrayList<Animal> repoCachorro = this.listarCachorrosPorRaca(raca);
+		ArrayList<Animal> cachorros = new ArrayList<Animal>();
+		for (Animal cachorro : repoCachorro) {
+			if (((Cachorro) cachorro).getTamanho().equals(tamanho)) {
+				cachorros.add(cachorro);
 			}
 		}
 		return cachorros;
 	}
 
-	public ArrayList<Animal> listarGatosPorPelagem(String pelagem) {
-		ArrayList<Animal> gatos = this.listarPorTipo(Gato.class);
-		for (Animal gato : gatos) {
+	public ArrayList<Animal> listarGatosPorPelagem(EnumPelagem pelagem) {
+		ArrayList<Animal> repoGatos = this.listarPorTipo(Gato.class);
+		ArrayList<Animal> gatos = new ArrayList<Animal>();
+		for (Animal gato : repoGatos) {
 			if (((Gato) gato).getPelagem().equals(pelagem)) {
 				gatos.add(gato);
 			}

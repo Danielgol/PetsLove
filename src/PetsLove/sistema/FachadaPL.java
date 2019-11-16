@@ -14,6 +14,9 @@ import PetsLove.sistema.negocios.ControladorAnimal;
 import PetsLove.sistema.negocios.ControladorSolicitacao;
 import PetsLove.sistema.negocios.ControladorUsuario;
 import PetsLove.sistema.negocios.beans.Animal;
+import PetsLove.sistema.negocios.beans.EnumPelagem;
+import PetsLove.sistema.negocios.beans.EnumRaca;
+import PetsLove.sistema.negocios.beans.EnumTamanho;
 import PetsLove.sistema.negocios.beans.Solicitacao;
 import PetsLove.sistema.negocios.beans.Usuario;
 
@@ -38,31 +41,31 @@ public class FachadaPL {
 		}
 		return instance;
 	}
-	
+
 	public static Usuario getUsuarioLogado() {
 		return usuarioLogado;
 	}
-	
+
 	public static void login(String email, String senha) {
 		if(instance != null && usuarioLogado == null) {
 			usuarioLogado = instance.controladorUsuario.login(email, senha);
 		}
 	}
-	
+
 	public static void logout() {
 		if(instance != null && usuarioLogado != null) {
 			usuarioLogado = null;
 		}
 	}
-	
-	
-	
+
+
+
 	//TODO: Verificar os metodos que so podem ser chamados se alguem estiver logado.
 	//Talvez a verificacao seja feita no botao de clicar, nao aqui.
-	
-	
-	
-	
+
+
+
+
 	//USUARIO
 	public void cadastrarUsuario(Usuario usuario) throws UsuarioJaExisteException {
 		this.controladorUsuario.cadastrar(usuario);
@@ -81,11 +84,11 @@ public class FachadaPL {
 	public void atualizarAnimal(Animal animal) {
 		this.controladorAnimal.atualizar(animal);
 	}
-	
+
 	public ArrayList<Animal> listarAnimais() {
 		return this.controladorAnimal.listar();
 	}
-	
+
 	public ArrayList<Animal> listarAnimaisPorDono(Usuario usuario) {
 		return this.controladorAnimal.listarPorDono(usuario);
 	}
@@ -94,45 +97,46 @@ public class FachadaPL {
 		return this.controladorAnimal.listarPorTipo(tipo);
 	}
 
-	public ArrayList<Animal> listarCachorrosPorRaca(String raca) throws RacaNaoExisteException {
+	public ArrayList<Animal> listarCachorrosPorRaca(EnumRaca raca) throws RacaNaoExisteException {
 		return this.controladorAnimal.listarCachorrosPorRaca(raca);
 	}
 
-	public ArrayList<Animal> listarCachorrosPorTamanho(String tamanho) {
+	public ArrayList<Animal> listarCachorrosPorTamanho(EnumTamanho tamanho) {
 		return this.controladorAnimal.listarCachorrosPorTamanho(tamanho);
 	}
 
-	public ArrayList<Animal> listarCachorrosPorRacaETamanho(String raca, String tamanho) throws RacaNaoExisteException {
+	public ArrayList<Animal> listarCachorrosPorRacaETamanho(EnumRaca raca, EnumTamanho tamanho) throws RacaNaoExisteException {
 		return this.controladorAnimal.listarCachorrosPorRacaETamanho(raca, tamanho);
 	}
 
-	public ArrayList<Animal> listarGatosPorPelagem(String pelagem) {
+	public ArrayList<Animal> listarGatosPorPelagem(EnumPelagem pelagem) {
 		return this.controladorAnimal.listarGatosPorPelagem(pelagem);
 	}
 
-	
+
 	//SOLICITACAO
-	public void CriarSolicitacao(Solicitacao s) throws SolicitacaoJaExisteException {
-		this.controladorSolicitacao.CriarSolicitacao(s);
+	public ArrayList<Solicitacao> listarSolicitacoesEnviadas(Usuario usuario){
+		return this.controladorSolicitacao.listarSolicitacoesEnviadas(usuario);
 	}
 
-	public void RemoverSolicitacao(Solicitacao s) throws SolicitacaoNaoExisteException {
-		this.controladorSolicitacao.RemoverSolicitacao(s);
+	public ArrayList<Solicitacao> listarSolicitacoesRecebidas(Usuario usuario){
+		return this.controladorSolicitacao.listarSolicitacoesRecebidas(usuario);
 	}
 
-	public void AceitarSolicitacao(Solicitacao s) throws SolicitacaoNaoExisteException {
-		this.controladorSolicitacao.AceitarSolicitacao(s);
+	public void criarSolicitacao(Solicitacao s) throws SolicitacaoJaExisteException {
+		this.controladorSolicitacao.criarSolicitacao(s);
 	}
 
-	public void RecusarSolicitacao(Solicitacao s) throws SolicitacaoNaoExisteException {
-		this.controladorSolicitacao.RecusarSolicitacao(s);
+	public void removerSolicitacao(Solicitacao s) throws SolicitacaoNaoExisteException {
+		this.controladorSolicitacao.removerSolicitacao(s);
 	}
 
-	public void atualizar(Solicitacao s) throws SolicitacaoNaoExisteException {
-		controladorSolicitacao.atualizar(s);
+	public void aceitarSolicitacao(Solicitacao s) throws SolicitacaoNaoExisteException {
+		this.controladorSolicitacao.aceitarSolicitacao(s);
 	}
-	
-	
-	
+
+	public void recusarSolicitacao(Solicitacao s) throws SolicitacaoNaoExisteException {
+		this.controladorSolicitacao.recusarSolicitacao(s);
+	}
 
 }
