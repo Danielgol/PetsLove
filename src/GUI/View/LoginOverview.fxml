@@ -24,20 +24,20 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <TextField layoutX="189.0" layoutY="157.0" prefHeight="25.0" prefWidth="223.0" promptText="Digite seu Email aqui" />
+            <TextField fx:id="tfEmail" layoutX="189.0" layoutY="157.0" prefHeight="25.0" prefWidth="223.0" promptText="Digite seu Email aqui" />
             <Label layoutX="99.0" layoutY="192.0" text="Senha:">
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>
             </Label>
-            <PasswordField layoutX="189.0" layoutY="193.0" prefHeight="25.0" prefWidth="223.0" promptText="Digite aqui a sua Senha" />
+            <PasswordField fx:id="tfSenha" layoutX="189.0" layoutY="193.0" prefHeight="25.0" prefWidth="223.0" promptText="Digite aqui a sua Senha" />
             <Button layoutX="431.0" layoutY="191.0" mnemonicParsing="false" text="Entrar" />
             <Label layoutX="126.0" layoutY="239.0" text="Não tem uma conta?">
                <font>
                   <Font name="System Bold Italic" size="14.0" />
                </font>
             </Label>
-            <Button layoutX="289.0" layoutY="235.0" mnemonicParsing="false" text="Cadastre-se" />
+            <Button layoutX="289.0" layoutY="235.0" mnemonicParsing="false"  text="Cadastre-se" />
          </children>
       </Pane>
    </children>
