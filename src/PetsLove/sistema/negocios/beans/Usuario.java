@@ -16,8 +16,6 @@ public class Usuario {
 		this.senha = senha;
 	}
 	
-	public Usuario() {}
-	
 	public boolean equals(Usuario outro) {
 		if(this.id == outro.id && this.email.equals(outro.email)) {
 			return true;
