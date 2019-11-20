@@ -96,4 +96,27 @@ public class MainApp extends Application {
     	        e.printStackTrace();
     	    }
     }
+    
+    public static void abrirTelaPrincipal()
+    {
+    	 try {
+ 	        // Carrega o arquivo fxml e cria um novo stage para a janela popup.
+ 	        FXMLLoader loader = new FXMLLoader();
+ 	        loader.setLocation(MainApp.class.getResource("View/TelaPrincipal.fxml"));
+ 	        AnchorPane page = (AnchorPane) loader.load();
+
+ 	        // Cria o palco dialogStage.
+ 	        Stage dialogStage = new Stage();
+ 	        dialogStage.setTitle("Tela Principal");
+ 	        dialogStage.initModality(Modality.WINDOW_MODAL);
+ 	        dialogStage.initOwner(primaryStage);
+ 	        Scene scene = new Scene(page);
+ 	        dialogStage.setScene(scene);
+
+ 	        // Mostra a janela e espera até o usuário fechar.
+ 	        dialogStage.showAndWait();
+ 	    } catch (IOException e) {
+ 	        e.printStackTrace();
+ 	    }
+    }
 }
