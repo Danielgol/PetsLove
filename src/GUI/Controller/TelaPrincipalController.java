@@ -1,6 +1,10 @@
 package GUI.Controller;
 
+import GUI.CaixaDeEntradaApp;
 import GUI.LoginApp;
+import GUI.PerfilUsuarioApp;
+import GUI.SeusAnimaisApp;
+import GUI.SuasSolicitacoesApp;
 import GUI.TelaPrincipalApp;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -35,27 +39,56 @@ public class TelaPrincipalController {
 	    
 	    @FXML
 	    private void handleSeusAnimais() {
+	       SeusAnimaisApp seusAn = new SeusAnimaisApp();
+	       TelaPrincipalApp.getStage().close();
 	       
-	       
+	       try {
+			seusAn.start(new Stage());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	    }
 	    
 	    @FXML
 	    private void handleCaixaDeEntrada() {
-	       
+	       CaixaDeEntradaApp caixaEnt = new CaixaDeEntradaApp();
+	       TelaPrincipalApp.getStage().close();
 	    	
+	       try {
+			caixaEnt.start(new Stage());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	       
 	    }
 	    
 	    @FXML
 	    private void handleSuasSolicitacoes() {
-	   
-	       
+	    	SuasSolicitacoesApp suasSol = new SuasSolicitacoesApp();
+	    	TelaPrincipalApp.getStage().close();
+	    	
+	    	try {
+				suasSol.start(new Stage());
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	    }
 	    
 	    @FXML
 	    private void handlePerfil() {
 	       
+	    	 PerfilUsuarioApp perfil = new PerfilUsuarioApp();
+	    	 TelaPrincipalApp.getStage().close();
 	    	 
+	    	 try {
+				perfil.start(new Stage());
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	       
 	    }
 	    

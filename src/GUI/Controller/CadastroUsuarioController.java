@@ -2,6 +2,8 @@ package GUI.Controller;
 
 
 
+import GUI.CadastroApp;
+import GUI.LoginApp;
 import PetsLove.sistema.FachadaPL;
 import PetsLove.sistema.exceptions.UsuarioJaExisteException;
 import PetsLove.sistema.negocios.beans.Usuario;
@@ -59,8 +61,18 @@ public class CadastroUsuarioController {
 	    }
 	    
 	    @FXML
-	    private void handlecancelar(ActionEvent ae) {
-	    	  this.dialogStage.close();
+	    private void handleCancelar(ActionEvent ae) {
+	    	LoginApp tela = new LoginApp();
+	    	CadastroApp.getStage().close();
+	    	
+	    	try {
+				tela.start(new Stage());
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	    	
+	    	
 	    }
 
 }
