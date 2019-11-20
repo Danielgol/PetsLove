@@ -24,7 +24,7 @@ public class MainApp extends Application {
 
         initRootLayout();
 
-        showPersonOverview();
+        abrirLoginOverview();
     }
     
     /**
@@ -49,7 +49,7 @@ public class MainApp extends Application {
     /**
      * Mostra o person overview dentro do root layout.
      */
-    public  void showPersonOverview() {
+    public  void abrirLoginOverview() {
         try {
             // Carrega o person overview.
             FXMLLoader loader = new FXMLLoader();
@@ -119,4 +119,120 @@ public class MainApp extends Application {
  	        e.printStackTrace();
  	    }
     }
+    
+    public static void abrirSeusAnimais()
+    {
+    	try {
+ 	        // Carrega o arquivo fxml e cria um novo stage para a janela popup.
+ 	        FXMLLoader loader = new FXMLLoader();
+ 	        loader.setLocation(MainApp.class.getResource("View/SeusAnimais.fxml"));
+ 	        AnchorPane page = (AnchorPane) loader.load();
+
+ 	        // Cria o palco dialogStage.
+ 	        Stage dialogStage = new Stage();
+ 	        dialogStage.setTitle("Seus Animais");
+ 	        dialogStage.initModality(Modality.WINDOW_MODAL);
+ 	        dialogStage.initOwner(primaryStage);
+ 	        Scene scene = new Scene(page);
+ 	        dialogStage.setScene(scene);
+
+ 	        // Mostra a janela e espera até o usuário fechar.
+ 	        dialogStage.showAndWait();
+ 	    } catch (IOException e) {
+ 	        e.printStackTrace();
+ 	    }
+    }
+    
+    public static void abrirCaixaDeEntrada()
+    {
+    	try {
+ 	        // Carrega o arquivo fxml e cria um novo stage para a janela popup.
+ 	        FXMLLoader loader = new FXMLLoader();
+ 	        loader.setLocation(MainApp.class.getResource("View/CaixaDeEntrada.fxml"));
+ 	        AnchorPane page = (AnchorPane) loader.load();
+
+ 	        // Cria o palco dialogStage.
+ 	        Stage dialogStage = new Stage();
+ 	        dialogStage.setTitle("Caixa de Entrada");
+ 	        dialogStage.initModality(Modality.WINDOW_MODAL);
+ 	        dialogStage.initOwner(primaryStage);
+ 	        Scene scene = new Scene(page);
+ 	        dialogStage.setScene(scene);
+
+ 	        // Mostra a janela e espera até o usuário fechar.
+ 	        dialogStage.showAndWait();
+ 	    } catch (IOException e) {
+ 	        e.printStackTrace();
+ 	    }
+    }
+    
+    public static void abrirSuasSolicitacoes()
+    {
+    	try {
+ 	        // Carrega o arquivo fxml e cria um novo stage para a janela popup.
+ 	        FXMLLoader loader = new FXMLLoader();
+ 	        loader.setLocation(MainApp.class.getResource("View/SuasSolicitacoes.fxml"));
+ 	        AnchorPane page = (AnchorPane) loader.load();
+
+ 	        // Cria o palco dialogStage.
+ 	        Stage dialogStage = new Stage();
+ 	        dialogStage.setTitle("Suas Solicitações");
+ 	        dialogStage.initModality(Modality.WINDOW_MODAL);
+ 	        dialogStage.initOwner(primaryStage);
+ 	        Scene scene = new Scene(page);
+ 	        dialogStage.setScene(scene);
+
+ 	        // Mostra a janela e espera até o usuário fechar.
+ 	        dialogStage.showAndWait();
+ 	    } catch (IOException e) {
+ 	        e.printStackTrace();
+ 	    }
+    }
+    
+    public static void abrirPerfilUsuario()
+    {
+    	try {
+ 	        // Carrega o arquivo fxml e cria um novo stage para a janela popup.
+ 	        FXMLLoader loader = new FXMLLoader();
+ 	        loader.setLocation(MainApp.class.getResource("View/PerfilUsuario.fxml"));
+ 	        AnchorPane page = (AnchorPane) loader.load();
+
+ 	        // Cria o palco dialogStage.
+ 	        Stage dialogStage = new Stage();
+ 	        dialogStage.setTitle("Perfil do Usuário");
+ 	        dialogStage.initModality(Modality.WINDOW_MODAL);
+ 	        dialogStage.initOwner(primaryStage);
+ 	        Scene scene = new Scene(page);
+ 	        dialogStage.setScene(scene);
+
+ 	        // Mostra a janela e espera até o usuário fechar.
+ 	        dialogStage.showAndWait();
+ 	    } catch (IOException e) {
+ 	        e.printStackTrace();
+ 	    }
+    }
+    
+    public static void abrirAlterarSenha()
+    {
+    	try {
+ 	        // Carrega o arquivo fxml e cria um novo stage para a janela popup.
+ 	        FXMLLoader loader = new FXMLLoader();
+ 	        loader.setLocation(MainApp.class.getResource("View/AlterarSenha.fxml"));
+ 	        AnchorPane page = (AnchorPane) loader.load();
+
+ 	        // Cria o palco dialogStage.
+ 	        Stage dialogStage = new Stage();
+ 	        dialogStage.setTitle("Alterar Senha");
+ 	        dialogStage.initModality(Modality.WINDOW_MODAL);
+ 	        dialogStage.initOwner(primaryStage);
+ 	        Scene scene = new Scene(page);
+ 	        dialogStage.setScene(scene);
+
+ 	        // Mostra a janela e espera até o usuário fechar.
+ 	        dialogStage.showAndWait();
+ 	    } catch (IOException e) {
+ 	        e.printStackTrace();
+ 	    }
+    }
+  
 }

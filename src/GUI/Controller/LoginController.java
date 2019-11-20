@@ -31,7 +31,14 @@ public class LoginController {
 	    }
 
 	    @FXML
-	    private void handleCadastrar() throws UsuarioJaExisteException {
+	    private void handleCadastrar() {
+	       
+	    	 mainApp.abrirCadastro();
+	       
+	    }
+	    
+	    @FXML
+	    private void handleEntrar() {
 	       
 	    	 mainApp.abrirTelaPrincipal();
 	       
