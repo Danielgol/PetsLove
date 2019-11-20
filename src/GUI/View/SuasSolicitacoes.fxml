@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="GUI.Controller.SuasSolicitacoesController">
+   <children>
+      <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="313.0" prefWidth="520.0">
+         <children>
+            <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
+               <children>
+                  <ImageView fitHeight="65.0" fitWidth="53.0" layoutX="5.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../PetsLogoImg.jpeg" />
+                     </image>
+                  </ImageView>
+                  <SplitPane dividerPositions="0.45819397993311034" layoutX="-10.0" layoutY="62.0" prefHeight="341.0" prefWidth="610.0">
+                     <items>
+                        <TableView fx:id="tabelaSolicitacoes" prefHeight="339.0" prefWidth="314.0">
+                           <columns>
+                              <TableColumn prefWidth="276.0" text="Solicitações" />
+                           </columns>
+                        </TableView>
+                        <Pane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutX="8.0" layoutY="2.0" prefHeight="40.0" prefWidth="274.0" text="Detalhes da solicitação" textFill="#ee14a9">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <GridPane layoutX="4.0" layoutY="81.0" prefHeight="73.0" prefWidth="315.0">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="138.0" minWidth="10.0" prefWidth="126.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="171.0" minWidth="10.0" prefWidth="160.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints maxHeight="56.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="97.0" minHeight="10.0" prefHeight="19.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <Label text="Nome do animal:">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Status da solicitação:" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="nomeAnimal" text="Label" GridPane.columnIndex="1" />
+                                    <Label fx:id="statusSolicitacao" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                 </children>
+                              </GridPane>
+                              <Button layoutX="46.0" layoutY="284.0" mnemonicParsing="false" text="Dados do dono" />
+                              <Button layoutX="160.0" layoutY="284.0" mnemonicParsing="false" text="Cancelar Solicitação" />
+                           </children>
+                        </Pane>
+                     </items>
+                  </SplitPane>
+                  <Label layoutX="72.0" layoutY="16.0" prefHeight="35.0" prefWidth="231.0" text="Suas Solicitações" textFill="#ee14a9">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

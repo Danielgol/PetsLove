@@ -2,6 +2,8 @@ package GUI.Controller;
 
 
 
+import PetsLove.sistema.FachadaPL;
+import PetsLove.sistema.exceptions.UsuarioJaExisteException;
 import PetsLove.sistema.negocios.beans.Usuario;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,7 +20,7 @@ public class CadastroUsuarioController {
 	private Stage dialogStage;
     private Usuario usuario;
     private boolean okClicked = false;  
-    
+    private FachadaPL fachada;
     
 	  @FXML
 	    private TextField tfNome;
@@ -32,12 +34,7 @@ public class CadastroUsuarioController {
 	    @FXML
 	    private TextField tfTelefone;
 
-	    @FXML
-	    private DatePicker dpDate;
-	    
-	    public boolean isOkClicked() {
-	        return okClicked;
-	    }
+	  
 	    
 	    @FXML
 	    private void initialize() {
@@ -56,14 +53,13 @@ public class CadastroUsuarioController {
 	    }
 	    
 	    @FXML
-	    private void handleCadastrar() {
+	    private void handleCadastrar() throws UsuarioJaExisteException {
 	        
-	    	// so seta a conta se a mesma estiver valida
 	        
 	    }
 	    
 	    @FXML
-	    private void cancelar(ActionEvent ae) {
+	    private void handlecancelar(ActionEvent ae) {
 	    	  this.dialogStage.close();
 	    }
 
