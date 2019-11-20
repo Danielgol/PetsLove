@@ -2,6 +2,7 @@ package GUI.Controller;
 
 import GUI.AlterarSenhaApp;
 import GUI.PerfilUsuarioApp;
+import GUI.TelaPrincipalApp;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
@@ -32,5 +33,18 @@ public class PerfilUsuarioController {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
+    }
+    
+    @FXML
+    void handleSair() {
+    	TelaPrincipalApp telaPrinc = new TelaPrincipalApp();
+    	PerfilUsuarioApp.getStage().close();
+    	
+    	try {
+			telaPrinc.start(new Stage());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 }

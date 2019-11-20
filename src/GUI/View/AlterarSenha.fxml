@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.AlterarSenhaController">
+<Pane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.AlterarSenhaController">
    <children>
       <ImageView fitHeight="82.0" fitWidth="200.0" layoutX="-2.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -38,7 +38,12 @@
       <PasswordField layoutX="162.0" layoutY="135.0" prefHeight="25.0" prefWidth="228.0" />
       <PasswordField layoutX="162.0" layoutY="167.0" prefHeight="25.0" prefWidth="228.0" />
       <PasswordField layoutX="162.0" layoutY="202.0" prefHeight="25.0" prefWidth="228.0" />
-      <Button layoutX="517.0" layoutY="342.0" mnemonicParsing="false" text="Salvar">
+      <Button layoutX="446.0" layoutY="342.0" mnemonicParsing="false" text="Salvar">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="523.0" layoutY="342.0" mnemonicParsing="false" onAction="#handleSair" text="Sair">
          <font>
             <Font size="14.0" />
          </font>

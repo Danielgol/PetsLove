@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="313.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.PerfilUsuarioController">
+<AnchorPane prefHeight="313.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.PerfilUsuarioController">
    <children>
       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -62,7 +62,12 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Button layoutX="364.0" layoutY="319.0" mnemonicParsing="false" onAction="#handleAlterarSenha" prefHeight="30.0" prefWidth="161.0" text="Alterar Senha">
+            <Button layoutX="258.0" layoutY="319.0" mnemonicParsing="false" onAction="#handleAlterarSenha" prefHeight="30.0" prefWidth="161.0" text="Alterar Senha">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button layoutX="431.0" layoutY="319.0" mnemonicParsing="false" onAction="#handleSair" prefHeight="30.0" prefWidth="161.0" text="Sair">
                <font>
                   <Font size="14.0" />
                </font>
