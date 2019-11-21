@@ -20,8 +20,6 @@ public class PerfilUsuarioController {
     @FXML
     private Label emailUsuario;
 
-    @FXML
-    private Label idUsuario;
 
     @FXML
     private void handleAlterarSenha() {

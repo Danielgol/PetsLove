@@ -2,14 +2,14 @@ package PetsLove.sistema.negocios.beans;
 
 public class Usuario {
 	
-	private int id;
+	
 	private String nome;
 	private String numero;
 	private String email;
 	private String senha;
 	
-	public Usuario(int id, String nome, String numero, String email, String senha) {
-		this.id = id;
+	public Usuario(String nome, String numero, String email, String senha) {
+	
 		this.nome = nome;
 		this.numero = numero;
 		this.email = email;
@@ -17,15 +17,13 @@ public class Usuario {
 	}
 	
 	public boolean equals(Usuario outro) {
-		if(this.id == outro.id && this.email.equals(outro.email)) {
+		if(this.email.equals(outro.email)) {
 			return true;
 		}
 		return false;
 	}
 
-	public int getId() {
-		return id;
-	}
+	
 
 	public String getNome() {
 		return nome;

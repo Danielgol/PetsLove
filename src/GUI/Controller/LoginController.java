@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import GUI.LoginApp;
 import GUI.System.CadastroApp;
 import GUI.System.TelaPrincipalApp;
+import PetsLove.sistema.FachadaPL;
 
 public class LoginController implements Initializable{
 
@@ -40,14 +41,21 @@ public class LoginController implements Initializable{
 
         @FXML
         void handleEntrar() {
-            TelaPrincipalApp t = new TelaPrincipalApp();
-            LoginApp.getStage().close();
-            try {
-                t.start(new Stage());
-            } catch (Exception e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
+        	if(FachadaPL.getInstance().usuarioExiste(tfEmail.getText()))
+        	{
+        		if(FachadaPL.getInstance().procurarUsuario(tfEmail.getText()).getSenha().equals(pfSenha.getText()))
+        		{
+        			TelaPrincipalApp t = new TelaPrincipalApp();
+                    LoginApp.getStage().close();
+                    try {
+                        t.start(new Stage());
+                    } catch (Exception e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+        		}
+        	}
+        	
         }
 
         @Override

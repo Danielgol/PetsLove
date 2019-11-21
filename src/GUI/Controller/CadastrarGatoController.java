@@ -4,6 +4,7 @@ import GUI.System.CadastrarGatoApp;
 import GUI.System.SeusAnimaisApp;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -23,7 +24,7 @@ public class CadastrarGatoController {
 	    private TextField tfNome;
 
 	    @FXML
-	    private TextField tfIdade;
+	    private DatePicker dpDataDeNascimento;
 
 	    @FXML
 	    void handleCadastrar( ) {

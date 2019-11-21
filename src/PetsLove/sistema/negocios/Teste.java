@@ -21,8 +21,8 @@ public class Teste {
 		
 		FachadaPL fachada = FachadaPL.getInstance();
 		
-		Usuario u1 = new Usuario(123, "Ben10", "99954-4213", "rogerinho..@hotmail.com", "321anhes");
-		Usuario u2 = new Usuario(133, "Barbie", "99857-1682", "Barbiegirl@hotmail.com", "ken123");
+		Usuario u1 = new Usuario("Ben10", "99954-4213", "rogerinho..@hotmail.com", "321anhes");
+		Usuario u2 = new Usuario("Barbie", "99857-1682", "Barbiegirl@hotmail.com", "ken123");
 		fachada.cadastrarUsuario(u1);
 		fachada.cadastrarUsuario(u2);
 		

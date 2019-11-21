@@ -64,7 +64,7 @@ public class FachadaPL {
 	//Talvez a verificacao seja feita no botao de clicar, nao aqui.
 
 
-
+	
 
 	//USUARIO
 	public void cadastrarUsuario(Usuario usuario) throws UsuarioJaExisteException {
@@ -75,7 +75,15 @@ public class FachadaPL {
 		this.controladorUsuario.atualizar(usuario);
 	}
 
-
+	public boolean usuarioExiste(String email)
+	{
+		return this.controladorUsuario.existe(email);
+	}
+	
+	public Usuario procurarUsuario(String email)
+	{
+		return this.controladorUsuario.procurar(email);
+	}
 	//ANIMAL
 	public void cadastrarAnimal(Animal animal) {
 		this.controladorAnimal.cadastrar(animal);
@@ -138,5 +146,6 @@ public class FachadaPL {
 	public void recusarSolicitacao(Solicitacao s) throws SolicitacaoNaoExisteException {
 		this.controladorSolicitacao.recusarSolicitacao(s);
 	}
-
+	
+	
 }

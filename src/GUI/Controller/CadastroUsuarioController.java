@@ -2,6 +2,8 @@ package GUI.Controller;
 
 
 
+import java.time.LocalDate;
+
 import GUI.LoginApp;
 import GUI.System.CadastroApp;
 import PetsLove.sistema.FachadaPL;
@@ -22,16 +24,13 @@ public class CadastroUsuarioController {
 	private Stage dialogStage;
     private Usuario usuario;
     private boolean okClicked = false;  
-    private FachadaPL fachada;
+    private FachadaPL fachada = FachadaPL.getInstance();
     
     @FXML
     private TextField tfNome;
 
     @FXML
     private TextField tfTelefone;
-
-    @FXML
-    private DatePicker dpNascimento;
 
     @FXML
     private TextField tfEmail;
@@ -48,17 +47,21 @@ public class CadastroUsuarioController {
 	        this.dialogStage = dialogStage;
 	    }
 	    
-	    public void setUsuario(Usuario u) {
-	    	this.usuario = u;
-	    	tfNome.setText(u.getNome());;
-	    	tfEmail.setText(u.getEmail());;
-	    	pfSenha.setText(u.getSenha());;
-	    	tfTelefone.setText(u.getNumero());;
-	    }
+	    
 	    
 	    @FXML
 	    private void handleCadastrar() throws UsuarioJaExisteException {
-	        
+	        this.usuario = new Usuario(tfNome.getText(), tfTelefone.getText(), tfEmail.getText(), pfSenha.getText());
+	        fachada.cadastrarUsuario(usuario);
+	        LoginApp tela = new LoginApp();
+	    	CadastroApp.getStage().close();
+	    	
+	    	try {
+				tela.start(new Stage());
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	        
 	    }
 	    
