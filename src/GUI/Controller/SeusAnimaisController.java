@@ -2,6 +2,7 @@ package GUI.Controller;
 
 import GUI.CadastrarCachorroApp;
 import GUI.CadastrarGatoApp;
+import GUI.EditarCachorroApp;
 import GUI.SeusAnimaisApp;
 import GUI.TelaPrincipalApp;
 import javafx.fxml.FXML;
@@ -74,7 +75,15 @@ public class SeusAnimaisController {
 
     @FXML
     void handleEditar( ) {
-
+    	EditarCachorroApp editarCao = new EditarCachorroApp();
+    	SeusAnimaisApp.getStage().close();
+    	
+    	try {
+			editarCao.start(new Stage());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
     @FXML

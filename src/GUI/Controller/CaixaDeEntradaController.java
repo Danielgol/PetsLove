@@ -1,6 +1,7 @@
 package GUI.Controller;
 
 import GUI.CaixaDeEntradaApp;
+import GUI.DadosDoDonoApp;
 import GUI.TelaPrincipalApp;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -38,7 +39,15 @@ public class CaixaDeEntradaController {
 
 	    @FXML
 	    void handleDadosDoDono() {
-
+	    	DadosDoDonoApp telaDono = new DadosDoDonoApp();
+	    	CaixaDeEntradaApp.getStage().close();
+	    	
+	    	try {
+				telaDono.start(new Stage());
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	    }
 
 	    @FXML

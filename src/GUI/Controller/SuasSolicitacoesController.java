@@ -1,6 +1,7 @@
 package GUI.Controller;
 
 
+import GUI.DadosDoDonoApp;
 import GUI.SuasSolicitacoesApp;
 import GUI.TelaPrincipalApp;
 import javafx.fxml.FXML;
@@ -40,7 +41,15 @@ public class SuasSolicitacoesController {
 
 	    @FXML
 	    void handleDadosDoDono( ) {
-
+	    	DadosDoDonoApp telaDono = new DadosDoDonoApp();
+	    	SuasSolicitacoesApp.getStage().close();
+	    	
+	    	try {
+				telaDono.start(new Stage());
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	    }
 
 }
