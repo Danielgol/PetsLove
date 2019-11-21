@@ -19,7 +19,7 @@ public class CaixaDeEntradaController {
 	    private Label statusSolicitacao;
 
 	    @FXML
-	    void handleSair() {
+	    void handleVoltar() {
 	    	TelaPrincipalApp telaPrinc = new TelaPrincipalApp();
 	    	CaixaDeEntradaApp.getStage().close();
 	    	
@@ -29,5 +29,20 @@ public class CaixaDeEntradaController {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+	    }
+	    
+	    @FXML
+	    void handleAceitar() {
+
+	    }
+
+	    @FXML
+	    void handleDadosDoDono() {
+
+	    }
+
+	    @FXML
+	    void handleRecusar() {
+
 	    }
 }

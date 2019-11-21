@@ -21,7 +21,7 @@ public class SuasSolicitacoesController {
 
 	    
 	    @FXML
-	    void handleSair() {
+	    void handleVoltar() {
 	    	TelaPrincipalApp telaPrinc = new TelaPrincipalApp();
 	    	SuasSolicitacoesApp.getStage().close();
 	    	
@@ -32,4 +32,15 @@ public class SuasSolicitacoesController {
 				e.printStackTrace();
 			}
 	    }
+	    
+	    @FXML
+	    void handleCancelarSolicitacao( ) {
+
+	    }
+
+	    @FXML
+	    void handleDadosDoDono( ) {
+
+	    }
+
 }

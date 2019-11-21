@@ -24,18 +24,20 @@ public class CadastroUsuarioController {
     private boolean okClicked = false;  
     private FachadaPL fachada;
     
-	  @FXML
-	    private TextField tfNome;
+    @FXML
+    private TextField tfNome;
 
-	    @FXML
-	    private TextField tfEmail;
+    @FXML
+    private TextField tfTelefone;
 
-	    @FXML
-	    private PasswordField pfSenha;
+    @FXML
+    private DatePicker dpNascimento;
 
-	    @FXML
-	    private TextField tfTelefone;
+    @FXML
+    private TextField tfEmail;
 
+    @FXML
+    private PasswordField pfSenha;
 	  
 	    
 	    @FXML

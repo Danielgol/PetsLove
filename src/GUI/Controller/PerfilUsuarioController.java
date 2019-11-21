@@ -1,6 +1,7 @@
 package GUI.Controller;
 
 import GUI.AlterarSenhaApp;
+import GUI.EditarUsuarioApp;
 import GUI.PerfilUsuarioApp;
 import GUI.TelaPrincipalApp;
 import javafx.fxml.FXML;
@@ -36,7 +37,21 @@ public class PerfilUsuarioController {
     }
     
     @FXML
-    void handleSair() {
+    void handleEditarDados( ) {
+    	 EditarUsuarioApp editarDados = new EditarUsuarioApp();
+         PerfilUsuarioApp.getStage().close();
+         
+         try {
+  		editarDados.start(new Stage());
+  	} catch (Exception e) {
+  		// TODO Auto-generated catch block
+  		e.printStackTrace();
+  	}
+    	
+    }
+    
+    @FXML
+    void handleVoltar() {
     	TelaPrincipalApp telaPrinc = new TelaPrincipalApp();
     	PerfilUsuarioApp.getStage().close();
     	

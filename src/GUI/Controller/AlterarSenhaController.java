@@ -3,12 +3,22 @@ package GUI.Controller;
 import GUI.AlterarSenhaApp;
 import GUI.PerfilUsuarioApp;
 import javafx.fxml.FXML;
+import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
 
 public class AlterarSenhaController {
 
+    @FXML
+    private PasswordField pfSenhaAtual;
+
+    @FXML
+    private PasswordField pfNovaSenha1;
+
+    @FXML
+    private PasswordField pfNovaSenha2;
+
 	  @FXML
-	    void handleSair() {
+	    void handleCancelar() {
 		  PerfilUsuarioApp perfilTela = new PerfilUsuarioApp();
 		  AlterarSenhaApp.getStage().close();
 		  
@@ -18,5 +28,10 @@ public class AlterarSenhaController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	    }
+	  
+	   @FXML
+	    void handleSalvar( ) {
+
 	    }
 }

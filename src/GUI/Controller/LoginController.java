@@ -21,7 +21,8 @@ public class LoginController implements Initializable{
         private TextField tfEmail;
 
         @FXML
-        private PasswordField tfSenha;
+        private PasswordField pfSenha;
+
 
 
 

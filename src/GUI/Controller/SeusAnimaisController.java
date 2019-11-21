@@ -32,7 +32,7 @@ public class SeusAnimaisController {
     private Label labelDescricao;
     
     @FXML
-    void handleSair() {
+    void handleVoltar() {
     	TelaPrincipalApp telaPrinc = new TelaPrincipalApp();
     	SeusAnimaisApp.getStage().close();
     	
@@ -43,4 +43,20 @@ public class SeusAnimaisController {
 			e.printStackTrace();
 		}
     }
+    
+    @FXML
+    void handleCadastrar( ) {
+
+    }
+
+    @FXML
+    void handleEditar( ) {
+
+    }
+
+    @FXML
+    void handleRemover( ) {
+
+    }
+
 }

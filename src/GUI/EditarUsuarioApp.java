@@ -6,7 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class CadastroApp extends Application {
+public class EditarUsuarioApp extends Application {
 
 private static Stage stage;
 	
@@ -16,9 +16,9 @@ private static Stage stage;
 	
 	@Override
 	public void start(Stage stage) throws Exception {
-		Parent root = FXMLLoader.load(getClass().getResource("View/Cadastro.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("View/EditarUsuario.fxml"));
 		Scene scene = new Scene(root);
-		stage.setTitle("Cadastro");
+		stage.setTitle("Edição de dados");
 		stage.setScene(scene);
 		stage.show();
 		setStage(stage);
@@ -29,6 +29,7 @@ private static Stage stage;
 	}
 
 	public static void setStage(Stage stage) {
-		CadastroApp.stage = stage;
+		EditarUsuarioApp.stage = stage;
+	
 	}
 }

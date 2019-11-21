@@ -93,6 +93,12 @@ public class TelaPrincipalController {
 	    }
 	    
 	    @FXML
+	    void handleEnviarSolicitacao(ActionEvent event) {
+
+	    }
+
+	    
+	    @FXML
 	    private void handleSair(ActionEvent ae) {
 	        LoginApp login = new LoginApp();
 	    	TelaPrincipalApp.getStage().close();
