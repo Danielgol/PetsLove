@@ -1,10 +1,10 @@
 package GUI.Controller;
 
-import GUI.CadastrarCachorroApp;
-import GUI.CadastrarGatoApp;
-import GUI.EditarCachorroApp;
-import GUI.SeusAnimaisApp;
-import GUI.TelaPrincipalApp;
+import GUI.System.CadastrarCachorroApp;
+import GUI.System.CadastrarGatoApp;
+import GUI.System.EditarCachorroApp;
+import GUI.System.SeusAnimaisApp;
+import GUI.System.TelaPrincipalApp;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;

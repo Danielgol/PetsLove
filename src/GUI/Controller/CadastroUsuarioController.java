@@ -2,8 +2,8 @@ package GUI.Controller;
 
 
 
-import GUI.CadastroApp;
 import GUI.LoginApp;
+import GUI.System.CadastroApp;
 import PetsLove.sistema.FachadaPL;
 import PetsLove.sistema.exceptions.UsuarioJaExisteException;
 import PetsLove.sistema.negocios.beans.Usuario;

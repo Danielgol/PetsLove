@@ -1,8 +1,8 @@
 package GUI.Controller;
 
-import GUI.CaixaDeEntradaApp;
-import GUI.DadosDoDonoApp;
-import GUI.TelaPrincipalApp;
+import GUI.System.CaixaDeEntradaApp;
+import GUI.System.DadosDoDonoApp;
+import GUI.System.TelaPrincipalApp;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;

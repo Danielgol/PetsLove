@@ -1,4 +1,4 @@
-package GUI;
+package GUI.System;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -6,9 +6,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class TelaPrincipalApp extends Application {
+public class PerfilUsuarioApp extends Application {
 
-	private static Stage stage;
+private static Stage stage;
 	
 	public static void main(String[] args) {
 		launch(args);
@@ -16,9 +16,9 @@ public class TelaPrincipalApp extends Application {
 	
 	@Override
 	public void start(Stage stage) throws Exception {
-		Parent root = FXMLLoader.load(getClass().getResource("View/TelaPrincipal.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("../View/PerfilUsuario.fxml"));
 		Scene scene = new Scene(root);
-		stage.setTitle("TelaPrincipal");
+		stage.setTitle("Perfil Usuário");
 		stage.setScene(scene);
 		stage.show();
 		setStage(stage);
@@ -29,6 +29,6 @@ public class TelaPrincipalApp extends Application {
 	}
 
 	public static void setStage(Stage stage) {
-		TelaPrincipalApp.stage = stage;
+		PerfilUsuarioApp.stage = stage;
 	}
 }

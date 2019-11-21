@@ -8,9 +8,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import GUI.CadastroApp;
 import GUI.LoginApp;
-import GUI.TelaPrincipalApp;
+import GUI.System.CadastroApp;
+import GUI.System.TelaPrincipalApp;
 
 public class LoginController implements Initializable{
 

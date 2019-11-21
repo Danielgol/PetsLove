@@ -1,7 +1,7 @@
 package GUI.Controller;
 
-import GUI.AlterarSenhaApp;
-import GUI.PerfilUsuarioApp;
+import GUI.System.AlterarSenhaApp;
+import GUI.System.PerfilUsuarioApp;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;

@@ -1,9 +1,9 @@
 package GUI.Controller;
 
-import GUI.AlterarSenhaApp;
-import GUI.EditarUsuarioApp;
-import GUI.PerfilUsuarioApp;
-import GUI.TelaPrincipalApp;
+import GUI.System.AlterarSenhaApp;
+import GUI.System.EditarUsuarioApp;
+import GUI.System.PerfilUsuarioApp;
+import GUI.System.TelaPrincipalApp;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;

@@ -1,4 +1,4 @@
-package GUI;
+package GUI.System;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -6,7 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class PerfilUsuarioApp extends Application {
+public class AlterarSenhaApp extends Application {
 
 private static Stage stage;
 	
@@ -16,9 +16,9 @@ private static Stage stage;
 	
 	@Override
 	public void start(Stage stage) throws Exception {
-		Parent root = FXMLLoader.load(getClass().getResource("View/PerfilUsuario.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("../View/AlterarSenha.fxml"));
 		Scene scene = new Scene(root);
-		stage.setTitle("Perfil Usuário");
+		stage.setTitle("Alterar Senha");
 		stage.setScene(scene);
 		stage.show();
 		setStage(stage);
@@ -29,6 +29,6 @@ private static Stage stage;
 	}
 
 	public static void setStage(Stage stage) {
-		PerfilUsuarioApp.stage = stage;
+		AlterarSenhaApp.stage = stage;
 	}
 }

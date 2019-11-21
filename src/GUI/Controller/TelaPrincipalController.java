@@ -1,11 +1,11 @@
 package GUI.Controller;
 
-import GUI.CaixaDeEntradaApp;
 import GUI.LoginApp;
-import GUI.PerfilUsuarioApp;
-import GUI.SeusAnimaisApp;
-import GUI.SuasSolicitacoesApp;
-import GUI.TelaPrincipalApp;
+import GUI.System.CaixaDeEntradaApp;
+import GUI.System.PerfilUsuarioApp;
+import GUI.System.SeusAnimaisApp;
+import GUI.System.SuasSolicitacoesApp;
+import GUI.System.TelaPrincipalApp;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

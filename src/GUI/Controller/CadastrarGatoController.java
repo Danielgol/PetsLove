@@ -1,7 +1,7 @@
 package GUI.Controller;
 
-import GUI.CadastrarGatoApp;
-import GUI.SeusAnimaisApp;
+import GUI.System.CadastrarGatoApp;
+import GUI.System.SeusAnimaisApp;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextArea;

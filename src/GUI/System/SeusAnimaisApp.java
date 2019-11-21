@@ -1,4 +1,4 @@
-package GUI;
+package GUI.System;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -6,7 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class EditarGatoApp extends Application {
+public class SeusAnimaisApp extends Application {
 
 private static Stage stage;
 	
@@ -16,9 +16,9 @@ private static Stage stage;
 	
 	@Override
 	public void start(Stage stage) throws Exception {
-		Parent root = FXMLLoader.load(getClass().getResource("View/EditarGato.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("../View/SeusAnimais.fxml"));
 		Scene scene = new Scene(root);
-		stage.setTitle("Edição de dados de gato");
+		stage.setTitle("Seus Animais");
 		stage.setScene(scene);
 		stage.show();
 		setStage(stage);
@@ -29,7 +29,6 @@ private static Stage stage;
 	}
 
 	public static void setStage(Stage stage) {
-		EditarGatoApp.stage = stage;
-	
+		SeusAnimaisApp.stage = stage;
 	}
 }
