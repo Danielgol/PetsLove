@@ -1,5 +1,7 @@
 package GUI.Controller;
 
+import java.time.LocalDate;
+import java.time.Period;
 import GUI.System.CadastrarGatoApp;
 import GUI.System.SeusAnimaisApp;
 import javafx.fxml.FXML;
@@ -23,12 +25,13 @@ public class CadastrarGatoController {
 	    @FXML
 	    private TextField tfNome;
 
-	    @FXML
+
 	    private DatePicker dpDataDeNascimento;
 
 	    @FXML
-	    void handleCadastrar( ) {
-
+	    void handleCadastrar( ) 
+	    {
+	    	
 	    }
 
 	    @FXML

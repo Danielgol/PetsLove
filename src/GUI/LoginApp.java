@@ -14,14 +14,17 @@ public class LoginApp extends Application {
 		launch(args);
 	}
 	
+		
 	@Override
 	public void start(Stage stage) throws Exception {
 		Parent root = FXMLLoader.load(getClass().getResource("View/LoginOverview.fxml"));
 		Scene scene = new Scene(root);
 		stage.setTitle("Login");
 		stage.setScene(scene);
+		stage.setResizable(false);
 		stage.show();
 		setStage(stage);
+		
 	}
 
 	public static Stage getStage() {
