@@ -1,9 +1,12 @@
 package GUI.Controller;
 
+import GUI.CadastrarCachorroApp;
+import GUI.SeusAnimaisApp;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class CadastrarCachorroController {
 
@@ -33,7 +36,15 @@ public class CadastrarCachorroController {
 
     @FXML
     void handleCancelar( ) {
-
+    	SeusAnimaisApp seusAnimais = new SeusAnimaisApp();
+    	CadastrarCachorroApp.getStage().close();
+    	
+    	try {
+    		seusAnimais.start(new Stage());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
 }

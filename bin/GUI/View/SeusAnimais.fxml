@@ -38,7 +38,7 @@
                               <Font size="24.0" />
                            </font>
                         </Label>
-                        <GridPane layoutX="14.0" layoutY="54.0" prefHeight="232.0" prefWidth="265.0">
+                        <GridPane layoutX="14.0" layoutY="38.0" prefHeight="211.0" prefWidth="265.0">
                            <columnConstraints>
                               <ColumnConstraints hgrow="SOMETIMES" maxWidth="128.0" minWidth="10.0" prefWidth="98.0" />
                               <ColumnConstraints hgrow="SOMETIMES" maxWidth="167.0" minWidth="10.0" prefWidth="167.0" />
@@ -90,13 +90,14 @@
                               <Label fx:id="labelDescricao" prefHeight="83.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                            </children>
                         </GridPane>
-                        <ButtonBar layoutX="16.0" layoutY="285.0" prefHeight="40.0" prefWidth="256.0">
+                        <ButtonBar layoutX="103.0" layoutY="285.0" prefHeight="40.0" prefWidth="169.0">
                            <buttons>
-                              <Button mnemonicParsing="false" onAction="#handleCadastrar" text="Cadastrar" />
                               <Button mnemonicParsing="false" onAction="#handleEditar" text="Editar" />
                               <Button mnemonicParsing="false" onAction="#handleRemover" text="Remover" />
                            </buttons>
                         </ButtonBar>
+                        <Button layoutX="187.0" layoutY="254.0" mnemonicParsing="false" onAction="#handleCadastrarCachorro" prefHeight="25.0" prefWidth="95.0" text="Cadastrar Cão" />
+                        <Button layoutX="77.0" layoutY="254.0" mnemonicParsing="false" onAction="#handleCadastrarGato" prefHeight="25.0" prefWidth="100.0" text="Cadastrar Gato" />
                      </children>
                   </Pane>
                </items>

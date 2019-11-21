@@ -1,5 +1,7 @@
 package GUI.Controller;
 
+import GUI.CadastrarCachorroApp;
+import GUI.CadastrarGatoApp;
 import GUI.SeusAnimaisApp;
 import GUI.TelaPrincipalApp;
 import javafx.fxml.FXML;
@@ -45,8 +47,29 @@ public class SeusAnimaisController {
     }
     
     @FXML
-    void handleCadastrar( ) {
+    void handleCadastrarCachorro( ) {
+    	CadastrarCachorroApp cadastrarCachorro = new CadastrarCachorroApp();
+    	SeusAnimaisApp.getStage().close();
+    	
+    	try {
+			cadastrarCachorro.start(new Stage());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
 
+    @FXML
+    void handleCadastrarGato( ) {
+    	CadastrarGatoApp cadastrarGato = new CadastrarGatoApp();
+    	SeusAnimaisApp.getStage().close();
+    	
+    	try {
+			cadastrarGato.start(new Stage());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
     @FXML
