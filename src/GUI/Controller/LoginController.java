@@ -3,12 +3,16 @@ package GUI.Controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import GUI.LoginApp;
 import GUI.System.CadastroApp;
@@ -42,7 +46,30 @@ public class LoginController implements Initializable{
         }
 
         @FXML
-        void handleEntrar() {
+        void handleEntrar(ActionEvent ev) {
+        	logar();
+        	}
+
+        @Override
+        public void initialize(URL url, ResourceBundle rb) {
+            // TODO Auto-generated method stub
+        	
+        	pfSenha.setOnKeyPressed((KeyEvent e)->{
+        		if(e.getCode() == KeyCode.ENTER) {
+        			logar();
+        		}
+        	});
+        	
+        	tfEmail.setOnKeyPressed((KeyEvent e)->{
+        		if(e.getCode() == KeyCode.ENTER) {
+        			logar();
+        		}
+        	});
+
+        }
+        
+        
+        public void logar() {
         	if(FachadaPL.getInstance().usuarioExiste(tfEmail.getText()))
         	{
         		if(FachadaPL.getInstance().procurarUsuario(tfEmail.getText()).getSenha().equals(pfSenha.getText()))
@@ -69,14 +96,6 @@ public class LoginController implements Initializable{
             	alerta.setContentText("Email incorreto, digite novamente");
             	alerta.show();
             }
-        	
         }
-
-        @Override
-        public void initialize(URL url, ResourceBundle rb) {
-            // TODO Auto-generated method stub
-
-        }
-
 
 }
