@@ -2,7 +2,9 @@ package GUI.Controller;
 
 
 
+import java.net.URL;
 import java.time.LocalDate;
+import java.util.ResourceBundle;
 
 import GUI.LoginApp;
 import GUI.System.CadastroApp;
@@ -11,15 +13,20 @@ import PetsLove.sistema.exceptions.UsuarioJaExisteException;
 import PetsLove.sistema.negocios.beans.Usuario;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.PasswordField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
-public class CadastroUsuarioController {
+public class CadastroUsuarioController implements Initializable{
 	
 	private Stage dialogStage;
     private Usuario usuario;
@@ -38,11 +45,55 @@ public class CadastroUsuarioController {
     @FXML
     private PasswordField pfSenha;
 	  
-	    
-	    @FXML
-	    private void initialize() {
-	    }
-	    
+    	
+    	@Override
+    	public void initialize(URL arg0, ResourceBundle arg1) {
+    		// TODO Auto-generated method stub
+    		tfNome.setOnKeyPressed((KeyEvent e)->{
+    			if(e.getCode() == KeyCode.ENTER) {
+    				try {
+						handleCadastrar();
+					} catch (UsuarioJaExisteException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+    			}
+    		});
+    		
+    		tfTelefone.setOnKeyPressed((KeyEvent e)->{
+    			if(e.getCode() == KeyCode.ENTER) {
+    				try {
+						handleCadastrar();
+					} catch (UsuarioJaExisteException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+    			}
+    		});
+    		
+    		pfSenha.setOnKeyPressed((KeyEvent e)->{
+    			if(e.getCode() == KeyCode.ENTER) {
+    				try {
+						handleCadastrar();
+					} catch (UsuarioJaExisteException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+    			}
+    		});
+    		
+    		tfEmail.setOnKeyPressed((KeyEvent e)->{
+    			if(e.getCode() == KeyCode.ENTER) {
+    				try {
+						handleCadastrar();
+					} catch (UsuarioJaExisteException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+    			}
+    		});
+    	}
+	   
 	    public void setDialogStage(Stage dialogStage) {
 	        this.dialogStage = dialogStage;
 	    }
@@ -52,17 +103,58 @@ public class CadastroUsuarioController {
 	    @FXML
 	    private void handleCadastrar() throws UsuarioJaExisteException {
 	        this.usuario = new Usuario(tfNome.getText(), tfTelefone.getText(), tfEmail.getText(), pfSenha.getText());
-	        fachada.cadastrarUsuario(usuario);
-	        LoginApp tela = new LoginApp();
-	    	CadastroApp.getStage().close();
-	    	
-	    	try {
-				tela.start(new Stage());
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-	        
+	        if(fachada.usuarioExiste(tfEmail.getText()) == false && !tfEmail.getText().equals("") 
+	        		&& tfEmail.getText().indexOf(" ") == -1) {
+	        	if(!tfNome.getText().equals("")) {
+	        		if(!pfSenha.getText().equals("")){
+	        			if(tfTelefone.getText().length() == 9 && tfTelefone.getText().matches("^[a-zA-Z]+$") == false
+	        					&& tfTelefone.getText().indexOf(" ") == -1){
+	        			
+	        			fachada.cadastrarUsuario(usuario);
+	        			LoginApp tela = new LoginApp();
+	        			CadastroApp.getStage().close();
+	        			try {
+	        			tela.start(new Stage());
+	        			} catch (Exception e) {
+	        			// TODO Auto-generated catch block
+	        			e.printStackTrace();
+	        			}
+	        			}else {
+	        				Alert alerta = new Alert(AlertType.ERROR);
+			            	alerta.setHeaderText("Telefone incorreto");
+			            	alerta.setTitle("Erro");
+			            	alerta.setContentText("Telefone com valores inválidos, digite o telefone novamente");
+			            	alerta.show();
+	        			}
+	        		}else {
+	        			Alert alerta = new Alert(AlertType.ERROR);
+		            	alerta.setHeaderText("Senha nula");
+		            	alerta.setTitle("Erro");
+		            	alerta.setContentText("Senha nula, digite a nova senha novamente");
+		            	alerta.show();
+	        		}
+	        	}else {
+	        		Alert alerta = new Alert(AlertType.ERROR);
+	            	alerta.setHeaderText("Nome nulo");
+	            	alerta.setTitle("Erro");
+	            	alerta.setContentText("Nome nulo, digite o nome novamente");
+	            	alerta.show();
+	        	}
+	        }else {
+	        		if(!tfEmail.getText().equals("") && tfEmail.getText().indexOf(" ") == -1){
+	        		Alert alerta = new Alert(AlertType.ERROR);
+	        		alerta.setHeaderText("Email já existe");
+	        		alerta.setTitle("Erro");
+	        		alerta.setContentText("Email indisponível, tente outro email");
+	        		alerta.show();
+	        	}else {
+	        		Alert alerta = new Alert(AlertType.ERROR);
+	        		alerta.setHeaderText("Email nulo ou Inválido");
+	        		alerta.setTitle("Erro");
+	        		alerta.setContentText("Email nulo ou inválido, digite um email sem deixar espaços");
+	        		alerta.show();
+	        	}
+	         }
 	    }
 	    
 	    @FXML
@@ -79,5 +171,5 @@ public class CadastroUsuarioController {
 	    	
 	    	
 	    }
-
+	    
 }
