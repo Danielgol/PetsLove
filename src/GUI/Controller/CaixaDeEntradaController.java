@@ -40,6 +40,7 @@ public class CaixaDeEntradaController {
 	    @FXML
 	    void handleDadosDoDono() {
 	    	DadosDoDonoApp telaDono = new DadosDoDonoApp();
+	    	DadosDoDonoApp.setLocal(false);
 	    	CaixaDeEntradaApp.getStage().close();
 	    	
 	    	try {

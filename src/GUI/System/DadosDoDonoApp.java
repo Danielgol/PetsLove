@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 public class DadosDoDonoApp extends Application {
 
 private static Stage stage;
+private static boolean local;
 	
 	public static void main(String[] args) {
 		launch(args);
@@ -35,4 +36,13 @@ private static Stage stage;
 		DadosDoDonoApp.stage = stage;
 	
 	}
+
+	public static boolean isLocal() {
+		return local;
+	}
+
+	public static void setLocal(boolean local) {
+		DadosDoDonoApp.local = local;
+	}
+	 
 }

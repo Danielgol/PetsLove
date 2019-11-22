@@ -42,6 +42,7 @@ public class SuasSolicitacoesController {
 	    @FXML
 	    void handleDadosDoDono( ) {
 	    	DadosDoDonoApp telaDono = new DadosDoDonoApp();
+	    	DadosDoDonoApp.setLocal(true);
 	    	SuasSolicitacoesApp.getStage().close();
 	    	
 	    	try {
