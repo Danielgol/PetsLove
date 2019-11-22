@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.scene.image.Image;
 
 public class LoginApp extends Application {
 
@@ -19,6 +20,8 @@ public class LoginApp extends Application {
 	public void start(Stage stage) throws Exception {
 		Parent root = FXMLLoader.load(getClass().getResource("View/LoginOverview.fxml"));
 		Scene scene = new Scene(root);
+		Image image = new Image("resources/PetsLogoImgPng.png");
+		stage.getIcons().add(image);
 		stage.setTitle("Login");
 		stage.setScene(scene);
 		stage.setResizable(false);

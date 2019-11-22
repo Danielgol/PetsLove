@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class SeusAnimaisApp extends Application {
@@ -18,6 +19,8 @@ private static Stage stage;
 	public void start(Stage stage) throws Exception {
 		Parent root = FXMLLoader.load(getClass().getResource("../View/SeusAnimais.fxml"));
 		Scene scene = new Scene(root);
+		Image image = new Image("resources/PetsLogoImgPng.png");
+		stage.getIcons().add(image);
 		stage.setTitle("Seus Animais");
 		stage.setScene(scene);
 		stage.show();
