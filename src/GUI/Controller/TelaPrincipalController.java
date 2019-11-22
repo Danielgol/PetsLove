@@ -6,11 +6,13 @@ import GUI.System.PerfilUsuarioApp;
 import GUI.System.SeusAnimaisApp;
 import GUI.System.SuasSolicitacoesApp;
 import GUI.System.TelaPrincipalApp;
+import PetsLove.sistema.FachadaPL;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
+import PetsLove.sistema.FachadaPL;
 
 public class TelaPrincipalController {
 
@@ -100,7 +102,9 @@ public class TelaPrincipalController {
 	    
 	    @FXML
 	    private void handleSair(ActionEvent ae) {
-	        LoginApp login = new LoginApp();
+	        FachadaPL.getInstance();
+			FachadaPL.logout();
+	    	LoginApp login = new LoginApp();
 	    	TelaPrincipalApp.getStage().close();
 	    	
 	    	try {

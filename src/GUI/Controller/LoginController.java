@@ -73,7 +73,8 @@ public class LoginController implements Initializable{
         	if(FachadaPL.getInstance().usuarioExiste(tfEmail.getText()))
         	{
         		if(FachadaPL.getInstance().procurarUsuario(tfEmail.getText()).getSenha().equals(pfSenha.getText()))
-        		{
+        		{	
+        			FachadaPL.login(tfEmail.getText(), pfSenha.getText());
         			TelaPrincipalApp t = new TelaPrincipalApp();
                     LoginApp.getStage().close();
                     try {
