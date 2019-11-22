@@ -2,20 +2,20 @@ package PetsLove.sistema.negocios.beans;
 
 public class Cachorro extends Animal {
 
-	private EnumRaca raca;
+	private EnumRacaCachorro raca;
 	private EnumTamanho tamanho;
 
-	public Cachorro(int id, int idade, EnumSexo sexo, String nome, Usuario dono, EnumRaca raca, EnumTamanho tamanho) {
+	public Cachorro(int id, int idade, EnumSexo sexo, String nome, Usuario dono, EnumRacaCachorro raca, EnumTamanho tamanho) {
 		super(id, idade, sexo, nome, dono);
 		this.raca = raca;
 		this.tamanho = tamanho;
 	}
 
-	public EnumRaca getRaca() {
+	public EnumRacaCachorro getRaca() {
 		return raca;
 	}
 
-	public void setRaca(EnumRaca raca) {
+	public void setRaca(EnumRacaCachorro raca) {
 		this.raca = raca;
 	}
 

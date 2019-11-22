@@ -6,7 +6,7 @@ import PetsLove.sistema.exceptions.RacaNaoExisteException;
 import PetsLove.sistema.negocios.beans.Animal;
 import PetsLove.sistema.negocios.beans.Cachorro;
 import PetsLove.sistema.negocios.beans.EnumPelagem;
-import PetsLove.sistema.negocios.beans.EnumRaca;
+import PetsLove.sistema.negocios.beans.EnumRacaCachorro;
 import PetsLove.sistema.negocios.beans.EnumTamanho;
 import PetsLove.sistema.negocios.beans.Gato;
 import PetsLove.sistema.negocios.beans.Usuario;
@@ -55,7 +55,7 @@ public class ControladorAnimal {
 		return animais;
 	}
 	
-	public ArrayList<Animal> listarCachorrosPorRaca(EnumRaca raca) throws RacaNaoExisteException {
+	public ArrayList<Animal> listarCachorrosPorRaca(EnumRacaCachorro raca) throws RacaNaoExisteException {
 		ArrayList<Animal> repoCachorros = this.listarPorTipo(Cachorro.class);
 		ArrayList<Animal> cachorros = new ArrayList<Animal>();
 		if (raca != null) {
@@ -86,7 +86,7 @@ public class ControladorAnimal {
 		return cachorros;
 	}
 
-	public ArrayList<Animal> listarCachorrosPorRacaETamanho(EnumRaca raca, EnumTamanho tamanho) throws RacaNaoExisteException {
+	public ArrayList<Animal> listarCachorrosPorRacaETamanho(EnumRacaCachorro raca, EnumTamanho tamanho) throws RacaNaoExisteException {
 		ArrayList<Animal> repoCachorro = this.listarCachorrosPorRaca(raca);
 		ArrayList<Animal> cachorros = new ArrayList<Animal>();
 		for (Animal cachorro : repoCachorro) {

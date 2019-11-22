@@ -1,12 +1,12 @@
 package PetsLove.sistema.exceptions;
 
-import PetsLove.sistema.negocios.beans.EnumRaca;
+import PetsLove.sistema.negocios.beans.EnumRacaCachorro;
 
 public class RacaNaoExisteException extends Exception{
 	
 	private String raca;
 	
-	public RacaNaoExisteException(EnumRaca raca) {
+	public RacaNaoExisteException(EnumRacaCachorro raca) {
 		super("A raça "+raca+" não foi encontrada");
 		this.raca = raca.toString();
 	}
