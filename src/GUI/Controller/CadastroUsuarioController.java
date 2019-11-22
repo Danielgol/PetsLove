@@ -104,26 +104,25 @@ public class CadastroUsuarioController implements Initializable{
 	    private void handleCadastrar() throws UsuarioJaExisteException {
 	        this.usuario = new Usuario(tfNome.getText(), tfTelefone.getText(), tfEmail.getText(), pfSenha.getText());
 	        if(fachada.usuarioExiste(tfEmail.getText()) == false && !tfEmail.getText().equals("") 
-	        		&& tfEmail.getText().indexOf(" ") == -1) {
-	        	if(!tfNome.getText().equals("")) {
+	        		&& tfEmail.getText().indexOf(" ") == -1 && tfEmail.getText().endsWith(".com") && tfEmail.getText().indexOf("@") != -1) {
+	        	if(!tfNome.getText().equals("") && tfNome.getText().matches("^[A-Za-z·‡‚„ÈËÍÌÔÛÙıˆ˚˙ÁÒ¡¿¬√… »Õœ”‘’÷⁄€«— ]+$") == true) {
 	        		if(!pfSenha.getText().equals("")){
-	        			if(tfTelefone.getText().length() == 9 && tfTelefone.getText().matches("^[a-zA-Z]+$") == false
+	        			if(tfTelefone.getText().length() == 9 && tfTelefone.getText().matches("[0-9]+") == true
 	        					&& tfTelefone.getText().indexOf(" ") == -1){
-	        			
-	        			fachada.cadastrarUsuario(usuario);
-	        			LoginApp tela = new LoginApp();
-	        			CadastroApp.getStage().close();
-	        			try {
-	        			tela.start(new Stage());
-	        			} catch (Exception e) {
-	        			// TODO Auto-generated catch block
-	        			e.printStackTrace();
+	        				fachada.cadastrarUsuario(usuario);
+	        				LoginApp tela = new LoginApp();
+	        				CadastroApp.getStage().close();
+	        				try {
+	        					tela.start(new Stage());
+	        				} catch (Exception e) {
+	        					// TODO Auto-generated catch block
+	        					e.printStackTrace();
 	        			}
 	        			}else {
 	        				Alert alerta = new Alert(AlertType.ERROR);
 			            	alerta.setHeaderText("Telefone incorreto");
 			            	alerta.setTitle("Erro");
-			            	alerta.setContentText("Telefone com valores inv·lidos, digite o telefone novamente");
+			            	alerta.setContentText("Telefone com valores inv·lidos, digite o telefone com apenas 9 dÌgitos");
 			            	alerta.show();
 	        			}
 	        		}else {
@@ -134,14 +133,22 @@ public class CadastroUsuarioController implements Initializable{
 		            	alerta.show();
 	        		}
 	        	}else {
-	        		Alert alerta = new Alert(AlertType.ERROR);
-	            	alerta.setHeaderText("Nome nulo");
-	            	alerta.setTitle("Erro");
-	            	alerta.setContentText("Nome nulo, digite o nome novamente");
-	            	alerta.show();
+	        		if(tfNome.getText().equals("")) {
+	        			Alert alerta = new Alert(AlertType.ERROR);
+	        			alerta.setHeaderText("Nome nulo");
+	        			alerta.setTitle("Erro");
+	        			alerta.setContentText("Nome nulo, digite o nome novamente");
+	        			alerta.show();
+	        		}else {
+	        			Alert alerta = new Alert(AlertType.ERROR);
+		            	alerta.setHeaderText("Nome inv·lido");
+		            	alerta.setTitle("Erro");
+		            	alerta.setContentText("Nome inv·lido, digite somente letras");
+		            	alerta.show();
+	        		}
 	        	}
 	        }else {
-	        		if(!tfEmail.getText().equals("") && tfEmail.getText().indexOf(" ") == -1){
+	        		if(fachada.usuarioExiste(tfEmail.getText()) == true){
 	        		Alert alerta = new Alert(AlertType.ERROR);
 	        		alerta.setHeaderText("Email j· existe");
 	        		alerta.setTitle("Erro");
@@ -149,9 +156,9 @@ public class CadastroUsuarioController implements Initializable{
 	        		alerta.show();
 	        	}else {
 	        		Alert alerta = new Alert(AlertType.ERROR);
-	        		alerta.setHeaderText("Email nulo ou Inv·lido");
+	        		alerta.setHeaderText("Email nulo ou inv·lido");
 	        		alerta.setTitle("Erro");
-	        		alerta.setContentText("Email nulo ou inv·lido, digite um email sem deixar espaÁos");
+	        		alerta.setContentText("Email nulo ou inv·lido, digite um email com @, '.com' e sem deixar espaÁos");
 	        		alerta.show();
 	        	}
 	         }
