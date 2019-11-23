@@ -1,5 +1,7 @@
 package PetsLove.sistema.negocios.beans;
 
+import java.util.ArrayList;
+
 public enum EnumRacaCachorro {
 	
 	//Cachorro
@@ -29,6 +31,14 @@ public enum EnumRacaCachorro {
 	INDEFINIDO("Indefinido");
 	
 	public String valor;
+	
+	public static ArrayList<String> getValues(){
+		ArrayList<String> valores = new ArrayList<String>();
+		for(EnumRacaCachorro e : values()) {
+			valores.add(e.valor);
+		}
+		return valores;
+	}
 	
 	private EnumRacaCachorro(String valor) {
 		this.valor = valor;

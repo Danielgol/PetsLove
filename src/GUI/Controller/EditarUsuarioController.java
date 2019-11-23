@@ -36,6 +36,8 @@ public class EditarUsuarioController {
     	FachadaPL.getInstance().getUsuarioLogado().setNome(tfNome.getText());
     	FachadaPL.getInstance().getUsuarioLogado().setNumero(tfTelefone.getText());
     	FachadaPL.getInstance().atualizarUsuario(FachadaPL.getInstance().getUsuarioLogado());
+    	
+    	
     	PerfilUsuarioApp perfilUsuario = new PerfilUsuarioApp();
     	EditarUsuarioApp.getStage().close();
     	

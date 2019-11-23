@@ -6,12 +6,14 @@ import java.util.ResourceBundle;
 import GUI.System.CadastrarCachorroApp;
 import GUI.System.CadastrarGatoApp;
 import GUI.System.EditarCachorroApp;
+import GUI.System.EditarGatoApp;
 import GUI.System.SeusAnimaisApp;
 import GUI.System.TelaPrincipalApp;
 import PetsLove.sistema.FachadaPL;
 import PetsLove.sistema.negocios.beans.Animal;
 import PetsLove.sistema.negocios.beans.Cachorro;
 import PetsLove.sistema.negocios.beans.Gato;
+
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -98,20 +100,38 @@ public class SeusAnimaisController implements Initializable {
 
     @FXML
     void handleEditar( ) {
-    	EditarCachorroApp editarCao = new EditarCachorroApp();
-    	SeusAnimaisApp.getStage().close();
-    	
-    	try {
-			editarCao.start(new Stage());
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+    	Animal animalSelecionado = tabelaAnimais.getSelectionModel().getSelectedItem();
+    	if(animalSelecionado instanceof Gato)
+    	{
+    		EditarGatoApp editarGato = new EditarGatoApp();
+        	SeusAnimaisApp.getStage().close();
+        	
+        	try {
+    			editarGato.start(new Stage());
+    		} catch (Exception e) {
+    			// TODO Auto-generated catch block
+    			e.printStackTrace();
+    		}
+    	}
+    	else if(animalSelecionado instanceof Cachorro)
+    	{
+    		EditarCachorroApp editarCao = new EditarCachorroApp();
+        	SeusAnimaisApp.getStage().close();
+        	
+        	try {
+    			editarCao.start(new Stage());
+    		} catch (Exception e) {
+    			// TODO Auto-generated catch block
+    			e.printStackTrace();
+    		}
+    	}
     }
 
     @FXML
     void handleRemover( ) {
-
+    	Animal animalSelecionado = tabelaAnimais.getSelectionModel().getSelectedItem();
+//    	FachadaPL.getInstance().removerAnimal(animalSelecionado);
+    	
     }
     
     public void initTable() {

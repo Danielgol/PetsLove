@@ -68,8 +68,16 @@ public class CadastrarGatoController implements Initializable{
 				idade,  sexo, tfNome.getText(), FachadaPL.getInstance().getUsuarioLogado(), 
 				pelagem, raca, taDescricao.getText());
 		FachadaPL.getInstance().cadastrarAnimal(gato);
-		System.out.println(gato.getIdade() + ",  " + gato.getRaca() + ",  " + gato.getSexo() + ",  " + gato.getPelagem());
+		System.out.println("Gato: " + gato.getNome());
+		
+		SeusAnimaisApp seusAnimais = new SeusAnimaisApp();
+		CadastrarGatoApp.getStage().close();
 
+		try {
+			seusAnimais.start(new Stage());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	@FXML

@@ -2,7 +2,7 @@ package PetsLove.sistema.negocios.beans;
 
 public enum EnumPelagem {
 	
-	FELPUDO("Felpudo"), MEDIO("MEDIO"), RASO("Raso");
+	FELPUDO("Felpudo"), MEDIO("Medio"), RASO("Raso");
 	
 	public String pelagem;
 	
