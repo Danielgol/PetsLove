@@ -1,7 +1,6 @@
 package PetsLove.sistema;
 
 import java.util.ArrayList;
-
 import PetsLove.sistema.dados.Repositorios.RepositorioAnimais;
 import PetsLove.sistema.dados.Repositorios.RepositorioSolicitacoes;
 import PetsLove.sistema.dados.Repositorios.RepositorioUsuarios;
@@ -65,7 +64,6 @@ public class FachadaPL {
 
 
 	
-
 	//USUARIO
 	public void cadastrarUsuario(Usuario usuario) throws UsuarioJaExisteException {
 		this.controladorUsuario.cadastrar(usuario);
@@ -75,15 +73,10 @@ public class FachadaPL {
 		this.controladorUsuario.atualizar(usuario);
 	}
 
-	public boolean usuarioExiste(String email)
-	{
+	public boolean usuarioExiste(String email){
 		return this.controladorUsuario.existe(email);
 	}
 	
-	public Usuario procurarUsuario(String email)
-	{
-		return this.controladorUsuario.procurar(email);
-	}
 	//ANIMAL
 	public void cadastrarAnimal(Animal animal) {
 		this.controladorAnimal.cadastrar(animal);

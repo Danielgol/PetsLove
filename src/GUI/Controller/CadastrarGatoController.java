@@ -64,8 +64,8 @@ public class CadastrarGatoController implements Initializable{
 			}
 		}
 
-		Gato gato = new Gato(FachadaPL.getInstance().listarAnimaisPorDono(FachadaPL.getInstance().getUsuarioLogado()).size()+1, 
-				idade,  sexo, tfNome.getText(), FachadaPL.getInstance().getUsuarioLogado(), 
+		Gato gato = new Gato(FachadaPL.getInstance().listarAnimaisPorDono(FachadaPL.getUsuarioLogado()).size()+1, 
+				idade,  sexo, tfNome.getText(), FachadaPL.getUsuarioLogado(), 
 				pelagem, raca, taDescricao.getText());
 		FachadaPL.getInstance().cadastrarAnimal(gato);
 		System.out.println("Gato: " + gato.getNome());

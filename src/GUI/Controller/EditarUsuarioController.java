@@ -12,41 +12,35 @@ import javafx.stage.Stage;
 
 public class EditarUsuarioController {
 
-	  @FXML
-	    private TextField tfNome;
+	@FXML private TextField tfNome;
+	@FXML private TextField tfTelefone;
 
-	    @FXML
-	    private TextField tfTelefone;
+	@FXML
+	void handleCancelar( ) {
+		PerfilUsuarioApp perfilUsuario = new PerfilUsuarioApp();
+		EditarUsuarioApp.getStage().close();
 
-    @FXML
-    void handleCancelar( ) {
-    	PerfilUsuarioApp perfilUsuario = new PerfilUsuarioApp();
-    	EditarUsuarioApp.getStage().close();
-    	
-    	try {
+		try {
 			perfilUsuario.start(new Stage());
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    }
+	}
 
-    @FXML
-    void handleSalvar( ) throws UsuarioNaoExisteException {
-    	FachadaPL.getInstance().getUsuarioLogado().setNome(tfNome.getText());
-    	FachadaPL.getInstance().getUsuarioLogado().setNumero(tfTelefone.getText());
-    	FachadaPL.getInstance().atualizarUsuario(FachadaPL.getInstance().getUsuarioLogado());
-    	
-    	
-    	PerfilUsuarioApp perfilUsuario = new PerfilUsuarioApp();
-    	EditarUsuarioApp.getStage().close();
-    	
-    	try {
+	@FXML
+	void handleSalvar( ) throws UsuarioNaoExisteException {
+		FachadaPL.getUsuarioLogado().setNome(tfNome.getText());
+		FachadaPL.getUsuarioLogado().setNumero(tfTelefone.getText());
+		FachadaPL.getInstance().atualizarUsuario(FachadaPL.getUsuarioLogado());
+
+		PerfilUsuarioApp perfilUsuario = new PerfilUsuarioApp();
+		EditarUsuarioApp.getStage().close();
+
+		try {
 			perfilUsuario.start(new Stage());
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    }
+	}
 
 }

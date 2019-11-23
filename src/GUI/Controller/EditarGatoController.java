@@ -4,7 +4,6 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ResourceBundle;
-
 import GUI.System.CadastrarGatoApp;
 import GUI.System.EditarGatoApp;
 import GUI.System.SeusAnimaisApp;
@@ -26,44 +25,34 @@ import javafx.stage.Stage;
 
 public class EditarGatoController implements Initializable{
 
+	@FXML private ComboBox<String> cbSexo;
+	@FXML private ComboBox<String> cbPelagem;
+	@FXML private TextArea taDescricao;
+	@FXML private TextField tfNome;
+	@FXML private ComboBox<String> cbRaca;
+	@FXML private DatePicker dpDataDeNascimento;
 
-    @FXML
-    private ComboBox<String> cbSexo;
-
-    @FXML
-    private ComboBox<String> cbPelagem;
-
-    @FXML
-    private TextArea taDescricao;
-
-    @FXML
-    private TextField tfNome;
-    @FXML
-    private ComboBox<String> cbRaca;
-
-    @FXML
-    private DatePicker dpDataDeNascimento;
-
-    ObservableList<String> sexo = FXCollections.observableArrayList(EnumSexo.MACHO.sexo, EnumSexo.FEMEA.sexo);
+	ObservableList<String> sexo = FXCollections.observableArrayList(EnumSexo.MACHO.sexo, EnumSexo.FEMEA.sexo);
 	ObservableList<String> pelagem = FXCollections.observableArrayList(EnumPelagem.FELPUDO.pelagem, EnumPelagem.MEDIO.pelagem, EnumPelagem.RASO.pelagem);
 	ObservableList<String> raca = FXCollections.observableArrayList(EnumRacaGato.getValues());
 
-    @FXML
-    void handleCancelar( ) {
-    	SeusAnimaisApp seusAnimais = new SeusAnimaisApp();
-    	EditarGatoApp.getStage().close();
-    	
-    	try {
-    		seusAnimais.start(new Stage());
+	@FXML
+	void handleCancelar( ) {
+		SeusAnimaisApp seusAnimais = new SeusAnimaisApp();
+		EditarGatoApp.getStage().close();
+
+		try {
+			seusAnimais.start(new Stage());
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    }
+	}
 
-    @FXML
-    void handleSalvar( ) {
-    	int idade = Period.between(dpDataDeNascimento.getValue(), LocalDate.now()).getYears();
+	@FXML
+	void handleSalvar( ) {
+		
+		int idade = Period.between(dpDataDeNascimento.getValue(), LocalDate.now()).getYears();
+		
 		EnumSexo sexo = null;
 		if(cbSexo.getValue().equals(EnumSexo.MACHO.sexo)){
 			sexo = EnumSexo.MACHO;
@@ -86,12 +75,12 @@ public class EditarGatoController implements Initializable{
 			}
 		}
 
-		Gato gato = new Gato(FachadaPL.getInstance().listarAnimaisPorDono(FachadaPL.getInstance().getUsuarioLogado()).size()+1, 
-				idade,  sexo, tfNome.getText(), FachadaPL.getInstance().getUsuarioLogado(), 
+		Gato gato = new Gato(FachadaPL.getInstance().listarAnimaisPorDono(FachadaPL.getUsuarioLogado()).size()+1, 
+				idade,  sexo, tfNome.getText(), FachadaPL.getUsuarioLogado(), 
 				pelagem, raca, taDescricao.getText());
 		FachadaPL.getInstance().atualizarAnimal(gato);
 		System.out.println("Gato: " + gato.getNome());
-		
+
 		SeusAnimaisApp seusAnimais = new SeusAnimaisApp();
 		EditarGatoApp.getStage().close();
 
@@ -101,15 +90,13 @@ public class EditarGatoController implements Initializable{
 			e.printStackTrace();
 		}
 		
-		
-    }
-    
-    
-    @Override
+	}
+
+	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		cbSexo.setItems(sexo);
 		cbPelagem.setItems(pelagem);
 		cbRaca.setItems(raca);
 	}
-    
+
 }

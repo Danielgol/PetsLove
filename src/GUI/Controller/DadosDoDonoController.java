@@ -8,14 +8,9 @@ import javafx.stage.Stage;
 
 public class DadosDoDonoController {
 
-	@FXML
-    private Label nomeDono;
-
-    @FXML
-    private Label numeroDono;
-
-    @FXML
-    private Label emailDono;
+	@FXML private Label nomeDono;
+    @FXML private Label numeroDono;
+    @FXML private Label emailDono;
 
     @FXML
     void handleSair() {
@@ -25,8 +20,8 @@ public class DadosDoDonoController {
     	try {
 			tela.start(new Stage());
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     }
+    
 }

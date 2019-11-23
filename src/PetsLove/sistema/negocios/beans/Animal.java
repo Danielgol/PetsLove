@@ -18,12 +18,10 @@ public abstract class Animal {
 		this.descricao = descricao;
 	}
 	
-
 	@Override
 	public boolean equals(Object animal) {
 		Animal outro = (Animal) animal;
-		if(this.getDono().equals(outro.getDono()))
-		{
+		if(outro != null && this.getDono().equals(outro.getDono())){
 			if (this.id == outro.id) {
 				return true;
 			}
@@ -71,15 +69,12 @@ public abstract class Animal {
 		this.dono = dono;
 	}
 
-
 	public String getDescricao() {
 		return descricao;
 	}
-
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
 
-	
 }

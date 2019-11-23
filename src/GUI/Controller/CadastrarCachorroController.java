@@ -38,15 +38,18 @@ public class CadastrarCachorroController implements Initializable{
 	ObservableList<String> sexo = FXCollections.observableArrayList(EnumSexo.MACHO.sexo, EnumSexo.FEMEA.sexo);
 	ObservableList<String> tamanho = FXCollections.observableArrayList(EnumTamanho.ALTO.tamanho, EnumTamanho.BAIXO.tamanho, EnumTamanho.MEDIO.tamanho);
 	ObservableList<String> raca = FXCollections.observableArrayList(EnumRacaCachorro.getValues());
-	
+
 	@FXML
 	void handleCadastrar( ) {
+
+		//TODO: Colocar Regras de Cadastro (Todos os campos devem ser preenchidos)
+
 		int idade = Period.between(dpDataDeNascimento.getValue(), LocalDate.now()).getYears();
+
 		EnumSexo sexo = null;
 		if(cbSexo.getValue().equals(EnumSexo.MACHO.sexo)){
 			sexo = EnumSexo.MACHO;
-		}
-		else if(cbSexo.getValue().equals(EnumSexo.FEMEA.sexo)){
+		}else if(cbSexo.getValue().equals(EnumSexo.FEMEA.sexo)){
 			sexo = EnumSexo.FEMEA;
 		}
 
@@ -54,6 +57,7 @@ public class CadastrarCachorroController implements Initializable{
 		for(EnumTamanho e: EnumTamanho.values()){
 			if(e.tamanho.equals(cbTamanho.getValue())){
 				tamanho = e;
+				break;
 			}
 		}
 
@@ -61,15 +65,16 @@ public class CadastrarCachorroController implements Initializable{
 		for(EnumRacaCachorro e: EnumRacaCachorro.values()){
 			if(e.valor.equals(cbRaca.getValue())){
 				raca = e;
+				break;
 			}
 		}
 
-		Cachorro cachorro = new Cachorro(FachadaPL.getInstance().listarAnimaisPorDono(FachadaPL.getInstance().getUsuarioLogado()).size()+1, 
-				idade,  sexo, tfNome.getText(), FachadaPL.getInstance().getUsuarioLogado(), 
+		Cachorro cachorro = new Cachorro(FachadaPL.getInstance().listarAnimaisPorDono(FachadaPL.getUsuarioLogado()).size()+1, 
+				idade,  sexo, tfNome.getText(), FachadaPL.getUsuarioLogado(), 
 				raca, tamanho, taDescricao.getText());
 		FachadaPL.getInstance().cadastrarAnimal(cachorro);
 		System.out.println("Cão: " + cachorro.getNome());
-		
+
 		SeusAnimaisApp seusAnimais = new SeusAnimaisApp();
 		CadastrarCachorroApp.getStage().close();
 
@@ -91,7 +96,7 @@ public class CadastrarCachorroController implements Initializable{
 			e.printStackTrace();
 		}
 	}
-	
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		cbSexo.setItems(sexo);

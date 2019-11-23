@@ -12,14 +12,9 @@ import javafx.stage.Stage;
 
 public class EnviarSolicitacaoController {
 
-    @FXML
-    private TableView<Animal> tabelaAnimais;
-
-    @FXML
-    private TableColumn<Animal, String> colunaAnimais;
-
-    @FXML
-    private TableColumn<Animal, String> colunaTipo;
+    @FXML private TableView<Animal> tabelaAnimais;
+    @FXML private TableColumn<Animal, String> colunaAnimais;
+    @FXML private TableColumn<Animal, String> colunaTipo;
 
     @FXML
     void handleCancelar( ) {
@@ -29,14 +24,13 @@ public class EnviarSolicitacaoController {
     	try {
 			tela.start(new Stage());
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     }
 
     @FXML
     void handleConfirmar( ) {
-    	
+    	//TODO: Confirmar Solicitacao
     }
 
 }

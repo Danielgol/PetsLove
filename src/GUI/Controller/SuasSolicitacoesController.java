@@ -11,46 +11,38 @@ import javafx.stage.Stage;
 
 public class SuasSolicitacoesController {
 
-	  @FXML
-	    private TableView<?> tabelaSolicitacoes;
+	@FXML private TableView<?> tabelaSolicitacoes;
+	@FXML private Label nomeAnimal;
+	@FXML private Label statusSolicitacao;
 
-	    @FXML
-	    private Label nomeAnimal;
+	@FXML
+	void handleVoltar() {
+		TelaPrincipalApp telaPrinc = new TelaPrincipalApp();
+		SuasSolicitacoesApp.getStage().close();
 
-	    @FXML
-	    private Label statusSolicitacao;
+		try {
+			telaPrinc.start(new Stage());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@FXML
+	void handleDadosDoDono( ) {
+		DadosDoDonoApp telaDono = new DadosDoDonoApp();
+		DadosDoDonoApp.setLocal(true);
+		SuasSolicitacoesApp.getStage().close();
 
-	    
-	    @FXML
-	    void handleVoltar() {
-	    	TelaPrincipalApp telaPrinc = new TelaPrincipalApp();
-	    	SuasSolicitacoesApp.getStage().close();
-	    	
-	    	try {
-				telaPrinc.start(new Stage());
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-	    }
-	    
-	    @FXML
-	    void handleCancelarSolicitacao( ) {
+		try {
+			telaDono.start(new Stage());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
-	    }
-
-	    @FXML
-	    void handleDadosDoDono( ) {
-	    	DadosDoDonoApp telaDono = new DadosDoDonoApp();
-	    	DadosDoDonoApp.setLocal(true);
-	    	SuasSolicitacoesApp.getStage().close();
-	    	
-	    	try {
-				telaDono.start(new Stage());
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-	    }
+	@FXML
+	void handleCancelarSolicitacao( ) {
+		//TODO: Cancelar Solicitacao
+	}
 
 }

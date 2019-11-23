@@ -38,7 +38,6 @@ public class LoginApp extends Application {
 		launch(args);
 	}
 	
-		
 	@Override
 	public void start(Stage stage) throws Exception {
 		Parent root = FXMLLoader.load(getClass().getResource("View/LoginOverview.fxml"));
@@ -59,6 +58,5 @@ public class LoginApp extends Application {
 	public static void setStage(Stage stage) {
 		LoginApp.stage = stage;
 	}
-	
 	
 }
