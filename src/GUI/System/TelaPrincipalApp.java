@@ -23,6 +23,7 @@ public class TelaPrincipalApp extends Application {
 		stage.getIcons().add(image);
 		stage.setTitle("TelaPrincipal");
 		stage.setScene(scene);
+		stage.setResizable(false);
 		stage.show();
 		setStage(stage);
 	}

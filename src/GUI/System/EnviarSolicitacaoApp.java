@@ -7,7 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
-public class PerfilUsuarioApp extends Application {
+public class EnviarSolicitacaoApp extends Application {
 
 private static Stage stage;
 	
@@ -17,11 +17,11 @@ private static Stage stage;
 	
 	@Override
 	public void start(Stage stage) throws Exception {
-		Parent root = FXMLLoader.load(getClass().getResource("../View/PerfilUsuario.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("../View/EnviarSolicitacao.fxml"));
 		Scene scene = new Scene(root);
 		Image image = new Image("resources/PetsLogoImgPng.png");
 		stage.getIcons().add(image);
-		stage.setTitle("Perfil Usuário");
+		stage.setTitle("Enviar Solicitação");
 		stage.setScene(scene);
 		stage.setResizable(false);
 		stage.show();
@@ -33,6 +33,6 @@ private static Stage stage;
 	}
 
 	public static void setStage(Stage stage) {
-		PerfilUsuarioApp.stage = stage;
+		EnviarSolicitacaoApp.stage = stage;
 	}
 }

@@ -10,6 +10,9 @@ import GUI.System.SeusAnimaisApp;
 import GUI.System.TelaPrincipalApp;
 import PetsLove.sistema.FachadaPL;
 import PetsLove.sistema.negocios.beans.Animal;
+import PetsLove.sistema.negocios.beans.Cachorro;
+import PetsLove.sistema.negocios.beans.Gato;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -28,11 +31,11 @@ public class SeusAnimaisController implements Initializable {
     private TableView<Animal> tabelaAnimais;
     
     @FXML
-    private TableColumn<Animal, String> clmAnimais;
+    private TableColumn<Animal, String> colunaAnimais;
     
     @FXML
-    private Label labelTipo;
-
+    private TableColumn<Animal, String> colunaTipo;
+    
     @FXML
     private Label labelNome;
 
@@ -43,10 +46,16 @@ public class SeusAnimaisController implements Initializable {
     private Label labelIdade;
 
     @FXML
-    private Label labelRacaPelagem;
+    private Label labelRaca;
 
     @FXML
     private Label labelDescricao;
+    
+    @FXML
+    private Label labelTituloTamPel;
+
+    @FXML
+    private Label labelPelagemTamanho;
     
     @FXML
     void handleVoltar() {
@@ -106,17 +115,63 @@ public class SeusAnimaisController implements Initializable {
     }
     
     public void initTable() {
-    	clmAnimais.setCellValueFactory(new PropertyValueFactory<Animal, String>("nome"));
+    	colunaAnimais.setCellValueFactory(new PropertyValueFactory<Animal, String>("nome"));
+    	colunaTipo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getClass().getTypeName()));
     	tabelaAnimais.setItems(atualizaTabela());
     }
     
     public ObservableList<Animal> atualizaTabela(){
-    	return FXCollections.observableArrayList(fachada.listarAnimais());
+    	return FXCollections.observableArrayList(fachada.listarAnimaisPorDono(fachada.getUsuarioLogado()));
     }
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
+		
 		initTable();
+		
+       
+         
+        
+        tabelaAnimais.getSelectionModel().selectedItemProperty()
+        .addListener(
+                (observable, oldValue, newValue) -> mostrarDetalhesAnimal(newValue));
+ 
+        
 	}
+	
+	 private void mostrarDetalhesAnimal(Animal animal) {
+	        if (animal != null) {
+
+	        	// preenche os labels com os dados da conta
+	        	labelNome.setText(animal.getNome());
+	        	labelSexo.setText(animal.getSexo().sexo);
+	        	labelIdade.setText("11");
+	        	labelDescricao.setText(animal.getDescricao());
+	        	if(animal instanceof Gato)
+	        	{
+	        		labelTituloTamPel.setText("Pelagem:");
+	        		labelRaca.setText(((Gato) animal).getRaca().valor);
+	        		labelPelagemTamanho.setText(((Gato) animal).getPelagem().pelagem);
+	        	}
+	        	if(animal instanceof Cachorro)
+	        	{
+	        		labelTituloTamPel.setText("Tamanho:");
+	        		labelRaca.setText(((Cachorro) animal).getRaca().valor);
+	        		labelPelagemTamanho.setText(((Cachorro) animal).getTamanho().tamanho);
+	        	}
+	        	
+	        	
+
+	        } else {
+	        	
+	        	// conta nula
+	        	labelNome.setText("");
+	        	labelSexo.setText("");
+	        	labelIdade.setText("");
+	        	labelDescricao.setText("");
+	        	labelRaca.setText("");
+	        	labelPelagemTamanho.setText("");
+	        }
+	    }
+	    
 }

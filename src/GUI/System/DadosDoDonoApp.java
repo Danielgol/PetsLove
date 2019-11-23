@@ -24,6 +24,7 @@ private static boolean local;
 		stage.getIcons().add(image);
 		stage.setTitle("Dados do Dono");
 		stage.setScene(scene);
+		stage.setResizable(false);
 		stage.show();
 		setStage(stage);
 	}

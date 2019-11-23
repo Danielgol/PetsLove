@@ -23,13 +23,13 @@ public class EditarCachorroController {
 	    private DatePicker dpDataDeNascimento;
 
 	    @FXML
-	    private ComboBox<?> cbSexo;
+	    private ComboBox<String> cbSexo;
 
 	    @FXML
-	    private ComboBox<?> cbPelagem;
+	    private ComboBox<String> cbPelagem;
 
 	    @FXML
-	    private ComboBox<?> cbRaca;
+	    private ComboBox<String> cbRaca;
 
     @FXML
     void handleCancelar( ) {

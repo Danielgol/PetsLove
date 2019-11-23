@@ -25,10 +25,8 @@ private static Stage stage;
 		stage.setTitle("Cadastro de gato");
 		
 		
-
-	
-		
 		stage.setScene(scene);
+		stage.setResizable(false);
 		stage.show();
 		setStage(stage);
 		

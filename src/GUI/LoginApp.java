@@ -1,5 +1,7 @@
 package GUI;
 
+import PetsLove.sistema.FachadaPL;
+import PetsLove.sistema.exceptions.UsuarioJaExisteException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,7 +13,8 @@ public class LoginApp extends Application {
 
 	private static Stage stage;
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws UsuarioJaExisteException {
+		
 		launch(args);
 	}
 	

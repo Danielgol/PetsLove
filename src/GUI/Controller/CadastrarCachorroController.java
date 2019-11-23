@@ -14,10 +14,10 @@ public class CadastrarCachorroController {
 
 
     @FXML
-    private ComboBox<?> cbSexo;
+    private ComboBox<String> cbSexo;
 
     @FXML
-    private ComboBox<?> cbRaca;
+    private ComboBox<String> cbRaca;
 
     @FXML
     private TextArea taDescricao;
@@ -30,7 +30,7 @@ public class CadastrarCachorroController {
 
 
     @FXML
-    private ComboBox<?> cbTamanho;
+    private ComboBox<String> cbTamanho;
 
     @FXML
     void handleCadastrar( ) {

@@ -23,6 +23,7 @@ private static Stage stage;
 		stage.getIcons().add(image);
 		stage.setTitle("Edição de dados");
 		stage.setScene(scene);
+		stage.setResizable(false);
 		stage.show();
 		setStage(stage);
 	}
