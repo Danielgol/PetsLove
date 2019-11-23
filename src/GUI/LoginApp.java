@@ -26,8 +26,7 @@ public class LoginApp extends Application {
 		stage.setScene(scene);
 		stage.setResizable(false);
 		stage.show();
-		setStage(stage);
-		
+		setStage(stage);	
 	}
 
 	public static Stage getStage() {

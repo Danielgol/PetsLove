@@ -1,21 +1,35 @@
 package GUI.Controller;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import GUI.System.CadastrarCachorroApp;
 import GUI.System.CadastrarGatoApp;
 import GUI.System.EditarCachorroApp;
 import GUI.System.SeusAnimaisApp;
 import GUI.System.TelaPrincipalApp;
+import PetsLove.sistema.FachadaPL;
+import PetsLove.sistema.negocios.beans.Animal;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-public class SeusAnimaisController {
+public class SeusAnimaisController implements Initializable {
 
-
+	private FachadaPL fachada = FachadaPL.getInstance();
+	
     @FXML
-    private TableView<?> tabelaAnimais;
-
+    private TableView<Animal> tabelaAnimais;
+    
+    @FXML
+    private TableColumn<Animal, String> clmAnimais;
+    
     @FXML
     private Label labelTipo;
 
@@ -90,5 +104,19 @@ public class SeusAnimaisController {
     void handleRemover( ) {
 
     }
+    
+    public void initTable() {
+    	clmAnimais.setCellValueFactory(new PropertyValueFactory<Animal, String>("nome"));
+    	tabelaAnimais.setItems(atualizaTabela());
+    }
+    
+    public ObservableList<Animal> atualizaTabela(){
+    	return FXCollections.observableArrayList(fachada.listarAnimais());
+    }
 
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		// TODO Auto-generated method stub
+		initTable();
+	}
 }
