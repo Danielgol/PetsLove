@@ -14,7 +14,6 @@ public class LoginApp extends Application {
 	private static Stage stage;
 	
 	public static void main(String[] args) throws UsuarioJaExisteException {
-		
 		launch(args);
 	}
 	

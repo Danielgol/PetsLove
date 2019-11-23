@@ -1,8 +1,9 @@
 package PetsLove.sistema.negocios.beans;
 
+import java.util.ArrayList;
+
 public enum EnumRacaGato {
-	
-	//Gato
+
 	ABISSINIO("Abissinio"),
 	ANGORA("Angora"),
 	BALINES("Balines"),
@@ -26,9 +27,17 @@ public enum EnumRacaGato {
 	SIBERIANO("Siberiano"),
 	BRITISHSHORTHAIR("British Shorthair"),
 	INDEFINIDO("Indefinido");
-	
+
 	public String valor;
-	
+
+	public static ArrayList<String> getValues(){
+		ArrayList<String> valores = new ArrayList<String>();
+		for(EnumRacaGato e : values()) {
+			valores.add(e.valor);
+		}
+		return valores;
+	}
+
 	private EnumRacaGato(String valor) {
 		this.valor = valor;
 	}

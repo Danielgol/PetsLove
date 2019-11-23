@@ -12,42 +12,28 @@ import javafx.stage.Stage;
 
 public class CadastrarCachorroController {
 
+	@FXML private ComboBox<String> cbSexo;
+	@FXML private ComboBox<String> cbRaca;
+	@FXML private TextArea taDescricao;
+	@FXML private TextField tfNome;
+	@FXML private DatePicker dpDataDeNascimento;
+	@FXML private ComboBox<String> cbTamanho;
 
-    @FXML
-    private ComboBox<String> cbSexo;
+	@FXML
+	void handleCadastrar( ) {
 
-    @FXML
-    private ComboBox<String> cbRaca;
+	}
 
-    @FXML
-    private TextArea taDescricao;
+	@FXML
+	void handleCancelar( ) {
+		SeusAnimaisApp seusAnimais = new SeusAnimaisApp();
+		CadastrarCachorroApp.getStage().close();
 
-    @FXML
-    private TextField tfNome;
-
-    @FXML
-    private DatePicker dpDataDeNascimento;
-
-
-    @FXML
-    private ComboBox<String> cbTamanho;
-
-    @FXML
-    void handleCadastrar( ) {
-
-    }
-
-    @FXML
-    void handleCancelar( ) {
-    	SeusAnimaisApp seusAnimais = new SeusAnimaisApp();
-    	CadastrarCachorroApp.getStage().close();
-    	
-    	try {
-    		seusAnimais.start(new Stage());
+		try {
+			seusAnimais.start(new Stage());
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    }
+	}
 
 }
