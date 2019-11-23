@@ -4,6 +4,7 @@ import GUI.System.CadastrarCachorroApp;
 import GUI.System.SeusAnimaisApp;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -13,10 +14,10 @@ public class CadastrarCachorroController {
 
 
     @FXML
-    private ChoiceBox<?> cbSexo;
+    private ComboBox<?> cbSexo;
 
     @FXML
-    private ChoiceBox<?> cbRaca;
+    private ComboBox<?> cbRaca;
 
     @FXML
     private TextArea taDescricao;
@@ -29,7 +30,7 @@ public class CadastrarCachorroController {
 
 
     @FXML
-    private ChoiceBox<?> cbTamanho;
+    private ComboBox<?> cbTamanho;
 
     @FXML
     void handleCadastrar( ) {

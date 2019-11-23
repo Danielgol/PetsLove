@@ -5,6 +5,7 @@ import GUI.System.EditarCachorroApp;
 import GUI.System.SeusAnimaisApp;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -12,25 +13,23 @@ import javafx.stage.Stage;
 
 public class EditarCachorroController {
 
+	  @FXML
+	    private TextArea taDescricao;
 
-    @FXML
-    private ChoiceBox<?> cbSexo;
+	    @FXML
+	    private TextField tfNome;
 
-    @FXML
-    private ChoiceBox<?> cbRaca;
+	    @FXML
+	    private DatePicker dpDataDeNascimento;
 
-    @FXML
-    private TextArea taDescricao;
+	    @FXML
+	    private ComboBox<?> cbSexo;
 
-    @FXML
-    private TextField tfNome;
+	    @FXML
+	    private ComboBox<?> cbPelagem;
 
-    @FXML
-    private DatePicker dpDataDeNascimento;
-
-
-    @FXML
-    private ChoiceBox<?> cbTamanho;
+	    @FXML
+	    private ComboBox<?> cbRaca;
 
     @FXML
     void handleCancelar( ) {

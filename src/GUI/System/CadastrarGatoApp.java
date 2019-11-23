@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
@@ -22,9 +23,15 @@ private static Stage stage;
 		Image image = new Image("resources/PetsLogoImgPng.png");
 		stage.getIcons().add(image);
 		stage.setTitle("Cadastro de gato");
+		
+		
+
+	
+		
 		stage.setScene(scene);
 		stage.show();
 		setStage(stage);
+		
 	}
 
 	public static Stage getStage() {

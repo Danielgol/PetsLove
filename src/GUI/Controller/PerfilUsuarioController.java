@@ -1,24 +1,29 @@
 package GUI.Controller;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import GUI.System.AlterarSenhaApp;
 import GUI.System.EditarUsuarioApp;
 import GUI.System.PerfilUsuarioApp;
 import GUI.System.TelaPrincipalApp;
+import PetsLove.sistema.FachadaPL;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
-public class PerfilUsuarioController {
+public class PerfilUsuarioController implements Initializable{
 
 
     @FXML
-    private Label nomeUsuario;
+    private Label labelNome;
 
     @FXML
-    private Label numeroUsuario;
+    private Label labelTelefone;
 
     @FXML
-    private Label emailUsuario;
+    private Label labelEmail;
 
 
     @FXML
@@ -60,4 +65,12 @@ public class PerfilUsuarioController {
 			e.printStackTrace();
 		}
     }
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		labelNome.setText(FachadaPL.getInstance().getUsuarioLogado().getNome());
+		labelEmail.setText(FachadaPL.getInstance().getUsuarioLogado().getEmail());
+		labelTelefone.setText(FachadaPL.getInstance().getUsuarioLogado().getNumero());
+		
+	}
 }

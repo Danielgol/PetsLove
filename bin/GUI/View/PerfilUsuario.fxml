@@ -66,17 +66,17 @@
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label fx:id="nomeUsuario" prefHeight="29.0" prefWidth="290.0" GridPane.columnIndex="1">
+                  <Label fx:id="labelNome" prefHeight="29.0" prefWidth="290.0" GridPane.columnIndex="1">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="numeroUsuario" prefHeight="29.0" prefWidth="98.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <Label fx:id="labelTelefone" prefHeight="29.0" prefWidth="98.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="emailUsuario" prefHeight="64.0" prefWidth="218.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <Label fx:id="labelEmail" prefHeight="64.0" prefWidth="218.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
                         <Font size="14.0" />
                      </font>

@@ -7,20 +7,26 @@ public abstract class Animal {
 	private EnumSexo sexo;
 	private String nome;
 	private Usuario dono;
+	private String descricao;
 
-	public Animal(int id, int idade, EnumSexo sexo, String nome, Usuario dono) {
+	public Animal(int id, int idade, EnumSexo sexo, String nome, Usuario dono, String descricao) {
 		this.id = id;
 		this.idade = idade;
 		this.sexo = sexo;
 		this.nome = nome;
 		this.dono = dono;
+		this.descricao = descricao;
 	}
+	
 
 	@Override
 	public boolean equals(Object animal) {
 		Animal outro = (Animal) animal;
-		if (this.id == outro.id) {
-			return true;
+		if(this.getDono().equals(outro.getDono()))
+		{
+			if (this.id == outro.id) {
+				return true;
+			}
 		}
 		return false;
 	}

@@ -9,6 +9,7 @@ import PetsLove.sistema.negocios.beans.Animal;
 import PetsLove.sistema.negocios.beans.Cachorro;
 import PetsLove.sistema.negocios.beans.EnumPelagem;
 import PetsLove.sistema.negocios.beans.EnumRacaCachorro;
+import PetsLove.sistema.negocios.beans.EnumRacaGato;
 import PetsLove.sistema.negocios.beans.EnumSexo;
 import PetsLove.sistema.negocios.beans.EnumTamanho;
 import PetsLove.sistema.negocios.beans.Gato;
@@ -26,9 +27,9 @@ public class Teste {
 		fachada.cadastrarUsuario(u1);
 		fachada.cadastrarUsuario(u2);
 		
-		Cachorro c1 = new Cachorro(321, 4, EnumSexo.MACHO, "Bob", u1, EnumRacaCachorro.PITBULL, EnumTamanho.ALTO);
-		Cachorro c2 = new Cachorro(331, 3, EnumSexo.FEMEA, "Mary", u2, EnumRacaCachorro.PITBULL, EnumTamanho.ALTO);
-		Gato g1 = new Gato(213, 2, EnumSexo.FEMEA, "Meow", u1, EnumPelagem.FELPUDO);
+		Cachorro c1 = new Cachorro(321, 4, EnumSexo.MACHO, "Bob", u1, EnumRacaCachorro.PITBULL, EnumTamanho.ALTO, "teste");
+		Cachorro c2 = new Cachorro(331, 3, EnumSexo.FEMEA, "Mary", u2, EnumRacaCachorro.PITBULL, EnumTamanho.ALTO, "teste");
+		Gato g1 = new Gato(213, 2, EnumSexo.FEMEA, "Meow", u1, EnumPelagem.FELPUDO, EnumRacaGato.ABISSINIO, "teste");
 		fachada.cadastrarAnimal(c1);
 		fachada.cadastrarAnimal(c2);
 		fachada.cadastrarAnimal(g1);
