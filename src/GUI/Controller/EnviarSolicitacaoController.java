@@ -5,7 +5,9 @@ import java.util.ResourceBundle;
 import GUI.System.EnviarSolicitacaoApp;
 import GUI.System.TelaPrincipalApp;
 import PetsLove.sistema.FachadaPL;
+import PetsLove.sistema.exceptions.SolicitacaoJaExisteException;
 import PetsLove.sistema.negocios.beans.Animal;
+import PetsLove.sistema.negocios.beans.Solicitacao;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,7 +20,7 @@ import javafx.stage.Stage;
 
 public class EnviarSolicitacaoController implements Initializable{
 
-	private static Animal selecionado;
+	private static Animal destinatario;
 
 	@FXML private TableView<Animal> tabelaAnimais;
 	@FXML private TableColumn<Animal, String> colunaAnimais;
@@ -26,7 +28,7 @@ public class EnviarSolicitacaoController implements Initializable{
 
 	@FXML
 	void handleCancelar( ) {
-		selecionado = null;
+		destinatario = null;
 		TelaPrincipalApp tela = new TelaPrincipalApp();
 		EnviarSolicitacaoApp.getStage().close();
 
@@ -38,16 +40,21 @@ public class EnviarSolicitacaoController implements Initializable{
 	}
 
 	@FXML
-	void handleConfirmar() {
+	void handleConfirmar() throws SolicitacaoJaExisteException {
 
-		/*TODO: Fazer funcionar o enviar solicitação
-		 *Lembrar de:
-		 *1. Animal selecionado na Tela principal será o destinatario
-		 *2. A tabela de animais na tela de enviar solicitação deverá conter animais da pessoa que quer enviar a solicitação, do mesmo tipo
-		 *										que o animal que foi solicitado e de sexo oposto. 
-		 *										Ex: solicitei um gato femea, na tela de enviar solicitação só pode aparecer gatos machos da pessoa
-		 *3.Pensar se é necessário o animal ser da mesma raça.
-		 */
+		
+		Animal remetente = tabelaAnimais.getSelectionModel().getSelectedItem();
+		Solicitacao solicitacao = new Solicitacao(remetente, destinatario);
+		FachadaPL.getInstance().criarSolicitacao(solicitacao);
+		
+		TelaPrincipalApp tela = new TelaPrincipalApp();
+		EnviarSolicitacaoApp.getStage().close();
+
+		try {
+			tela.start(new Stage());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 	}
 
@@ -58,12 +65,12 @@ public class EnviarSolicitacaoController implements Initializable{
 	}
 
 	public ObservableList<Animal> atualizaTabela(){
-		return FXCollections.observableArrayList(FachadaPL.getInstance().listarAnimaisCompativeis(selecionado));
+		return FXCollections.observableArrayList(FachadaPL.getInstance().listarAnimaisCompativeis(destinatario));
 	}
 
-	public static void setSelecionado(Animal animal) {
+	public static void setDestinatario(Animal animal) {
 		if(!FachadaPL.getUsuarioLogado().equals(animal.getDono())) {
-			selecionado = animal;
+			destinatario = animal;
 		}
 	}
 

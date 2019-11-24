@@ -68,6 +68,8 @@ public class SeusAnimaisController implements Initializable {
 	void handleEditar( ) {
 		Animal animalSelecionado = tabelaAnimais.getSelectionModel().getSelectedItem();
 		if(animalSelecionado instanceof Gato){
+			
+			EditarGatoController.setSelecionado(animalSelecionado);
 			EditarGatoApp editarGato = new EditarGatoApp();
 			SeusAnimaisApp.getStage().close();
 
@@ -77,6 +79,8 @@ public class SeusAnimaisController implements Initializable {
 				e.printStackTrace();
 			}
 		}else if(animalSelecionado instanceof Cachorro){
+		
+			EditarCachorroController.setSelecionado(animalSelecionado);
 			EditarCachorroApp editarCao = new EditarCachorroApp();
 			SeusAnimaisApp.getStage().close();
 

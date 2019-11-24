@@ -103,7 +103,7 @@ public class TelaPrincipalController implements Initializable{
 			//TODO: Colocar Alert dizendo: Esse animal já é seu!
 			
 		}else if(animalSelecionado != null) {
-			EnviarSolicitacaoController.setSelecionado(animalSelecionado);
+			EnviarSolicitacaoController.setDestinatario(animalSelecionado);
 			TelaPrincipalApp.getStage().close();
 			try {
 				enviarSolicitacao.start(new Stage());

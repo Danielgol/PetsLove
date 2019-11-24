@@ -44,6 +44,7 @@ public class CadastrarGatoController implements Initializable{
 		//TODO: Colocar Regras de Cadastro (Todos os campos devem ser preenchidos)
 
 		int idade = Period.between(dpDataDeNascimento.getValue(), LocalDate.now()).getYears();
+		
 		EnumSexo sexo = null;
 		if(cbSexo.getValue().equals(EnumSexo.MACHO.sexo)){
 			sexo = EnumSexo.MACHO;

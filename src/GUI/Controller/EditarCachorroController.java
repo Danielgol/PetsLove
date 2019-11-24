@@ -8,6 +8,7 @@ import GUI.System.CadastrarCachorroApp;
 import GUI.System.EditarCachorroApp;
 import GUI.System.SeusAnimaisApp;
 import PetsLove.sistema.FachadaPL;
+import PetsLove.sistema.negocios.beans.Animal;
 import PetsLove.sistema.negocios.beans.Cachorro;
 import PetsLove.sistema.negocios.beans.EnumRacaCachorro;
 import PetsLove.sistema.negocios.beans.EnumSexo;
@@ -25,6 +26,8 @@ import javafx.stage.Stage;
 
 public class EditarCachorroController implements Initializable{
 
+	public static Cachorro selecionado;
+	
 	@FXML private TextArea taDescricao;
 	@FXML private TextField tfNome;
 	@FXML private DatePicker dpDataDeNascimento;
@@ -38,6 +41,7 @@ public class EditarCachorroController implements Initializable{
 
 	@FXML
 	void handleCancelar( ) {
+		selecionado = null;
 		SeusAnimaisApp seusAnimaisTela = new SeusAnimaisApp();
 		EditarCachorroApp.getStage().close();
 		try {
@@ -51,7 +55,9 @@ public class EditarCachorroController implements Initializable{
 	void handleSalvar() {
 
 		//TODO: Colocar Regras de Cadastro (Todos os campos devem ser preenchidos)
+		
 		int idade = Period.between(dpDataDeNascimento.getValue(), LocalDate.now()).getYears();
+		
 
 		EnumSexo sexo = null;
 		if(cbSexo.getValue().equals(EnumSexo.MACHO.sexo)){
@@ -73,11 +79,19 @@ public class EditarCachorroController implements Initializable{
 				raca = e;
 			}
 		}
+		if(selecionado == null)
+		{
 
-		Cachorro cachorro = new Cachorro(FachadaPL.getInstance().listarAnimaisPorDono(FachadaPL.getUsuarioLogado()).size()+1, 
-				idade,  sexo, tfNome.getText(), FachadaPL.getUsuarioLogado(), 
-				raca, tamanho, taDescricao.getText());
-		FachadaPL.getInstance().atualizarAnimal(cachorro);
+			System.out.println("NULOOOOOOOOOOOOOOOOOO IDIOTA");
+		}
+		selecionado.setNome(tfNome.getText());
+		selecionado.setIdade(idade);
+		selecionado.setDescricao(taDescricao.getText());
+		selecionado.setRaca(raca);
+		selecionado.setTamanho(tamanho);
+		selecionado.setSexo(sexo);
+		
+		FachadaPL.getInstance().atualizarAnimal(selecionado);
 		
 
 		SeusAnimaisApp seusAnimais = new SeusAnimaisApp();
@@ -95,6 +109,12 @@ public class EditarCachorroController implements Initializable{
 		cbSexo.setItems(sexo);
 		cbTamanho.setItems(tamanho);
 		cbRaca.setItems(raca);
+	}
+	
+	public static void setSelecionado(Animal animal) {
+		if(FachadaPL.getUsuarioLogado().equals(animal.getDono())) {
+			selecionado = (Cachorro) animal;
+		}
 	}
 
 }
