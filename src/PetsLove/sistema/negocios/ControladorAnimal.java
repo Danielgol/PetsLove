@@ -28,6 +28,10 @@ public class ControladorAnimal {
 	public void atualizar(Animal animal) {
 		this.repositorioAnimais.atualizar(animal);
 	}
+	
+	public void remover(Animal animal) {
+		this.repositorioAnimais.remover(animal);
+	}
 
 	public ArrayList<Animal> listar() {
 		return this.repositorioAnimais.listar();

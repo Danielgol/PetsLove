@@ -91,7 +91,9 @@ public class SeusAnimaisController implements Initializable {
 	@FXML
 	void handleRemover( ) {
 		Animal animalSelecionado = tabelaAnimais.getSelectionModel().getSelectedItem();
-		//FachadaPL.getInstance().removerAnimal(animalSelecionado);
+		FachadaPL.getInstance().removerAnimal(animalSelecionado);
+		//NAO SEI SE EH ASSIM MSM... :)
+		initTable();
 	}
 	
 	@FXML

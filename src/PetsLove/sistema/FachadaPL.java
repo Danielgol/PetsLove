@@ -57,12 +57,6 @@ public class FachadaPL {
 		}
 	}
 
-
-
-	//TODO: Verificar os metodos que so podem ser chamados se alguem estiver logado.
-	//Talvez a verificacao seja feita no botao de clicar, nao aqui.
-
-
 	
 	//USUARIO
 	public void cadastrarUsuario(Usuario usuario) throws UsuarioJaExisteException {
@@ -77,6 +71,7 @@ public class FachadaPL {
 		return this.controladorUsuario.existe(email);
 	}
 	
+	
 	//ANIMAL
 	public void cadastrarAnimal(Animal animal) {
 		this.controladorAnimal.cadastrar(animal);
@@ -84,6 +79,10 @@ public class FachadaPL {
 
 	public void atualizarAnimal(Animal animal) {
 		this.controladorAnimal.atualizar(animal);
+	}
+	
+	public void removerAnimal(Animal animal) {
+		this.controladorAnimal.remover(animal);
 	}
 
 	public ArrayList<Animal> listarAnimais() {
