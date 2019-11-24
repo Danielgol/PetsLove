@@ -16,6 +16,10 @@ public class Solicitacao {
 		this.status = ANALISANDO;
 	}
 
+	public Solicitacao() {
+		
+	}
+
 	@Override
 	public boolean equals(Object outra) {
 		Solicitacao s = (Solicitacao) outra;

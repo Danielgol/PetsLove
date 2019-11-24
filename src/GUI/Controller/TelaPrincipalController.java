@@ -95,7 +95,19 @@ public class TelaPrincipalController implements Initializable{
 
 	@FXML
 	void handleEnviarSolicitacao(ActionEvent event) {
+		/*TODO: Fazer funcionar o enviar solicitação
+		*Lembrar de:
+		*1. Animal selecionado na Tela principal será o destinatario
+		*2. A tabela de animais na tela de enviar solicitação deverá conter animais da pessoa que quer enviar a solicitação, do mesmo tipo
+		*										que o animal que foi solicitado e de sexo oposto. 
+		*										Ex: solicitei um gato femea, na tela de enviar solicitação só pode aparecer gatos machos da pessoa
+		*3.Pensar se é necessário o animal ser da mesma raça.
+		*/
 		EnviarSolicitacaoApp enviarSolicitacao = new EnviarSolicitacaoApp();
+//		Animal animalSelecionado = tabelaAnimais.getSelectionModel().getSelectedItem();
+//		Solicitacao s1 = new Solicitacao();
+//		s1.setDestinatario(animalSelecionado);
+//		
 		TelaPrincipalApp.getStage().close();
 
 		try {
@@ -122,10 +134,10 @@ public class TelaPrincipalController implements Initializable{
 	private void mostrarDetalhesAnimal(Animal animal) {
 		if (animal != null) {
 			
-			// preenche os labels com os dados da conta
+			
 			labelNome.setText(animal.getNome());
 			labelSexo.setText(animal.getSexo().sexo);
-			labelIdade.setText("11");
+			labelIdade.setText(Integer.toString(animal.getIdade()));
 			labelDescricao.setText(animal.getDescricao());
 			if(animal instanceof Gato){
 				labelTituloTamPel.setText("Pelagem:");
@@ -139,7 +151,7 @@ public class TelaPrincipalController implements Initializable{
 
 		} else {
 
-			// conta nula
+			
 			labelNome.setText("");
 			labelSexo.setText("");
 			labelIdade.setText("");

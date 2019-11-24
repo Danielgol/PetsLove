@@ -92,7 +92,6 @@ public class SeusAnimaisController implements Initializable {
 	void handleRemover( ) {
 		Animal animalSelecionado = tabelaAnimais.getSelectionModel().getSelectedItem();
 		FachadaPL.getInstance().removerAnimal(animalSelecionado);
-		//NAO SEI SE EH ASSIM MSM... :)
 		initTable();
 	}
 	
@@ -111,10 +110,10 @@ public class SeusAnimaisController implements Initializable {
 	private void mostrarDetalhesAnimal(Animal animal) {
 		if (animal != null) {
 
-			// preenche os labels com os dados da conta
+			
 			labelNome.setText(animal.getNome());
 			labelSexo.setText(animal.getSexo().sexo);
-			labelIdade.setText("11");
+			labelIdade.setText(Integer.toString(animal.getIdade()));
 			labelDescricao.setText(animal.getDescricao());
 			if(animal instanceof Gato){
 				labelTituloTamPel.setText("Pelagem:");
@@ -128,7 +127,7 @@ public class SeusAnimaisController implements Initializable {
 
 		} else {
 
-			// conta nula
+			
 			labelNome.setText("");
 			labelSexo.setText("");
 			labelIdade.setText("");

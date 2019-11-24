@@ -73,7 +73,7 @@ public class CadastrarCachorroController implements Initializable{
 				idade,  sexo, tfNome.getText(), FachadaPL.getUsuarioLogado(), 
 				raca, tamanho, taDescricao.getText());
 		FachadaPL.getInstance().cadastrarAnimal(cachorro);
-		System.out.println("Cão: " + cachorro.getNome());
+		
 
 		SeusAnimaisApp seusAnimais = new SeusAnimaisApp();
 		CadastrarCachorroApp.getStage().close();

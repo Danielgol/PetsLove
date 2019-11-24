@@ -50,6 +50,7 @@ public class EditarCachorroController implements Initializable{
 	@FXML
 	void handleSalvar() {
 
+		//TODO: Colocar Regras de Cadastro (Todos os campos devem ser preenchidos)
 		int idade = Period.between(dpDataDeNascimento.getValue(), LocalDate.now()).getYears();
 
 		EnumSexo sexo = null;
@@ -77,7 +78,7 @@ public class EditarCachorroController implements Initializable{
 				idade,  sexo, tfNome.getText(), FachadaPL.getUsuarioLogado(), 
 				raca, tamanho, taDescricao.getText());
 		FachadaPL.getInstance().atualizarAnimal(cachorro);
-		System.out.println("Cão: " + cachorro.getNome());
+		
 
 		SeusAnimaisApp seusAnimais = new SeusAnimaisApp();
 		EditarCachorroApp.getStage().close();
