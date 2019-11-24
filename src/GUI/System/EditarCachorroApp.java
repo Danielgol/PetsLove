@@ -9,12 +9,12 @@ import javafx.stage.Stage;
 
 public class EditarCachorroApp extends Application {
 
-private static Stage stage;
-	
+	private static Stage stage;
+
 	public static void main(String[] args) {
 		launch(args);
 	}
-	
+
 	@Override
 	public void start(Stage stage) throws Exception {
 		Parent root = FXMLLoader.load(getClass().getResource("../View/EditarCachorro.fxml"));
@@ -34,6 +34,6 @@ private static Stage stage;
 
 	public static void setStage(Stage stage) {
 		EditarCachorroApp.stage = stage;
-	
 	}
+	
 }

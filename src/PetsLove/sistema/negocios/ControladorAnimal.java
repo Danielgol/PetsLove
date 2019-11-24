@@ -7,6 +7,7 @@ import PetsLove.sistema.negocios.beans.Animal;
 import PetsLove.sistema.negocios.beans.Cachorro;
 import PetsLove.sistema.negocios.beans.EnumPelagem;
 import PetsLove.sistema.negocios.beans.EnumRacaCachorro;
+import PetsLove.sistema.negocios.beans.EnumSexo;
 import PetsLove.sistema.negocios.beans.EnumTamanho;
 import PetsLove.sistema.negocios.beans.Gato;
 import PetsLove.sistema.negocios.beans.Usuario;
@@ -110,6 +111,36 @@ public class ControladorAnimal {
 			}
 		}
 		return gatos;
+	}
+
+	public ArrayList<Animal> listarAnimaisPorSexo(ArrayList<Animal> animais, EnumSexo sexo) {
+		ArrayList<Animal> lista = new ArrayList<Animal>();
+		for(Animal animal : animais) {
+			if(animal.getSexo().sexo.equals(sexo.sexo)) {
+				lista.add(animal);
+			}
+		}
+		return lista;
+	}
+
+	public ArrayList<Animal> listarAnimaisCompativeis(Animal animal) {
+		ArrayList<Animal> compativeis = null;
+		if(animal instanceof Cachorro) {
+			compativeis = listarPorTipo(Cachorro.class);
+			if(animal.getSexo().equals(EnumSexo.MACHO)) {
+				compativeis = this.listarAnimaisPorSexo(compativeis, EnumSexo.FEMEA);
+			}else {
+				compativeis = this.listarAnimaisPorSexo(compativeis, EnumSexo.MACHO);
+			}
+		}else{
+			compativeis = listarPorTipo(Gato.class);
+			if(animal.getSexo().equals(EnumSexo.MACHO)) {
+				compativeis = this.listarAnimaisPorSexo(compativeis, EnumSexo.FEMEA);
+			}else {
+				compativeis = this.listarAnimaisPorSexo(compativeis, EnumSexo.MACHO);
+			}
+		}
+		return compativeis;
 	}
 
 }

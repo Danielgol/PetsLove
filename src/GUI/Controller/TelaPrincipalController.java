@@ -95,25 +95,21 @@ public class TelaPrincipalController implements Initializable{
 
 	@FXML
 	void handleEnviarSolicitacao(ActionEvent event) {
-		/*TODO: Fazer funcionar o enviar solicitação
-		*Lembrar de:
-		*1. Animal selecionado na Tela principal será o destinatario
-		*2. A tabela de animais na tela de enviar solicitação deverá conter animais da pessoa que quer enviar a solicitação, do mesmo tipo
-		*										que o animal que foi solicitado e de sexo oposto. 
-		*										Ex: solicitei um gato femea, na tela de enviar solicitação só pode aparecer gatos machos da pessoa
-		*3.Pensar se é necessário o animal ser da mesma raça.
-		*/
 		EnviarSolicitacaoApp enviarSolicitacao = new EnviarSolicitacaoApp();
-//		Animal animalSelecionado = tabelaAnimais.getSelectionModel().getSelectedItem();
-//		Solicitacao s1 = new Solicitacao();
-//		s1.setDestinatario(animalSelecionado);
-//		
-		TelaPrincipalApp.getStage().close();
+		Animal animalSelecionado = tabelaAnimais.getSelectionModel().getSelectedItem();
 
-		try {
-			enviarSolicitacao.start(new Stage());
-		} catch (Exception e) {
-			e.printStackTrace();
+		if(FachadaPL.getUsuarioLogado().equals(animalSelecionado.getDono())){
+			
+			//TODO: Colocar Alert dizendo: Esse animal já é seu!
+			
+		}else if(animalSelecionado != null) {
+			EnviarSolicitacaoController.setSelecionado(animalSelecionado);
+			TelaPrincipalApp.getStage().close();
+			try {
+				enviarSolicitacao.start(new Stage());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -133,8 +129,6 @@ public class TelaPrincipalController implements Initializable{
 
 	private void mostrarDetalhesAnimal(Animal animal) {
 		if (animal != null) {
-			
-			
 			labelNome.setText(animal.getNome());
 			labelSexo.setText(animal.getSexo().sexo);
 			labelIdade.setText(Integer.toString(animal.getIdade()));
@@ -148,10 +142,7 @@ public class TelaPrincipalController implements Initializable{
 				labelRaca.setText(((Cachorro) animal).getRaca().valor);
 				labelPelagemTamanho.setText(((Cachorro) animal).getTamanho().tamanho);
 			}
-
 		} else {
-
-			
 			labelNome.setText("");
 			labelSexo.setText("");
 			labelIdade.setText("");
@@ -177,5 +168,5 @@ public class TelaPrincipalController implements Initializable{
 		tabelaAnimais.getSelectionModel().selectedItemProperty()
 		.addListener((observable, oldValue, newValue) -> mostrarDetalhesAnimal(newValue));
 	}
-	
+
 }

@@ -1,6 +1,5 @@
 package GUI.Controller;
 
-
 import GUI.System.DadosDoDonoApp;
 import GUI.System.SuasSolicitacoesApp;
 import GUI.System.TelaPrincipalApp;

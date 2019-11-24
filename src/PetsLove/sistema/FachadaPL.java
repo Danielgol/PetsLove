@@ -15,6 +15,7 @@ import PetsLove.sistema.negocios.ControladorUsuario;
 import PetsLove.sistema.negocios.beans.Animal;
 import PetsLove.sistema.negocios.beans.EnumPelagem;
 import PetsLove.sistema.negocios.beans.EnumRacaCachorro;
+import PetsLove.sistema.negocios.beans.EnumSexo;
 import PetsLove.sistema.negocios.beans.EnumTamanho;
 import PetsLove.sistema.negocios.beans.Solicitacao;
 import PetsLove.sistema.negocios.beans.Usuario;
@@ -112,6 +113,10 @@ public class FachadaPL {
 	public ArrayList<Animal> listarGatosPorPelagem(EnumPelagem pelagem) {
 		return this.controladorAnimal.listarGatosPorPelagem(pelagem);
 	}
+	
+	public ArrayList<Animal> listarAnimaisCompativeis(Animal animal) {
+		return this.controladorAnimal.listarAnimaisCompativeis(animal);
+	}
 
 
 	//SOLICITACAO
@@ -138,6 +143,5 @@ public class FachadaPL {
 	public void recusarSolicitacao(Solicitacao s) throws SolicitacaoNaoExisteException {
 		this.controladorSolicitacao.recusarSolicitacao(s);
 	}
-	
 	
 }
