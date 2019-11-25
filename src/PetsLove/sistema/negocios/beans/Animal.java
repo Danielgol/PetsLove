@@ -1,5 +1,7 @@
 package PetsLove.sistema.negocios.beans;
 
+import PetsLove.sistema.negocios.beans.enums.EnumSexo;
+
 public abstract class Animal {
 
 	private int id;

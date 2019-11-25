@@ -1,4 +1,4 @@
-package PetsLove.sistema.negocios.beans;
+package PetsLove.sistema.negocios.beans.enums;
 
 public enum EnumPelagem {
 	

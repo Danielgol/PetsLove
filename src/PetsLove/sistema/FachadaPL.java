@@ -13,11 +13,11 @@ import PetsLove.sistema.negocios.ControladorAnimal;
 import PetsLove.sistema.negocios.ControladorSolicitacao;
 import PetsLove.sistema.negocios.ControladorUsuario;
 import PetsLove.sistema.negocios.beans.Animal;
-import PetsLove.sistema.negocios.beans.EnumPelagem;
-import PetsLove.sistema.negocios.beans.EnumRacaCachorro;
-import PetsLove.sistema.negocios.beans.EnumTamanho;
 import PetsLove.sistema.negocios.beans.Solicitacao;
 import PetsLove.sistema.negocios.beans.Usuario;
+import PetsLove.sistema.negocios.beans.enums.EnumPelagem;
+import PetsLove.sistema.negocios.beans.enums.EnumRacaCachorro;
+import PetsLove.sistema.negocios.beans.enums.EnumTamanho;
 
 public class FachadaPL {
 

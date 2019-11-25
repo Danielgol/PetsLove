@@ -1,6 +1,6 @@
 package PetsLove.sistema.exceptions;
 
-import PetsLove.sistema.negocios.beans.EnumRacaCachorro;
+import PetsLove.sistema.negocios.beans.enums.EnumRacaCachorro;
 
 public class RacaNaoExisteException extends Exception{
 	

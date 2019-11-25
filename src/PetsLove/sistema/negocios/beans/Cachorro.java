@@ -1,5 +1,9 @@
 package PetsLove.sistema.negocios.beans;
 
+import PetsLove.sistema.negocios.beans.enums.EnumRacaCachorro;
+import PetsLove.sistema.negocios.beans.enums.EnumSexo;
+import PetsLove.sistema.negocios.beans.enums.EnumTamanho;
+
 public class Cachorro extends Animal {
 
 	private EnumRacaCachorro raca;

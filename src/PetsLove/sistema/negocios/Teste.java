@@ -7,14 +7,14 @@ import PetsLove.sistema.exceptions.SolicitacaoNaoExisteException;
 import PetsLove.sistema.exceptions.UsuarioJaExisteException;
 import PetsLove.sistema.negocios.beans.Animal;
 import PetsLove.sistema.negocios.beans.Cachorro;
-import PetsLove.sistema.negocios.beans.EnumPelagem;
-import PetsLove.sistema.negocios.beans.EnumRacaCachorro;
-import PetsLove.sistema.negocios.beans.EnumRacaGato;
-import PetsLove.sistema.negocios.beans.EnumSexo;
-import PetsLove.sistema.negocios.beans.EnumTamanho;
 import PetsLove.sistema.negocios.beans.Gato;
 import PetsLove.sistema.negocios.beans.Solicitacao;
 import PetsLove.sistema.negocios.beans.Usuario;
+import PetsLove.sistema.negocios.beans.enums.EnumPelagem;
+import PetsLove.sistema.negocios.beans.enums.EnumRacaCachorro;
+import PetsLove.sistema.negocios.beans.enums.EnumRacaGato;
+import PetsLove.sistema.negocios.beans.enums.EnumSexo;
+import PetsLove.sistema.negocios.beans.enums.EnumTamanho;
 
 public class Teste {
 	

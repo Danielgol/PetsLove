@@ -1,7 +1,6 @@
 package GUI.Controller;
 
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
 import GUI.LoginApp;
 import GUI.System.CadastroApp;
@@ -12,22 +11,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.PasswordField;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 public class CadastroUsuarioController implements Initializable{
-
-	private Stage dialogStage;
+	
 	private Usuario usuario;
-	private boolean okClicked = false;  
 	private FachadaPL fachada = FachadaPL.getInstance();
 
 	@FXML private TextField tfNome;
@@ -148,10 +141,6 @@ public class CadastroUsuarioController implements Initializable{
 				}
 			}
 		});
-	}
-
-	public void setDialogStage(Stage dialogStage) {
-		this.dialogStage = dialogStage;
 	}
 
 }
