@@ -40,7 +40,6 @@ public class PerfilUsuarioController implements Initializable{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	@FXML
@@ -61,4 +60,5 @@ public class PerfilUsuarioController implements Initializable{
 		labelEmail.setText(FachadaPL.getUsuarioLogado().getEmail());
 		labelTelefone.setText(FachadaPL.getUsuarioLogado().getNumero());
 	}
+	
 }

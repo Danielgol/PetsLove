@@ -9,7 +9,6 @@ import GUI.System.EditarGatoApp;
 import GUI.System.SeusAnimaisApp;
 import PetsLove.sistema.FachadaPL;
 import PetsLove.sistema.negocios.beans.Animal;
-import PetsLove.sistema.negocios.beans.Cachorro;
 import PetsLove.sistema.negocios.beans.EnumPelagem;
 import PetsLove.sistema.negocios.beans.EnumRacaGato;
 import PetsLove.sistema.negocios.beans.EnumSexo;
@@ -28,7 +27,7 @@ import javafx.stage.Stage;
 public class EditarGatoController implements Initializable{
 
 	public static Gato selecionado;
-	
+
 	@FXML private ComboBox<String> cbSexo;
 	@FXML private ComboBox<String> cbPelagem;
 	@FXML private TextArea taDescricao;
@@ -54,11 +53,11 @@ public class EditarGatoController implements Initializable{
 
 	@FXML
 	void handleSalvar( ) {
-		
+
 		//TODO: Colocar Regras de Cadastro (Todos os campos devem ser preenchidos)
-		
+
 		int idade = Period.between(dpDataDeNascimento.getValue(), LocalDate.now()).getYears();
-		
+
 		EnumSexo sexo = null;
 		if(cbSexo.getValue().equals(EnumSexo.MACHO.sexo)){
 			sexo = EnumSexo.MACHO;
@@ -87,11 +86,11 @@ public class EditarGatoController implements Initializable{
 		selecionado.setRaca(raca);
 		selecionado.setPelagem(pelagem);
 		selecionado.setSexo(sexo);
-		
+
 		FachadaPL.getInstance().atualizarAnimal(selecionado);
-		
-		
-		
+
+
+
 
 		SeusAnimaisApp seusAnimais = new SeusAnimaisApp();
 		EditarGatoApp.getStage().close();
@@ -101,7 +100,7 @@ public class EditarGatoController implements Initializable{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	@Override
@@ -110,7 +109,7 @@ public class EditarGatoController implements Initializable{
 		cbPelagem.setItems(pelagem);
 		cbRaca.setItems(raca);
 	}
-	
+
 	public static void setSelecionado(Animal animal) {
 		if(FachadaPL.getUsuarioLogado().equals(animal.getDono())) {
 			selecionado = (Gato) animal;

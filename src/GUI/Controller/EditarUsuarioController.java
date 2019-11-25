@@ -1,9 +1,7 @@
 package GUI.Controller;
 
-import GUI.System.AlterarSenhaApp;
 import GUI.System.EditarUsuarioApp;
 import GUI.System.PerfilUsuarioApp;
-import GUI.System.TelaPrincipalApp;
 import PetsLove.sistema.FachadaPL;
 import PetsLove.sistema.exceptions.UsuarioNaoExisteException;
 import javafx.fxml.FXML;

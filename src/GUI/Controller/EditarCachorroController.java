@@ -27,7 +27,7 @@ import javafx.stage.Stage;
 public class EditarCachorroController implements Initializable{
 
 	public static Cachorro selecionado;
-	
+
 	@FXML private TextArea taDescricao;
 	@FXML private TextField tfNome;
 	@FXML private DatePicker dpDataDeNascimento;
@@ -55,9 +55,8 @@ public class EditarCachorroController implements Initializable{
 	void handleSalvar() {
 
 		//TODO: Colocar Regras de Cadastro (Todos os campos devem ser preenchidos)
-		
+
 		int idade = Period.between(dpDataDeNascimento.getValue(), LocalDate.now()).getYears();
-		
 
 		EnumSexo sexo = null;
 		if(cbSexo.getValue().equals(EnumSexo.MACHO.sexo)){
@@ -79,20 +78,20 @@ public class EditarCachorroController implements Initializable{
 				raca = e;
 			}
 		}
-		if(selecionado == null)
-		{
-
+		
+		if(selecionado == null){
+			//TODO: Tirar esse pritln ladkoaekdoadlaedk
 			System.out.println("NULOOOOOOOOOOOOOOOOOO IDIOTA");
 		}
+		
 		selecionado.setNome(tfNome.getText());
 		selecionado.setIdade(idade);
 		selecionado.setDescricao(taDescricao.getText());
 		selecionado.setRaca(raca);
 		selecionado.setTamanho(tamanho);
 		selecionado.setSexo(sexo);
-		
+
 		FachadaPL.getInstance().atualizarAnimal(selecionado);
-		
 
 		SeusAnimaisApp seusAnimais = new SeusAnimaisApp();
 		EditarCachorroApp.getStage().close();
@@ -110,7 +109,7 @@ public class EditarCachorroController implements Initializable{
 		cbTamanho.setItems(tamanho);
 		cbRaca.setItems(raca);
 	}
-	
+
 	public static void setSelecionado(Animal animal) {
 		if(FachadaPL.getUsuarioLogado().equals(animal.getDono())) {
 			selecionado = (Cachorro) animal;

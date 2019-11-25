@@ -113,8 +113,6 @@ public class SeusAnimaisController implements Initializable {
 
 	private void mostrarDetalhesAnimal(Animal animal) {
 		if (animal != null) {
-
-			
 			labelNome.setText(animal.getNome());
 			labelSexo.setText(animal.getSexo().sexo);
 			labelIdade.setText(Integer.toString(animal.getIdade()));
@@ -128,10 +126,7 @@ public class SeusAnimaisController implements Initializable {
 				labelRaca.setText(((Cachorro) animal).getRaca().valor);
 				labelPelagemTamanho.setText(((Cachorro) animal).getTamanho().tamanho);
 			}
-
 		} else {
-
-			
 			labelNome.setText("");
 			labelSexo.setText("");
 			labelIdade.setText("");

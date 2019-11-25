@@ -25,37 +25,16 @@ import javafx.stage.Stage;
 
 public class CaixaDeEntradaController implements Initializable {
 
-	@FXML
-    private TableView<Solicitacao> tabelaSolicitacoes;
-
-    @FXML
-    private TableColumn<Solicitacao, String> colunaSolicitacoes;
-
-    @FXML
-    private TableColumn<Solicitacao, String> colunaStatus;
-
-    @FXML
-    private Label labelNome;
-
-    @FXML
-    private Label labelSexo;
-
-    @FXML
-    private Label labelIdade;
-
-    @FXML
-    private Label labelRaca;
-
-    @FXML
-    private Label labelDescricao;
-
-    @FXML
-    private Label labelTituloTamPel;
-
-    @FXML
-    private Label labelPelagemTamanho;
-
-   
+	@FXML private TableView<Solicitacao> tabelaSolicitacoes;
+    @FXML private TableColumn<Solicitacao, String> colunaSolicitacoes;
+    @FXML private TableColumn<Solicitacao, String> colunaStatus;
+    @FXML private Label labelNome;
+    @FXML private Label labelSexo;
+    @FXML private Label labelIdade;
+    @FXML private Label labelRaca;
+    @FXML private Label labelDescricao;
+    @FXML private Label labelTituloTamPel;
+    @FXML private Label labelPelagemTamanho;
 
     @FXML
     void handleApagarSolicitacao( ) throws SolicitacaoNaoExisteException {
@@ -79,8 +58,7 @@ public class CaixaDeEntradaController implements Initializable {
 	@FXML
 	void handleDadosDoDono() {
 		Solicitacao selecionada = tabelaSolicitacoes.getSelectionModel().getSelectedItem();
-		if(selecionada.getStatus().equals("Aceito"))
-		{
+		if(selecionada.getStatus().equals("Aceito")){
 			DadosDoDonoController.setSelecionado(selecionada.getRemetente().getDono());
 			DadosDoDonoApp telaDono = new DadosDoDonoApp();
 			DadosDoDonoApp.setLocal(false);
@@ -92,7 +70,6 @@ public class CaixaDeEntradaController implements Initializable {
 				e.printStackTrace();
 			}
 		}
-		
 	}
 
 	@FXML
@@ -104,7 +81,6 @@ public class CaixaDeEntradaController implements Initializable {
 	void handleRecusar() {
 		//TODO: Recusar Solicitacao
 	}
-
 
 	private void mostrarDetalhesAnimal(Animal animal) {
 		if (animal != null) {
@@ -138,16 +114,14 @@ public class CaixaDeEntradaController implements Initializable {
 	}
 
 	public ObservableList<Solicitacao> atualizaTabela(){
-		return FXCollections.observableArrayList(FachadaPL.getInstance().listarSolicitacoesRecebidas(FachadaPL.getInstance().getUsuarioLogado()));
+		return FXCollections.observableArrayList(FachadaPL.getInstance().listarSolicitacoesRecebidas(FachadaPL.getUsuarioLogado()));
 	}
-
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		initTable();
 		tabelaSolicitacoes.getSelectionModel().selectedItemProperty()
 		.addListener((observable, oldValue, newValue) -> mostrarDetalhesAnimal(newValue.getRemetente()));
-		
 	}
 	
 }

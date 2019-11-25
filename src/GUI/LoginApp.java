@@ -1,15 +1,6 @@
 package GUI;
 
-import PetsLove.sistema.FachadaPL;
 import PetsLove.sistema.exceptions.UsuarioJaExisteException;
-import PetsLove.sistema.negocios.beans.Cachorro;
-import PetsLove.sistema.negocios.beans.EnumPelagem;
-import PetsLove.sistema.negocios.beans.EnumRacaCachorro;
-import PetsLove.sistema.negocios.beans.EnumRacaGato;
-import PetsLove.sistema.negocios.beans.EnumSexo;
-import PetsLove.sistema.negocios.beans.EnumTamanho;
-import PetsLove.sistema.negocios.beans.Gato;
-import PetsLove.sistema.negocios.beans.Usuario;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -22,6 +13,8 @@ public class LoginApp extends Application {
 	private static Stage stage;
 	
 	public static void main(String[] args) throws UsuarioJaExisteException {
+		
+		/*
 		Usuario u = new Usuario("jerimum", "123456789", "@.com", "1");
 		Usuario u2 = new Usuario("joao", "987654321", "2@.com", "1");
 		Gato g = new Gato(11, 10, EnumSexo.FEMEA, "bixo", u, EnumPelagem.FELPUDO, EnumRacaGato.ABISSINIO, "chato");
@@ -34,6 +27,7 @@ public class LoginApp extends Application {
 		FachadaPL.getInstance().cadastrarAnimal(g);
 		FachadaPL.getInstance().cadastrarAnimal(c1);
 		FachadaPL.getInstance().cadastrarAnimal(g2);
+		*/
 		
 		launch(args);
 	}

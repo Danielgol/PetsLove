@@ -2,7 +2,6 @@ package GUI.Controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import GUI.System.CaixaDeEntradaApp;
 import GUI.System.DadosDoDonoApp;
 import GUI.System.SuasSolicitacoesApp;
@@ -29,33 +28,20 @@ public class SuasSolicitacoesController implements Initializable {
 	@FXML private TableView<Solicitacao> tabelaSolicitacoes;
 	@FXML private TableColumn<Solicitacao, String> colunaStatus;
 	@FXML private TableColumn<Solicitacao, String> colunaSolicitacoes;
-	 @FXML
-	    private Label labelNome;
-
-	    @FXML
-	    private Label labelSexo;
-
-	    @FXML
-	    private Label labelIdade;
-
-	    @FXML
-	    private Label labelRaca;
-
-	    @FXML
-	    private Label labelDescricao;
-
-	    @FXML
-	    private Label labelTituloTamPel;
-
-	    @FXML
-	    private Label labelPelagemTamanho;
-
-	    @FXML
-	    void handleApagarSolicitacao() throws SolicitacaoNaoExisteException {
-	    	Solicitacao selecionada = tabelaSolicitacoes.getSelectionModel().getSelectedItem();
-	    	FachadaPL.getInstance().removerSolicitacao(selecionada);
-	    	initTable();
-	    }
+	@FXML private Label labelNome;
+	@FXML private Label labelSexo;
+	@FXML private Label labelIdade;
+	@FXML private Label labelRaca;
+	@FXML private Label labelDescricao;
+	@FXML private Label labelTituloTamPel;
+	@FXML private Label labelPelagemTamanho;
+	
+	@FXML
+	void handleApagarSolicitacao() throws SolicitacaoNaoExisteException {
+		Solicitacao selecionada = tabelaSolicitacoes.getSelectionModel().getSelectedItem();
+		FachadaPL.getInstance().removerSolicitacao(selecionada);
+		initTable();
+	}
 
 	@FXML
 	void handleVoltar() {
@@ -68,28 +54,26 @@ public class SuasSolicitacoesController implements Initializable {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@FXML
-	void handleDadosDoDono( ) {
+	void handleDadosDoDono() {
 		Solicitacao selecionada = tabelaSolicitacoes.getSelectionModel().getSelectedItem();
-		if(selecionada.getStatus().equals("Aceito"))
-		{
+		if(selecionada.getStatus().equals("Aceito")){
 			DadosDoDonoController.setSelecionado(selecionada.getDestinatario().getDono());
 			DadosDoDonoApp telaDono = new DadosDoDonoApp();
 			DadosDoDonoApp.setLocal(false);
 			CaixaDeEntradaApp.getStage().close();
-
+			
 			try {
 				telaDono.start(new Stage());
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
-		
 	}
 
 	@FXML
-	void handleCancelarSolicitacao( ) {
+	void handleCancelarSolicitacao() {
 		//TODO: Cancelar Solicitacao
 	}
 
@@ -125,16 +109,14 @@ public class SuasSolicitacoesController implements Initializable {
 	}
 
 	public ObservableList<Solicitacao> atualizaTabela(){
-		return FXCollections.observableArrayList(FachadaPL.getInstance().listarSolicitacoesEnviadas(FachadaPL.getInstance().getUsuarioLogado()));
+		return FXCollections.observableArrayList(FachadaPL.getInstance().listarSolicitacoesEnviadas(FachadaPL.getUsuarioLogado()));
 	}
 
-	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		initTable();
 		tabelaSolicitacoes.getSelectionModel().selectedItemProperty()
 		.addListener((observable, oldValue, newValue) -> mostrarDetalhesAnimal(newValue.getDestinatario()));
-		
 	}
 
 }

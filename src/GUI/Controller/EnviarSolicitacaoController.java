@@ -41,8 +41,6 @@ public class EnviarSolicitacaoController implements Initializable{
 
 	@FXML
 	void handleConfirmar() throws SolicitacaoJaExisteException {
-
-		
 		Animal remetente = tabelaAnimais.getSelectionModel().getSelectedItem();
 		Solicitacao solicitacao = new Solicitacao(remetente, destinatario);
 		FachadaPL.getInstance().criarSolicitacao(solicitacao);
@@ -55,7 +53,6 @@ public class EnviarSolicitacaoController implements Initializable{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	public void initTable() {

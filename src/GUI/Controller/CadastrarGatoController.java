@@ -5,7 +5,6 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-
 import GUI.System.CadastrarGatoApp;
 import GUI.System.SeusAnimaisApp;
 import PetsLove.sistema.FachadaPL;
@@ -40,11 +39,11 @@ public class CadastrarGatoController implements Initializable{
 
 	@FXML
 	public void handleCadastrar( ) {
-		
+
 		//TODO: Colocar Regras de Cadastro (Todos os campos devem ser preenchidos)
 
 		int idade = Period.between(dpDataDeNascimento.getValue(), LocalDate.now()).getYears();
-		
+
 		EnumSexo sexo = null;
 		if(cbSexo.getValue().equals(EnumSexo.MACHO.sexo)){
 			sexo = EnumSexo.MACHO;
@@ -71,8 +70,8 @@ public class CadastrarGatoController implements Initializable{
 				idade,  sexo, tfNome.getText(), FachadaPL.getUsuarioLogado(), 
 				pelagem, raca, taDescricao.getText());
 		FachadaPL.getInstance().cadastrarAnimal(gato);
-	
-		
+
+
 		SeusAnimaisApp seusAnimais = new SeusAnimaisApp();
 		CadastrarGatoApp.getStage().close();
 

@@ -4,18 +4,13 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ResourceBundle;
-
 import GUI.System.CadastrarCachorroApp;
-import GUI.System.CadastrarGatoApp;
 import GUI.System.SeusAnimaisApp;
 import PetsLove.sistema.FachadaPL;
 import PetsLove.sistema.negocios.beans.Cachorro;
-
 import PetsLove.sistema.negocios.beans.EnumRacaCachorro;
-
 import PetsLove.sistema.negocios.beans.EnumSexo;
 import PetsLove.sistema.negocios.beans.EnumTamanho;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -45,7 +40,7 @@ public class CadastrarCachorroController implements Initializable{
 		//TODO: Colocar Regras de Cadastro (Todos os campos devem ser preenchidos)
 
 		int idade = Period.between(dpDataDeNascimento.getValue(), LocalDate.now()).getYears();
-		
+
 		EnumSexo sexo = null;
 		if(cbSexo.getValue().equals(EnumSexo.MACHO.sexo)){
 			sexo = EnumSexo.MACHO;
@@ -73,7 +68,7 @@ public class CadastrarCachorroController implements Initializable{
 				idade,  sexo, tfNome.getText(), FachadaPL.getUsuarioLogado(), 
 				raca, tamanho, taDescricao.getText());
 		FachadaPL.getInstance().cadastrarAnimal(cachorro);
-		
+
 
 		SeusAnimaisApp seusAnimais = new SeusAnimaisApp();
 		CadastrarCachorroApp.getStage().close();

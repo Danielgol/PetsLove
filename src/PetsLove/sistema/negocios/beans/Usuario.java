@@ -2,28 +2,26 @@ package PetsLove.sistema.negocios.beans;
 
 public class Usuario {
 	
-	
 	private String nome;
 	private String numero;
 	private String email;
 	private String senha;
 	
 	public Usuario(String nome, String numero, String email, String senha) {
-	
 		this.nome = nome;
 		this.numero = numero;
 		this.email = email;
 		this.senha = senha;
 	}
 	
-	public boolean equals(Usuario outro) {
+	@Override
+	public boolean equals(Object usuario) {
+		Usuario outro = (Usuario) usuario;
 		if(this.email.equals(outro.email)) {
 			return true;
 		}
 		return false;
 	}
-
-	
 
 	public String getNome() {
 		return nome;
