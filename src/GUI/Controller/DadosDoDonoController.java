@@ -40,19 +40,16 @@ public class DadosDoDonoController implements Initializable {
 			numeroDono.setText(usuario.getNumero());
 			emailDono.setText(usuario.getEmail());
 
-		}
-		else {
+		}else {
 			nomeDono.setText("");
 			emailDono.setText("");
 			numeroDono.setText("");
-
 		}
 	}
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		mostrarDetalhesDono(selecionado);
-
 	}
 
 }

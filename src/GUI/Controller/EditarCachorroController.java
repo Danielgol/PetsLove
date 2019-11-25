@@ -40,7 +40,7 @@ public class EditarCachorroController implements Initializable{
 	ObservableList<String> raca = FXCollections.observableArrayList(EnumRacaCachorro.getValues());
 
 	@FXML
-	void handleCancelar( ) {
+	void handleCancelar() {
 		selecionado = null;
 		SeusAnimaisApp seusAnimaisTela = new SeusAnimaisApp();
 		EditarCachorroApp.getStage().close();

@@ -135,7 +135,7 @@ public class TelaPrincipalController implements Initializable{
 				labelRaca.setText(((Cachorro) animal).getRaca().valor);
 				labelPelagemTamanho.setText(((Cachorro) animal).getTamanho().valor);
 			}
-		} else {
+		}else {
 			labelNome.setText("");
 			labelSexo.setText("");
 			labelIdade.setText("");

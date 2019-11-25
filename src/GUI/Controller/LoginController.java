@@ -48,7 +48,7 @@ public class LoginController implements Initializable{
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-			}else{
+			}else {
 				Alert alerta = new Alert(AlertType.ERROR);
 				alerta.setHeaderText("Erro");
 				alerta.setTitle("Senha incorreta");

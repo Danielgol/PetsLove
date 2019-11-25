@@ -20,7 +20,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 public class SuasSolicitacoesController implements Initializable {
@@ -93,7 +92,7 @@ public class SuasSolicitacoesController implements Initializable {
 				labelRaca.setText(((Cachorro) animal).getRaca().valor);
 				labelPelagemTamanho.setText(((Cachorro) animal).getTamanho().valor);
 			}
-		} else {
+		}else {
 			labelNome.setText("");
 			labelSexo.setText("");
 			labelIdade.setText("");

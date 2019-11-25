@@ -41,7 +41,7 @@ public class SeusAnimaisController implements Initializable {
 	@FXML private Label labelPelagemTamanho;
 
 	@FXML
-	void handleCadastrarCachorro( ) {
+	void handleCadastrarCachorro() {
 		CadastrarCachorroApp cadastrarCachorro = new CadastrarCachorroApp();
 		SeusAnimaisApp.getStage().close();
 
@@ -53,7 +53,7 @@ public class SeusAnimaisController implements Initializable {
 	}
 
 	@FXML
-	void handleCadastrarGato( ) {
+	void handleCadastrarGato() {
 		CadastrarGatoApp cadastrarGato = new CadastrarGatoApp();
 		SeusAnimaisApp.getStage().close();
 
@@ -65,7 +65,7 @@ public class SeusAnimaisController implements Initializable {
 	}
 
 	@FXML
-	void handleEditar( ) {
+	void handleEditar() {
 		Animal animalSelecionado = tabelaAnimais.getSelectionModel().getSelectedItem();
 		if(animalSelecionado instanceof Gato){
 			
@@ -79,7 +79,6 @@ public class SeusAnimaisController implements Initializable {
 				e.printStackTrace();
 			}
 		}else if(animalSelecionado instanceof Cachorro){
-		
 			EditarCachorroController.setSelecionado(animalSelecionado);
 			EditarCachorroApp editarCao = new EditarCachorroApp();
 			SeusAnimaisApp.getStage().close();
@@ -93,7 +92,7 @@ public class SeusAnimaisController implements Initializable {
 	}
 
 	@FXML
-	void handleRemover( ) {
+	void handleRemover() {
 		Animal animalSelecionado = tabelaAnimais.getSelectionModel().getSelectedItem();
 		FachadaPL.getInstance().removerAnimal(animalSelecionado);
 		initTable();

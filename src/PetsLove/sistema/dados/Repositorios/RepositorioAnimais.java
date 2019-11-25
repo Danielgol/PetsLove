@@ -103,6 +103,7 @@ public class RepositorioAnimais implements IRepositorioAnimais{
 			try {
 				
 				while((row = csvReader.readLine()) != null){
+					
 					String[] dados = row.split(",");
 					int id = Integer.parseInt(dados[0]);
 					int idade = Integer.parseInt(dados[1]);
@@ -129,8 +130,10 @@ public class RepositorioAnimais implements IRepositorioAnimais{
 						Gato gato = new Gato(id, idade, sexo, nome, email, raca, pelagem, descricao);
 						animais.add(gato);
 					}
+					
 				}
 				csvReader.close();
+				
 			}catch (IOException e) {}
 		}catch (FileNotFoundException e) {
 			System.out.println("Arquivo não encontrado!");

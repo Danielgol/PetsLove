@@ -65,17 +65,17 @@ public class ControladorAnimal {
 		ArrayList<Animal> cachorros = new ArrayList<Animal>();
 		if (raca != null) {
 			boolean achou = false;
-			for (Animal cachorro : repoCachorros) {
-				if (((Cachorro) cachorro).getRaca().equals(raca)) {
+			for(Animal cachorro : repoCachorros) {
+				if(((Cachorro) cachorro).getRaca().equals(raca)) {
 					cachorros.add(cachorro);
 					achou = true;
 				}
 			}
-			if (!achou) {
+			if(!achou) {
 				throw new RacaNaoExisteException(raca);
 			}
 			return cachorros;
-		} else {
+		}else {
 			throw new IllegalArgumentException("Parâmetro inválido");
 		}
 	}

@@ -35,7 +35,7 @@ public class CadastrarGatoController implements Initializable{
 	ObservableList<String> raca = FXCollections.observableArrayList(EnumRacaGato.getValues());
 
 	@FXML
-	public void handleCadastrar( ) {
+	public void handleCadastrar() {
 
 		//TODO: Colocar Regras de Cadastro (Todos os campos devem ser preenchidos)
 

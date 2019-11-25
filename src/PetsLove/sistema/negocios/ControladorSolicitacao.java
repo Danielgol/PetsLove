@@ -63,17 +63,15 @@ public class ControladorSolicitacao {
 		} else {
 			throw new SolicitacaoNaoExisteException(s.getRemetente(), s.getDestinatario());
 		}
-
 	}
 
 	public void recusarSolicitacao(Solicitacao s) throws SolicitacaoNaoExisteException {
 		Solicitacao s1 = s;
-		if (s1 != null) {
+		if(s1 != null) {
 			repositorioSolicitacoes.recusarSolicitacao(s);
-		} else {
+		}else {
 			throw new SolicitacaoNaoExisteException(s.getRemetente(), s.getDestinatario());
 		}
-
 	}
 
 	public boolean existe(Solicitacao s) {

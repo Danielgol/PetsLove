@@ -27,7 +27,7 @@ public class EnviarSolicitacaoController implements Initializable{
 	@FXML private TableColumn<Animal, String> colunaTipo;
 
 	@FXML
-	void handleCancelar( ) {
+	void handleCancelar() {
 		destinatario = null;
 		TelaPrincipalApp tela = new TelaPrincipalApp();
 		EnviarSolicitacaoApp.getStage().close();

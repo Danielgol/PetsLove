@@ -81,7 +81,7 @@ public class CadastrarCachorroController implements Initializable{
 	}
 
 	@FXML
-	void handleCancelar( ) {
+	void handleCancelar() {
 		SeusAnimaisApp seusAnimais = new SeusAnimaisApp();
 		CadastrarCachorroApp.getStage().close();
 

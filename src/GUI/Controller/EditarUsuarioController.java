@@ -14,7 +14,7 @@ public class EditarUsuarioController {
 	@FXML private TextField tfTelefone;
 
 	@FXML
-	void handleCancelar( ) {
+	void handleCancelar() {
 		PerfilUsuarioApp perfilUsuario = new PerfilUsuarioApp();
 		EditarUsuarioApp.getStage().close();
 
@@ -26,7 +26,7 @@ public class EditarUsuarioController {
 	}
 
 	@FXML
-	void handleSalvar( ) throws UsuarioNaoExisteException {
+	void handleSalvar() throws UsuarioNaoExisteException {
 		FachadaPL.getUsuarioLogado().setNome(tfNome.getText());
 		FachadaPL.getUsuarioLogado().setNumero(tfTelefone.getText());
 		FachadaPL.getInstance().atualizarUsuario(FachadaPL.getUsuarioLogado());
