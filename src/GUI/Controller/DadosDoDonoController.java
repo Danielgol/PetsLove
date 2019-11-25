@@ -33,10 +33,26 @@ public class DadosDoDonoController implements Initializable {
 	public static void setSelecionado(Usuario dono){
 		selecionado = dono;
 	}
+	
+	private void mostrarDetalhesDono(Usuario usuario) {
+		if (usuario != null) {
+			nomeDono.setText(usuario.getNome());
+			numeroDono.setText(usuario.getNumero());
+			emailDono.setText(usuario.getEmail());
 
+		}
+		else {
+			nomeDono.setText("");
+			emailDono.setText("");
+			numeroDono.setText("");
+
+		}
+	}
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO: Inicializar
+		mostrarDetalhesDono(selecionado);
+
 	}
 
 }

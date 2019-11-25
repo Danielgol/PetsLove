@@ -108,7 +108,7 @@ public class CaixaDeEntradaController implements Initializable {
 	}
 
 	public void initTable() {
-		colunaSolicitacoes.setCellValueFactory(new PropertyValueFactory<Solicitacao, String>("nome"));
+		colunaSolicitacoes.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDestinatario().getNome()));
 		colunaStatus.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getStatus()));
 		tabelaSolicitacoes.setItems(atualizaTabela());
 	}

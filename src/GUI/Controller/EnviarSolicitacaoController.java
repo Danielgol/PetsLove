@@ -62,7 +62,8 @@ public class EnviarSolicitacaoController implements Initializable{
 	}
 
 	public ObservableList<Animal> atualizaTabela(){
-		return FXCollections.observableArrayList(FachadaPL.getInstance().listarAnimaisCompativeis(destinatario));
+		return FXCollections.observableArrayList(FachadaPL.getInstance()
+				.listarAnimaisCompativeisPorDono(destinatario, FachadaPL.getUsuarioLogado()));
 	}
 
 	public static void setDestinatario(Animal animal) {

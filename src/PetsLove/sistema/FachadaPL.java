@@ -117,8 +117,8 @@ public class FachadaPL {
 		return this.controladorAnimal.listarGatosPorPelagem(pelagem);
 	}
 	
-	public ArrayList<Animal> listarAnimaisCompativeis(Animal animal) {
-		return this.controladorAnimal.listarAnimaisCompativeis(animal);
+	public ArrayList<Animal> listarAnimaisCompativeisPorDono(Animal animal, Usuario usuario) {
+		return this.controladorAnimal.listarAnimaisCompativeisPorDono(animal, usuario);
 	}
 
 

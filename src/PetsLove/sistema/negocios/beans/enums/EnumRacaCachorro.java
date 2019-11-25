@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public enum EnumRacaCachorro {
 	
 	//Cachorro
+	DACHSHUND("Dachshund"),
 	PITBULL("Pitbull"),
 	PASTORALEMAO("Pastor Alemao"),
 	BEAGLE("Beagle"),

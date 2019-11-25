@@ -142,5 +142,16 @@ public class ControladorAnimal {
 		}
 		return compativeis;
 	}
+	
+	public ArrayList<Animal> listarAnimaisCompativeisPorDono(Animal animal, Usuario logado) {
+		ArrayList<Animal> compativeis = listarAnimaisCompativeis(animal);
+		ArrayList<Animal> lista = new ArrayList<Animal>();
+		for(Animal a : compativeis) {
+			if(a.getEmailDono().equals(logado.getEmail())) {
+				lista.add(a);
+			}
+		}
+		return lista;
+	}
 
 }
