@@ -28,7 +28,7 @@ public class RepositorioAnimais implements IRepositorioAnimais{
 
 	public static RepositorioAnimais getInstance() {
 		if (instance == null) {
-			instance = new RepositorioAnimais("animais.csv");
+			instance = new RepositorioAnimais("Arquivos/animais.csv");
 		}
 		return instance;
 	}
@@ -66,7 +66,7 @@ public class RepositorioAnimais implements IRepositorioAnimais{
 
 	public void atualizarBanco() {
 		try {
-			FileWriter csvWriter = new FileWriter("animais.csv");
+			FileWriter csvWriter = new FileWriter("Arquivos/animais.csv");
 			for(Animal a : this.animais) {
 				csvWriter.append(a.getId()+"");
 				csvWriter.append(",");

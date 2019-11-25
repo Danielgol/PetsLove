@@ -22,7 +22,7 @@ public class RepositorioUsuarios implements IRepositorioUsuarios {
 
 	public static IRepositorioUsuarios getInstance() {
 		if (instance == null) {
-			instance = new RepositorioUsuarios("usuarios.csv");
+			instance = new RepositorioUsuarios("Arquivos/usuarios.csv");
 		}
 		return instance;
 	}
@@ -58,7 +58,7 @@ public class RepositorioUsuarios implements IRepositorioUsuarios {
 	
 	public void atualizarBanco() {
 		try {
-			FileWriter csvWriter = new FileWriter("usuarios.csv");
+			FileWriter csvWriter = new FileWriter("Arquivos/usuarios.csv");
 			for(Usuario u : this.usuarios) {
 				csvWriter.append(u.getNome());
 				csvWriter.append(",");
