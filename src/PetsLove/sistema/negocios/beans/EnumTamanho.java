@@ -4,10 +4,19 @@ public enum EnumTamanho {
 	
 	ALTO("Alto"), MEDIO("Medio"), BAIXO("Baixo");
 	
-	public String tamanho;
+	public String valor;
 	
-	private EnumTamanho(String tamanho) {
-		this.tamanho = tamanho;
+	private EnumTamanho(String valor) {
+		this.valor = valor;
+	}
+	
+	public static EnumTamanho getTamanho(String valor) {
+		for(EnumTamanho e : EnumTamanho.values()) {
+			if(e.valor.equals(valor)) {
+				return e;
+			}
+		}
+		return null;
 	}
 
 }

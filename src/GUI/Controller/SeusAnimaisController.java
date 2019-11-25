@@ -114,17 +114,17 @@ public class SeusAnimaisController implements Initializable {
 	private void mostrarDetalhesAnimal(Animal animal) {
 		if (animal != null) {
 			labelNome.setText(animal.getNome());
-			labelSexo.setText(animal.getSexo().sexo);
+			labelSexo.setText(animal.getSexo().valor);
 			labelIdade.setText(Integer.toString(animal.getIdade()));
 			labelDescricao.setText(animal.getDescricao());
 			if(animal instanceof Gato){
 				labelTituloTamPel.setText("Pelagem:");
 				labelRaca.setText(((Gato) animal).getRaca().valor);
-				labelPelagemTamanho.setText(((Gato) animal).getPelagem().pelagem);
+				labelPelagemTamanho.setText(((Gato) animal).getPelagem().valor);
 			}else if(animal instanceof Cachorro){
 				labelTituloTamPel.setText("Tamanho:");
 				labelRaca.setText(((Cachorro) animal).getRaca().valor);
-				labelPelagemTamanho.setText(((Cachorro) animal).getTamanho().tamanho);
+				labelPelagemTamanho.setText(((Cachorro) animal).getTamanho().valor);
 			}
 		} else {
 			labelNome.setText("");

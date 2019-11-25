@@ -3,7 +3,6 @@ package GUI.Controller;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 import GUI.System.CadastrarGatoApp;
 import GUI.System.SeusAnimaisApp;
@@ -33,8 +32,8 @@ public class CadastrarGatoController implements Initializable{
 	@FXML private ComboBox<String> cbRaca;
 	@FXML private DatePicker dpDataDeNascimento;
 
-	ObservableList<String> sexo = FXCollections.observableArrayList(EnumSexo.MACHO.sexo, EnumSexo.FEMEA.sexo);
-	ObservableList<String> pelagem = FXCollections.observableArrayList(EnumPelagem.FELPUDO.pelagem, EnumPelagem.MEDIO.pelagem, EnumPelagem.RASO.pelagem);
+	ObservableList<String> sexo = FXCollections.observableArrayList(EnumSexo.MACHO.valor, EnumSexo.FEMEA.valor);
+	ObservableList<String> pelagem = FXCollections.observableArrayList(EnumPelagem.FELPUDO.valor, EnumPelagem.MEDIO.valor, EnumPelagem.RASO.valor);
 	ObservableList<String> raca = FXCollections.observableArrayList(EnumRacaGato.getValues());
 
 	@FXML
@@ -45,16 +44,16 @@ public class CadastrarGatoController implements Initializable{
 		int idade = Period.between(dpDataDeNascimento.getValue(), LocalDate.now()).getYears();
 
 		EnumSexo sexo = null;
-		if(cbSexo.getValue().equals(EnumSexo.MACHO.sexo)){
+		if(cbSexo.getValue().equals(EnumSexo.MACHO.valor)){
 			sexo = EnumSexo.MACHO;
 		}
-		else if(cbSexo.getValue().equals(EnumSexo.FEMEA.sexo)){
+		else if(cbSexo.getValue().equals(EnumSexo.FEMEA.valor)){
 			sexo = EnumSexo.FEMEA;
 		}
 
 		EnumPelagem pelagem = null;
 		for(EnumPelagem e: EnumPelagem.values()){
-			if(e.pelagem.equals(cbPelagem.getValue())){
+			if(e.valor.equals(cbPelagem.getValue())){
 				pelagem = e;
 			}
 		}
@@ -67,10 +66,9 @@ public class CadastrarGatoController implements Initializable{
 		}
 
 		Gato gato = new Gato(FachadaPL.getInstance().listarAnimaisPorDono(FachadaPL.getUsuarioLogado()).size()+1, 
-				idade,  sexo, tfNome.getText(), FachadaPL.getUsuarioLogado(), 
-				pelagem, raca, taDescricao.getText());
+				idade,  sexo, tfNome.getText(), FachadaPL.getUsuarioLogado().getEmail(), 
+				raca, pelagem, taDescricao.getText());
 		FachadaPL.getInstance().cadastrarAnimal(gato);
-
 
 		SeusAnimaisApp seusAnimais = new SeusAnimaisApp();
 		CadastrarGatoApp.getStage().close();

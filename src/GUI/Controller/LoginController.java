@@ -37,20 +37,6 @@ public class LoginController implements Initializable{
 		logar();
 	}
 
-	@Override
-	public void initialize(URL url, ResourceBundle rb) {
-		pfSenha.setOnKeyPressed((KeyEvent e)->{
-			if(e.getCode() == KeyCode.ENTER) {
-				logar();
-			}
-		});
-		tfEmail.setOnKeyPressed((KeyEvent e)->{
-			if(e.getCode() == KeyCode.ENTER) {
-				logar();
-			}
-		});
-	}
-
 	public void logar() {
 		if(FachadaPL.getInstance().usuarioExiste(tfEmail.getText())){
 			FachadaPL.login(tfEmail.getText(), pfSenha.getText());
@@ -76,6 +62,20 @@ public class LoginController implements Initializable{
 			alerta.setContentText("Email incorreto, digite novamente");
 			alerta.show();
 		}
+	}
+	
+	@Override
+	public void initialize(URL url, ResourceBundle rb) {
+		pfSenha.setOnKeyPressed((KeyEvent e)->{
+			if(e.getCode() == KeyCode.ENTER) {
+				logar();
+			}
+		});
+		tfEmail.setOnKeyPressed((KeyEvent e)->{
+			if(e.getCode() == KeyCode.ENTER) {
+				logar();
+			}
+		});
 	}
 
 }

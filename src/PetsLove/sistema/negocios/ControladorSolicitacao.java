@@ -19,7 +19,7 @@ public class ControladorSolicitacao {
 		ArrayList<Solicitacao> repo = this.repositorioSolicitacoes.listar();
 		ArrayList<Solicitacao> solicitacoes = new ArrayList<Solicitacao>();
 		for(Solicitacao solicitacao : repo) {
-			if(solicitacao.getRemetente().getDono().equals(usuario)) {
+			if(solicitacao.getRemetente().getEmailDono().equals(usuario.getEmail())) {
 				solicitacoes.add(solicitacao);
 			}
 		}
@@ -30,7 +30,7 @@ public class ControladorSolicitacao {
 		ArrayList<Solicitacao> repo = this.repositorioSolicitacoes.listar();
 		ArrayList<Solicitacao> solicitacoes = new ArrayList<Solicitacao>();
 		for(Solicitacao solicitacao : repo) {
-			if(solicitacao.getDestinatario().getDono().equals(usuario)) {
+			if(solicitacao.getDestinatario().getEmailDono().equals(usuario.getEmail())) {
 				solicitacoes.add(solicitacao);
 			}
 		}

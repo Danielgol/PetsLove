@@ -30,8 +30,8 @@ public class CadastrarCachorroController implements Initializable{
 	@FXML private DatePicker dpDataDeNascimento;
 	@FXML private ComboBox<String> cbTamanho;
 
-	ObservableList<String> sexo = FXCollections.observableArrayList(EnumSexo.MACHO.sexo, EnumSexo.FEMEA.sexo);
-	ObservableList<String> tamanho = FXCollections.observableArrayList(EnumTamanho.ALTO.tamanho, EnumTamanho.BAIXO.tamanho, EnumTamanho.MEDIO.tamanho);
+	ObservableList<String> sexo = FXCollections.observableArrayList(EnumSexo.MACHO.valor, EnumSexo.FEMEA.valor);
+	ObservableList<String> tamanho = FXCollections.observableArrayList(EnumTamanho.ALTO.valor, EnumTamanho.BAIXO.valor, EnumTamanho.MEDIO.valor);
 	ObservableList<String> raca = FXCollections.observableArrayList(EnumRacaCachorro.getValues());
 
 	@FXML
@@ -42,15 +42,15 @@ public class CadastrarCachorroController implements Initializable{
 		int idade = Period.between(dpDataDeNascimento.getValue(), LocalDate.now()).getYears();
 
 		EnumSexo sexo = null;
-		if(cbSexo.getValue().equals(EnumSexo.MACHO.sexo)){
+		if(cbSexo.getValue().equals(EnumSexo.MACHO.valor)){
 			sexo = EnumSexo.MACHO;
-		}else if(cbSexo.getValue().equals(EnumSexo.FEMEA.sexo)){
+		}else if(cbSexo.getValue().equals(EnumSexo.FEMEA.valor)){
 			sexo = EnumSexo.FEMEA;
 		}
 
 		EnumTamanho tamanho = null;
 		for(EnumTamanho e: EnumTamanho.values()){
-			if(e.tamanho.equals(cbTamanho.getValue())){
+			if(e.valor.equals(cbTamanho.getValue())){
 				tamanho = e;
 				break;
 			}
@@ -65,7 +65,7 @@ public class CadastrarCachorroController implements Initializable{
 		}
 
 		Cachorro cachorro = new Cachorro(FachadaPL.getInstance().listarAnimaisPorDono(FachadaPL.getUsuarioLogado()).size()+1, 
-				idade,  sexo, tfNome.getText(), FachadaPL.getUsuarioLogado(), 
+				idade,  sexo, tfNome.getText(), FachadaPL.getUsuarioLogado().getEmail(), 
 				raca, tamanho, taDescricao.getText());
 		FachadaPL.getInstance().cadastrarAnimal(cachorro);
 

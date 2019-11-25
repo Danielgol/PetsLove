@@ -12,8 +12,6 @@ public class ControladorUsuario {
 	public ControladorUsuario(IRepositorioUsuarios instanciaRepositorio) {
 		this.repositorioUsuarios = instanciaRepositorio;
 	}
-
-	// TODO: Colocar as regras de negócio em cada um dos métodos abaixo.
 	
 	public Usuario login(String email, String senha) {
 		Usuario usuario = this.procurar(email);
@@ -53,6 +51,5 @@ public class ControladorUsuario {
 	public Usuario procurar(String email) {
 		return this.repositorioUsuarios.procurar(email);
 	}
-	
 	
 }

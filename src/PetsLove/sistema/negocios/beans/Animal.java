@@ -6,22 +6,22 @@ public abstract class Animal {
 	private int idade;
 	private EnumSexo sexo;
 	private String nome;
-	private Usuario dono;
+	private String emailDono;
 	private String descricao;
 
-	public Animal(int id, int idade, EnumSexo sexo, String nome, Usuario dono, String descricao) {
+	public Animal(int id, int idade, EnumSexo sexo, String nome, String emailDono, String descricao) {
 		this.id = id;
 		this.idade = idade;
 		this.sexo = sexo;
 		this.nome = nome;
-		this.dono = dono;
+		this.emailDono = emailDono;
 		this.descricao = descricao;
 	}
 	
 	@Override
 	public boolean equals(Object animal) {
 		Animal outro = (Animal) animal;
-		if(outro != null && this.getDono().equals(outro.getDono())){
+		if(outro != null && this.getEmailDono().equals(outro.getEmailDono())){
 			if (this.id == outro.id) {
 				return true;
 			}
@@ -61,12 +61,8 @@ public abstract class Animal {
 		this.nome = nome;
 	}
 
-	public Usuario getDono() {
-		return dono;
-	}
-
-	public void setDono(Usuario dono) {
-		this.dono = dono;
+	public String getEmailDono() {
+		return emailDono;
 	}
 
 	public String getDescricao() {

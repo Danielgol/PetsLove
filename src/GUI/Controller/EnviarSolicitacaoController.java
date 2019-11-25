@@ -66,7 +66,7 @@ public class EnviarSolicitacaoController implements Initializable{
 	}
 
 	public static void setDestinatario(Animal animal) {
-		if(!FachadaPL.getUsuarioLogado().equals(animal.getDono())) {
+		if(!FachadaPL.getUsuarioLogado().equals(FachadaPL.getInstance().procurarUsuario(animal.getEmailDono()))) {
 			destinatario = animal;
 		}
 	}

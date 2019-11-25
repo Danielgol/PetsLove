@@ -29,8 +29,8 @@ public class FachadaPL {
 	private ControladorSolicitacao controladorSolicitacao;
 
 	private FachadaPL() {
-		this.controladorAnimal = new ControladorAnimal(RepositorioAnimais.getInstance());
 		this.controladorUsuario = new ControladorUsuario(RepositorioUsuarios.getInstance());
+		this.controladorAnimal = new ControladorAnimal(RepositorioAnimais.getInstance());
 		this.controladorSolicitacao = new ControladorSolicitacao(RepositorioSolicitacoes.getInstance());
 	}
 
@@ -69,6 +69,10 @@ public class FachadaPL {
 
 	public boolean usuarioExiste(String email){
 		return this.controladorUsuario.existe(email);
+	}
+	
+	public Usuario procurarUsuario(String email) {
+		return this.controladorUsuario.procurar(email);
 	}
 	
 	

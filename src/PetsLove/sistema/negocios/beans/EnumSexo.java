@@ -4,10 +4,10 @@ public enum EnumSexo {
 	
 	MACHO("Macho"), FEMEA("Femea");
 	
-	public String sexo;
+	public String valor;
 	
-	private EnumSexo(String sexo) {
-		this.sexo = sexo;
+	private EnumSexo(String valor) {
+		this.valor = valor;
 	}
 
 }

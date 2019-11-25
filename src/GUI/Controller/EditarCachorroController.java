@@ -35,8 +35,8 @@ public class EditarCachorroController implements Initializable{
 	@FXML private ComboBox<String> cbTamanho;
 	@FXML private ComboBox<String> cbRaca;
 
-	ObservableList<String> sexo = FXCollections.observableArrayList(EnumSexo.MACHO.sexo, EnumSexo.FEMEA.sexo);
-	ObservableList<String> tamanho = FXCollections.observableArrayList(EnumTamanho.ALTO.tamanho, EnumTamanho.BAIXO.tamanho, EnumTamanho.MEDIO.tamanho);
+	ObservableList<String> sexo = FXCollections.observableArrayList(EnumSexo.MACHO.valor, EnumSexo.FEMEA.valor);
+	ObservableList<String> tamanho = FXCollections.observableArrayList(EnumTamanho.ALTO.valor, EnumTamanho.BAIXO.valor, EnumTamanho.MEDIO.valor);
 	ObservableList<String> raca = FXCollections.observableArrayList(EnumRacaCachorro.getValues());
 
 	@FXML
@@ -59,15 +59,15 @@ public class EditarCachorroController implements Initializable{
 		int idade = Period.between(dpDataDeNascimento.getValue(), LocalDate.now()).getYears();
 
 		EnumSexo sexo = null;
-		if(cbSexo.getValue().equals(EnumSexo.MACHO.sexo)){
+		if(cbSexo.getValue().equals(EnumSexo.MACHO.valor)){
 			sexo = EnumSexo.MACHO;
-		}else if(cbSexo.getValue().equals(EnumSexo.FEMEA.sexo)){
+		}else if(cbSexo.getValue().equals(EnumSexo.FEMEA.valor)){
 			sexo = EnumSexo.FEMEA;
 		}
 
 		EnumTamanho tamanho = null;
 		for(EnumTamanho e: EnumTamanho.values()){
-			if(e.tamanho.equals(cbTamanho.getValue())){
+			if(e.valor.equals(cbTamanho.getValue())){
 				tamanho = e;
 			}
 		}
@@ -78,12 +78,12 @@ public class EditarCachorroController implements Initializable{
 				raca = e;
 			}
 		}
-		
+
 		if(selecionado == null){
 			//TODO: Tirar esse pritln ladkoaekdoadlaedk
 			System.out.println("NULOOOOOOOOOOOOOOOOOO IDIOTA");
 		}
-		
+
 		selecionado.setNome(tfNome.getText());
 		selecionado.setIdade(idade);
 		selecionado.setDescricao(taDescricao.getText());
@@ -103,17 +103,17 @@ public class EditarCachorroController implements Initializable{
 		}
 	}
 
+	public static void setSelecionado(Animal animal) {
+		if(FachadaPL.getUsuarioLogado().equals(FachadaPL.getInstance().procurarUsuario(animal.getEmailDono()))) {
+			selecionado = (Cachorro) animal;
+		}
+	}
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		cbSexo.setItems(sexo);
 		cbTamanho.setItems(tamanho);
 		cbRaca.setItems(raca);
-	}
-
-	public static void setSelecionado(Animal animal) {
-		if(FachadaPL.getUsuarioLogado().equals(animal.getDono())) {
-			selecionado = (Cachorro) animal;
-		}
 	}
 
 }

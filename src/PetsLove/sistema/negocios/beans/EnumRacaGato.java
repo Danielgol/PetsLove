@@ -37,6 +37,15 @@ public enum EnumRacaGato {
 		}
 		return valores;
 	}
+	
+	public static EnumRacaGato getRaca(String raca) {
+		for(EnumRacaGato r : EnumRacaGato.values()) {
+			if(r.valor.equals(raca)) {
+				return r;
+			}
+		}
+		return null;
+	}
 
 	private EnumRacaGato(String valor) {
 		this.valor = valor;

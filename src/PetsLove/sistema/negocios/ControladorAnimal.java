@@ -42,7 +42,7 @@ public class ControladorAnimal {
 		ArrayList<Animal> repo = this.listar();
 		ArrayList<Animal> animais = new ArrayList<Animal>();
 		for (Animal animal : repo) {
-			if (animal.getDono().equals(usuario)) {
+			if (animal.getEmailDono().equals(usuario.getEmail())) {
 				animais.add(animal);
 			}
 		}
@@ -116,7 +116,7 @@ public class ControladorAnimal {
 	public ArrayList<Animal> listarAnimaisPorSexo(ArrayList<Animal> animais, EnumSexo sexo) {
 		ArrayList<Animal> lista = new ArrayList<Animal>();
 		for(Animal animal : animais) {
-			if(animal.getSexo().sexo.equals(sexo.sexo)) {
+			if(animal.getSexo().valor.equals(sexo.valor)) {
 				lista.add(animal);
 			}
 		}

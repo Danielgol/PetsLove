@@ -4,10 +4,19 @@ public enum EnumPelagem {
 	
 	FELPUDO("Felpudo"), MEDIO("Medio"), RASO("Raso");
 	
-	public String pelagem;
+	public String valor;
 	
-	private EnumPelagem(String pelagem) {
-		this.pelagem = pelagem;
+	private EnumPelagem(String valor) {
+		this.valor = valor;
+	}
+	
+	public static EnumPelagem getPelagem(String valor) {
+		for(EnumPelagem e : EnumPelagem.values()) {
+			if(e.valor.equals(valor)) {
+				return e;
+			}
+		}
+		return null;
 	}
 
 }

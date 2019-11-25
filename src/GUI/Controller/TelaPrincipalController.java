@@ -12,13 +12,7 @@ import GUI.System.TelaPrincipalApp;
 import PetsLove.sistema.FachadaPL;
 import PetsLove.sistema.negocios.beans.Animal;
 import PetsLove.sistema.negocios.beans.Cachorro;
-import PetsLove.sistema.negocios.beans.EnumPelagem;
-import PetsLove.sistema.negocios.beans.EnumRacaCachorro;
-import PetsLove.sistema.negocios.beans.EnumRacaGato;
-import PetsLove.sistema.negocios.beans.EnumSexo;
-import PetsLove.sistema.negocios.beans.EnumTamanho;
 import PetsLove.sistema.negocios.beans.Gato;
-import PetsLove.sistema.negocios.beans.Solicitacao;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -30,7 +24,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import PetsLove.sistema.FachadaPL;
 
 public class TelaPrincipalController implements Initializable{
 
@@ -98,7 +91,7 @@ public class TelaPrincipalController implements Initializable{
 		EnviarSolicitacaoApp enviarSolicitacao = new EnviarSolicitacaoApp();
 		Animal animalSelecionado = tabelaAnimais.getSelectionModel().getSelectedItem();
 
-		if(FachadaPL.getUsuarioLogado().equals(animalSelecionado.getDono())){
+		if(FachadaPL.getUsuarioLogado().equals(FachadaPL.getInstance().procurarUsuario(animalSelecionado.getEmailDono()))){
 			
 			//TODO: Colocar Alert dizendo: Esse animal já é seu!
 			
@@ -130,17 +123,17 @@ public class TelaPrincipalController implements Initializable{
 	private void mostrarDetalhesAnimal(Animal animal) {
 		if (animal != null) {
 			labelNome.setText(animal.getNome());
-			labelSexo.setText(animal.getSexo().sexo);
+			labelSexo.setText(animal.getSexo().valor);
 			labelIdade.setText(Integer.toString(animal.getIdade()));
 			labelDescricao.setText(animal.getDescricao());
 			if(animal instanceof Gato){
 				labelTituloTamPel.setText("Pelagem:");
 				labelRaca.setText(((Gato) animal).getRaca().valor);
-				labelPelagemTamanho.setText(((Gato) animal).getPelagem().pelagem);
+				labelPelagemTamanho.setText(((Gato) animal).getPelagem().valor);
 			}else if(animal instanceof Cachorro){
 				labelTituloTamPel.setText("Tamanho:");
 				labelRaca.setText(((Cachorro) animal).getRaca().valor);
-				labelPelagemTamanho.setText(((Cachorro) animal).getTamanho().tamanho);
+				labelPelagemTamanho.setText(((Cachorro) animal).getTamanho().valor);
 			}
 		} else {
 			labelNome.setText("");

@@ -27,9 +27,9 @@ public class Teste {
 		fachada.cadastrarUsuario(u1);
 		fachada.cadastrarUsuario(u2);
 		
-		Cachorro c1 = new Cachorro(321, 4, EnumSexo.MACHO, "Bob", u1, EnumRacaCachorro.PITBULL, EnumTamanho.ALTO, "teste");
-		Cachorro c2 = new Cachorro(331, 3, EnumSexo.FEMEA, "Mary", u2, EnumRacaCachorro.PITBULL, EnumTamanho.ALTO, "teste");
-		Gato g1 = new Gato(213, 2, EnumSexo.FEMEA, "Meow", u1, EnumPelagem.FELPUDO, EnumRacaGato.ABISSINIO, "teste");
+		Cachorro c1 = new Cachorro(321, 4, EnumSexo.MACHO, "Bob", "rogerinho..@hotmail.com", EnumRacaCachorro.PITBULL, EnumTamanho.ALTO, "teste");
+		Cachorro c2 = new Cachorro(331, 3, EnumSexo.FEMEA, "Mary", "Barbiegirl@hotmail.com", EnumRacaCachorro.PITBULL, EnumTamanho.ALTO, "teste");
+		Gato g1 = new Gato(213, 2, EnumSexo.FEMEA, "Meow", "rogerinho..@hotmail.com", EnumRacaGato.ABISSINIO, EnumPelagem.FELPUDO, "teste");
 		fachada.cadastrarAnimal(c1);
 		fachada.cadastrarAnimal(c2);
 		fachada.cadastrarAnimal(g1);

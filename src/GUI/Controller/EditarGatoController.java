@@ -35,8 +35,8 @@ public class EditarGatoController implements Initializable{
 	@FXML private ComboBox<String> cbRaca;
 	@FXML private DatePicker dpDataDeNascimento;
 
-	ObservableList<String> sexo = FXCollections.observableArrayList(EnumSexo.MACHO.sexo, EnumSexo.FEMEA.sexo);
-	ObservableList<String> pelagem = FXCollections.observableArrayList(EnumPelagem.FELPUDO.pelagem, EnumPelagem.MEDIO.pelagem, EnumPelagem.RASO.pelagem);
+	ObservableList<String> sexo = FXCollections.observableArrayList(EnumSexo.MACHO.valor, EnumSexo.FEMEA.valor);
+	ObservableList<String> pelagem = FXCollections.observableArrayList(EnumPelagem.FELPUDO.valor, EnumPelagem.MEDIO.valor, EnumPelagem.RASO.valor);
 	ObservableList<String> raca = FXCollections.observableArrayList(EnumRacaGato.getValues());
 
 	@FXML
@@ -59,16 +59,15 @@ public class EditarGatoController implements Initializable{
 		int idade = Period.between(dpDataDeNascimento.getValue(), LocalDate.now()).getYears();
 
 		EnumSexo sexo = null;
-		if(cbSexo.getValue().equals(EnumSexo.MACHO.sexo)){
+		if(cbSexo.getValue().equals(EnumSexo.MACHO.valor)){
 			sexo = EnumSexo.MACHO;
-		}
-		else if(cbSexo.getValue().equals(EnumSexo.FEMEA.sexo)){
+		}else if(cbSexo.getValue().equals(EnumSexo.FEMEA.valor)){
 			sexo = EnumSexo.FEMEA;
 		}
 
 		EnumPelagem pelagem = null;
 		for(EnumPelagem e: EnumPelagem.values()){
-			if(e.pelagem.equals(cbPelagem.getValue())){
+			if(e.valor.equals(cbPelagem.getValue())){
 				pelagem = e;
 			}
 		}
@@ -86,12 +85,9 @@ public class EditarGatoController implements Initializable{
 		selecionado.setRaca(raca);
 		selecionado.setPelagem(pelagem);
 		selecionado.setSexo(sexo);
-
+		
 		FachadaPL.getInstance().atualizarAnimal(selecionado);
-
-
-
-
+		
 		SeusAnimaisApp seusAnimais = new SeusAnimaisApp();
 		EditarGatoApp.getStage().close();
 
@@ -100,7 +96,7 @@ public class EditarGatoController implements Initializable{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+		
 	}
 
 	@Override
@@ -111,7 +107,7 @@ public class EditarGatoController implements Initializable{
 	}
 
 	public static void setSelecionado(Animal animal) {
-		if(FachadaPL.getUsuarioLogado().equals(animal.getDono())) {
+		if(FachadaPL.getUsuarioLogado().equals(FachadaPL.getInstance().procurarUsuario(animal.getEmailDono()))) {
 			selecionado = (Gato) animal;
 		}
 	}

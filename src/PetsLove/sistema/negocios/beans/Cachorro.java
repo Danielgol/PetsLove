@@ -5,8 +5,8 @@ public class Cachorro extends Animal {
 	private EnumRacaCachorro raca;
 	private EnumTamanho tamanho;
 
-	public Cachorro(int id, int idade, EnumSexo sexo, String nome, Usuario dono, EnumRacaCachorro raca, EnumTamanho tamanho, String descricao) {
-		super(id, idade, sexo, nome, dono, descricao);
+	public Cachorro(int id, int idade, EnumSexo sexo, String nome, String email, EnumRacaCachorro raca, EnumTamanho tamanho, String descricao) {
+		super(id, idade, sexo, nome, email, descricao);
 		this.raca = raca;
 		this.tamanho = tamanho;
 	}
