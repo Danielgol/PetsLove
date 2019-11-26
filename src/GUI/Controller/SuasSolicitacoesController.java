@@ -2,7 +2,6 @@ package GUI.Controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import GUI.System.CaixaDeEntradaApp;
 import GUI.System.DadosDoDonoApp;
 import GUI.System.SuasSolicitacoesApp;
 import GUI.System.TelaPrincipalApp;
@@ -79,8 +78,10 @@ public class SuasSolicitacoesController implements Initializable {
 		initTable();
 	}
 
-	private void mostrarDetalhesAnimal(Animal animal) {
-		if (animal != null) {
+	private void mostrarDetalhesAnimal(Solicitacao solicitacao) {
+		
+		if (solicitacao != null) {
+			Animal animal = solicitacao.getDestinatario();
 			labelNome.setText(animal.getNome());
 			labelSexo.setText(animal.getSexo().valor);
 			labelIdade.setText(Integer.toString(animal.getIdade()));
@@ -118,7 +119,7 @@ public class SuasSolicitacoesController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		initTable();
 		tabelaSolicitacoes.getSelectionModel().selectedItemProperty()
-		.addListener((observable, oldValue, newValue) -> mostrarDetalhesAnimal(newValue.getDestinatario()));
+		.addListener((observable, oldValue, newValue) -> mostrarDetalhesAnimal(newValue));
 	}
 
 }

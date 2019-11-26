@@ -27,8 +27,6 @@ import javafx.stage.Stage;
 
 public class SeusAnimaisController implements Initializable {
 
-	private FachadaPL fachada = FachadaPL.getInstance();
-
 	@FXML private TableView<Animal> tabelaAnimais;
 	@FXML private TableColumn<Animal, String> colunaAnimais;
 	@FXML private TableColumn<Animal, String> colunaTipo;
@@ -142,7 +140,7 @@ public class SeusAnimaisController implements Initializable {
 	}
 
 	public ObservableList<Animal> atualizaTabela(){
-		return FXCollections.observableArrayList(fachada.listarAnimaisPorDono(FachadaPL.getUsuarioLogado()));
+		return FXCollections.observableArrayList(FachadaPL.getInstance().listarAnimaisPorDono(FachadaPL.getUsuarioLogado()));
 	}
 
 	@Override

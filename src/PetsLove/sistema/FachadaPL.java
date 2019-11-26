@@ -135,7 +135,7 @@ public class FachadaPL {
 		this.controladorSolicitacao.criarSolicitacao(s);
 	}
 
-	public void removerSolicitacao(Solicitacao s) throws SolicitacaoNaoExisteException {
+	public void removerSolicitacao(Solicitacao s) {
 		this.controladorSolicitacao.removerSolicitacao(s);
 	}
 

@@ -19,7 +19,7 @@ public class Solicitacao {
 	@Override
 	public boolean equals(Object outra) {
 		Solicitacao s = (Solicitacao) outra;
-		if (this.remetente.equals(s.remetente) && this.destinatario.equals(s.destinatario)) {
+		if (s != null && this.remetente.equals(s.remetente) && this.destinatario.equals(s.destinatario)) {
 			return true;
 		}
 		return false;

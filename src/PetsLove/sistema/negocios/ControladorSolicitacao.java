@@ -47,13 +47,8 @@ public class ControladorSolicitacao {
 		}
 	}
 
-	public void removerSolicitacao(Solicitacao s) throws SolicitacaoNaoExisteException {
-		Solicitacao s1 = s;
-		if (s1 != null) {
-			repositorioSolicitacoes.removerSolicitacao(s);
-		} else {
-			throw new SolicitacaoNaoExisteException(s.getRemetente(), s.getDestinatario());
-		}
+	public void removerSolicitacao(Solicitacao s) {
+		this.repositorioSolicitacoes.removerSolicitacao(s);
 	}
 
 	public void aceitarSolicitacao(Solicitacao s) throws SolicitacaoNaoExisteException {
