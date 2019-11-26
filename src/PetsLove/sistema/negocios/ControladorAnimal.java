@@ -10,7 +10,7 @@ import PetsLove.sistema.negocios.beans.Usuario;
 import PetsLove.sistema.negocios.beans.enums.EnumPelagem;
 import PetsLove.sistema.negocios.beans.enums.EnumRacaCachorro;
 import PetsLove.sistema.negocios.beans.enums.EnumSexo;
-import PetsLove.sistema.negocios.beans.enums.EnumTamanho;
+import PetsLove.sistema.negocios.beans.enums.EnumPorte;
 
 public class ControladorAnimal {
 
@@ -90,22 +90,22 @@ public class ControladorAnimal {
 		}
 	}
 
-	public ArrayList<Animal> listarCachorrosPorTamanho(EnumTamanho tamanho) {
+	public ArrayList<Animal> listarCachorrosPorTamanho(EnumPorte porte) {
 		ArrayList<Animal> repoCachorros = this.listarPorTipo(Cachorro.class);
 		ArrayList<Animal> cachorros = new ArrayList<Animal>();
 		for (Animal cachorro : repoCachorros) {
-			if (((Cachorro) cachorro).getTamanho().equals(tamanho)) {
+			if (((Cachorro) cachorro).getPorte().equals(porte)) {
 				cachorros.add(cachorro);
 			}
 		}
 		return cachorros;
 	}
 
-	public ArrayList<Animal> listarCachorrosPorRacaETamanho(EnumRacaCachorro raca, EnumTamanho tamanho) throws RacaNaoExisteException {
+	public ArrayList<Animal> listarCachorrosPorRacaETamanho(EnumRacaCachorro raca, EnumPorte porte) throws RacaNaoExisteException {
 		ArrayList<Animal> repoCachorro = this.listarCachorrosPorRaca(raca);
 		ArrayList<Animal> cachorros = new ArrayList<Animal>();
 		for (Animal cachorro : repoCachorro) {
-			if (((Cachorro) cachorro).getTamanho().equals(tamanho)) {
+			if (((Cachorro) cachorro).getPorte().equals(porte)) {
 				cachorros.add(cachorro);
 			}
 		}

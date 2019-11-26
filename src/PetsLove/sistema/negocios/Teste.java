@@ -14,7 +14,7 @@ import PetsLove.sistema.negocios.beans.enums.EnumPelagem;
 import PetsLove.sistema.negocios.beans.enums.EnumRacaCachorro;
 import PetsLove.sistema.negocios.beans.enums.EnumRacaGato;
 import PetsLove.sistema.negocios.beans.enums.EnumSexo;
-import PetsLove.sistema.negocios.beans.enums.EnumTamanho;
+import PetsLove.sistema.negocios.beans.enums.EnumPorte;
 
 public class Teste {
 	
@@ -28,8 +28,8 @@ public class Teste {
 		fachada.cadastrarUsuario(u1);
 		fachada.cadastrarUsuario(u2);
 		
-		Cachorro c1 = new Cachorro("321", 4, EnumSexo.MACHO, "Bob", "rogerinho..@hotmail.com", EnumRacaCachorro.PITBULL, EnumTamanho.ALTO, "teste");
-		Cachorro c2 = new Cachorro("331", 3, EnumSexo.FEMEA, "Mary", "Barbiegirl@hotmail.com", EnumRacaCachorro.PITBULL, EnumTamanho.ALTO, "teste");
+		Cachorro c1 = new Cachorro("321", 4, EnumSexo.MACHO, "Bob", "rogerinho..@hotmail.com", EnumRacaCachorro.PITBULL, EnumPorte.ALTO, "teste");
+		Cachorro c2 = new Cachorro("331", 3, EnumSexo.FEMEA, "Mary", "Barbiegirl@hotmail.com", EnumRacaCachorro.PITBULL, EnumPorte.ALTO, "teste");
 		Gato g1 = new Gato("213", 2, EnumSexo.FEMEA, "Meow", "rogerinho..@hotmail.com", EnumRacaGato.ABISSINIO, EnumPelagem.FELPUDO, "teste");
 		fachada.cadastrarAnimal(c1);
 		fachada.cadastrarAnimal(c2);

@@ -10,7 +10,7 @@ import PetsLove.sistema.FachadaPL;
 import PetsLove.sistema.negocios.beans.Cachorro;
 import PetsLove.sistema.negocios.beans.enums.EnumRacaCachorro;
 import PetsLove.sistema.negocios.beans.enums.EnumSexo;
-import PetsLove.sistema.negocios.beans.enums.EnumTamanho;
+import PetsLove.sistema.negocios.beans.enums.EnumPorte;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -28,10 +28,10 @@ public class CadastrarCachorroController implements Initializable{
 	@FXML private TextArea taDescricao;
 	@FXML private TextField tfNome;
 	@FXML private DatePicker dpDataDeNascimento;
-	@FXML private ComboBox<String> cbTamanho;
+	@FXML private ComboBox<String> cbPorte;
 
 	ObservableList<String> sexo = FXCollections.observableArrayList(EnumSexo.MACHO.valor, EnumSexo.FEMEA.valor);
-	ObservableList<String> tamanho = FXCollections.observableArrayList(EnumTamanho.ALTO.valor, EnumTamanho.BAIXO.valor, EnumTamanho.MEDIO.valor);
+	ObservableList<String> porte = FXCollections.observableArrayList(EnumPorte.GRANDE.valor, EnumPorte.PEQUENO.valor, EnumPorte.MEDIO.valor);
 	ObservableList<String> raca = FXCollections.observableArrayList(EnumRacaCachorro.getValues());
 
 	@FXML
@@ -48,10 +48,10 @@ public class CadastrarCachorroController implements Initializable{
 			sexo = EnumSexo.FEMEA;
 		}
 
-		EnumTamanho tamanho = null;
-		for(EnumTamanho e: EnumTamanho.values()){
-			if(e.valor.equals(cbTamanho.getValue())){
-				tamanho = e;
+		EnumPorte porte = null;
+		for(EnumPorte e: EnumPorte.values()){
+			if(e.valor.equals(cbPorte.getValue())){
+				porte = e;
 				break;
 			}
 		}
@@ -65,7 +65,7 @@ public class CadastrarCachorroController implements Initializable{
 		}
 
 		Cachorro cachorro = new Cachorro
-		(idade, sexo, tfNome.getText(), FachadaPL.getUsuarioLogado().getEmail(), raca, tamanho, taDescricao.getText());
+		(idade, sexo, tfNome.getText(), FachadaPL.getUsuarioLogado().getEmail(), raca, porte, taDescricao.getText());
 		FachadaPL.getInstance().cadastrarAnimal(cachorro);
 
 		SeusAnimaisApp seusAnimais = new SeusAnimaisApp();
@@ -93,7 +93,7 @@ public class CadastrarCachorroController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		cbSexo.setItems(sexo);
-		cbTamanho.setItems(tamanho);
+		cbPorte.setItems(porte);
 		cbRaca.setItems(raca);
 	}
 

@@ -36,7 +36,7 @@ public class SeusAnimaisController implements Initializable {
 	@FXML private Label labelRaca;
 	@FXML private Label labelDescricao;
 	@FXML private Label labelTituloTamPel;
-	@FXML private Label labelPelagemTamanho;
+	@FXML private Label labelPelagemPorte;
 
 	@FXML
 	void handleCadastrarCachorro() {
@@ -116,11 +116,11 @@ public class SeusAnimaisController implements Initializable {
 			if(animal instanceof Gato){
 				labelTituloTamPel.setText("Pelagem:");
 				labelRaca.setText(((Gato) animal).getRaca().valor);
-				labelPelagemTamanho.setText(((Gato) animal).getPelagem().valor);
+				labelPelagemPorte.setText(((Gato) animal).getPelagem().valor);
 			}else if(animal instanceof Cachorro){
-				labelTituloTamPel.setText("Tamanho:");
+				labelTituloTamPel.setText("Porte:");
 				labelRaca.setText(((Cachorro) animal).getRaca().valor);
-				labelPelagemTamanho.setText(((Cachorro) animal).getTamanho().valor);
+				labelPelagemPorte.setText(((Cachorro) animal).getPorte().valor);
 			}
 		} else {
 			labelNome.setText("");
@@ -128,7 +128,7 @@ public class SeusAnimaisController implements Initializable {
 			labelIdade.setText("");
 			labelDescricao.setText("");
 			labelRaca.setText("");
-			labelPelagemTamanho.setText("");
+			labelPelagemPorte.setText("");
 		}
 	}
 

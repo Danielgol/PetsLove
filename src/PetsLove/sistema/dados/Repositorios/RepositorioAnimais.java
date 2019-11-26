@@ -14,7 +14,7 @@ import PetsLove.sistema.negocios.beans.enums.EnumPelagem;
 import PetsLove.sistema.negocios.beans.enums.EnumRacaCachorro;
 import PetsLove.sistema.negocios.beans.enums.EnumRacaGato;
 import PetsLove.sistema.negocios.beans.enums.EnumSexo;
-import PetsLove.sistema.negocios.beans.enums.EnumTamanho;
+import PetsLove.sistema.negocios.beans.enums.EnumPorte;
 
 public class RepositorioAnimais implements IRepositorioAnimais{
 
@@ -81,7 +81,7 @@ public class RepositorioAnimais implements IRepositorioAnimais{
 				if(a instanceof Cachorro) {
 					csvWriter.append(((Cachorro) a).getRaca().valor);
 					csvWriter.append(",");
-					csvWriter.append(((Cachorro) a).getTamanho().valor);
+					csvWriter.append(((Cachorro) a).getPorte().valor);
 				}else {
 					csvWriter.append(((Gato) a).getRaca().valor);
 					csvWriter.append(",");
@@ -121,8 +121,8 @@ public class RepositorioAnimais implements IRepositorioAnimais{
 
 					if(EnumRacaCachorro.getValues().contains(racaDados)) {
 						EnumRacaCachorro raca = EnumRacaCachorro.getRaca(racaDados);
-						EnumTamanho tamanho = EnumTamanho.getTamanho(atributo);
-						Cachorro cachorro = new Cachorro(id, idade, sexo, nome, email, raca, tamanho, descricao);
+						EnumPorte porte = EnumPorte.getPorte(atributo);
+						Cachorro cachorro = new Cachorro(id, idade, sexo, nome, email, raca, porte, descricao);
 						animais.add(cachorro);
 					}else {
 						EnumRacaGato raca = EnumRacaGato.getRaca(racaDados);

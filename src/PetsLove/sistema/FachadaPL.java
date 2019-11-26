@@ -17,7 +17,7 @@ import PetsLove.sistema.negocios.beans.Solicitacao;
 import PetsLove.sistema.negocios.beans.Usuario;
 import PetsLove.sistema.negocios.beans.enums.EnumPelagem;
 import PetsLove.sistema.negocios.beans.enums.EnumRacaCachorro;
-import PetsLove.sistema.negocios.beans.enums.EnumTamanho;
+import PetsLove.sistema.negocios.beans.enums.EnumPorte;
 
 public class FachadaPL {
 
@@ -109,12 +109,12 @@ public class FachadaPL {
 		return this.controladorAnimal.listarCachorrosPorRaca(raca);
 	}
 
-	public ArrayList<Animal> listarCachorrosPorTamanho(EnumTamanho tamanho) {
+	public ArrayList<Animal> listarCachorrosPorTamanho(EnumPorte tamanho) {
 		return this.controladorAnimal.listarCachorrosPorTamanho(tamanho);
 	}
 
-	public ArrayList<Animal> listarCachorrosPorRacaETamanho(EnumRacaCachorro raca, EnumTamanho tamanho) throws RacaNaoExisteException {
-		return this.controladorAnimal.listarCachorrosPorRacaETamanho(raca, tamanho);
+	public ArrayList<Animal> listarCachorrosPorRacaETamanho(EnumRacaCachorro raca, EnumPorte porte) throws RacaNaoExisteException {
+		return this.controladorAnimal.listarCachorrosPorRacaETamanho(raca, porte);
 	}
 
 	public ArrayList<Animal> listarGatosPorPelagem(EnumPelagem pelagem) {
