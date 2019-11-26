@@ -63,9 +63,11 @@ public class EnviarSolicitacaoController implements Initializable{
 				alerta.show();
 			}
 		}else {
-			
-			//TODO: Alert (Selecione um animal)
-			
+			Alert alerta = new Alert(AlertType.ERROR);
+			alerta.setHeaderText("Nenhum animal selecionado");
+			alerta.setTitle("Erro");
+			alerta.setContentText("Selecione animal desejado");
+			alerta.show();
 		}
 	}
 
