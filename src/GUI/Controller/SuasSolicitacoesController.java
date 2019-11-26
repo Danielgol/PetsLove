@@ -16,9 +16,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 public class SuasSolicitacoesController implements Initializable {
@@ -40,9 +42,11 @@ public class SuasSolicitacoesController implements Initializable {
 		if(selecionada != null) {
 			FachadaPL.getInstance().removerSolicitacao(selecionada);
 		}else {
-			
-			//TODO: Alert (Selecione uma solicitacao)
-			
+			Alert alerta = new Alert(AlertType.ERROR);
+			alerta.setHeaderText("Nenhuma solicitação selecionada");
+			alerta.setTitle("Erro");
+			alerta.setContentText("Selecione a solicitação desejada");
+			alerta.show();
 		}
 		initTable();
 	}
@@ -75,10 +79,25 @@ public class SuasSolicitacoesController implements Initializable {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+			}else if(selecionada.getStatus().equals(Solicitacao.ANALISANDO)){
+				Alert alerta = new Alert(AlertType.ERROR);
+				alerta.setHeaderText("Solicitação em analise");
+				alerta.setTitle("Erro");
+				alerta.setContentText("Enquanto a solicitação estiver em analise você não poderá ver os dados do dono");
+				alerta.show();
+			}else {
+				Alert alerta = new Alert(AlertType.ERROR);
+				alerta.setHeaderText("Solicitação recusada");
+				alerta.setTitle("Erro");
+				alerta.setContentText("Você não pode ver os dados do dono, pois sua solicitação foi recusada");
+				alerta.show();
 			}
 		}else {
-			
-			//TODO: Alert (Selecione uma solicitacao)
+			Alert alerta = new Alert(AlertType.ERROR);
+			alerta.setHeaderText("Nenhuma solicitação selecionada");
+			alerta.setTitle("Erro");
+			alerta.setContentText("Selecione a solicitação desejada");
+			alerta.show();
 			
 		}
 	}
