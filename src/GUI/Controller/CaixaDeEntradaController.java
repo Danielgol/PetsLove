@@ -16,9 +16,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 public class CaixaDeEntradaController implements Initializable {
@@ -61,11 +63,19 @@ public class CaixaDeEntradaController implements Initializable {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+			}else {
+				Alert alerta = new Alert(AlertType.ERROR);
+				alerta.setHeaderText("Solicitação em analise");
+				alerta.setTitle("Erro");
+				alerta.setContentText("Enquanto a solicitação estiver em analise você não poderá ver os dados do dono");
+				alerta.show();
 			}
 		}else {
-			
-			//TODO: Alert (Selecione uma solicitacao)
-			
+			Alert alerta = new Alert(AlertType.ERROR);
+			alerta.setHeaderText("Nenhuma solicitação selecionada");
+			alerta.setTitle("Erro");
+			alerta.setContentText("Selecione uma solicitação");
+			alerta.show();	
 		}
 	}
 
@@ -76,10 +86,19 @@ public class CaixaDeEntradaController implements Initializable {
 			if(selecionada.getStatus().equals(Solicitacao.ANALISANDO)){
 				FachadaPL.getInstance().aceitarSolicitacao(selecionada);
 			}
+			if(selecionada.getStatus().equals(Solicitacao.ACEITO)){
+				Alert alerta = new Alert(AlertType.ERROR);
+				alerta.setHeaderText("Erro ao aceitar");
+				alerta.setTitle("Erro");
+				alerta.setContentText("Esta solicitação já foi aceita");
+				alerta.show();	
+			}
 		}else {
-			
-			//TODO: Alert (Selecione uma solicitacao)
-			
+			Alert alerta = new Alert(AlertType.ERROR);
+			alerta.setHeaderText("Nenhuma solicitação selecionada");
+			alerta.setTitle("Erro");
+			alerta.setContentText("Selecione uma solicitação");
+			alerta.show();	
 		}
 		tabelaSolicitacoes.refresh();
 		initTable();
@@ -92,10 +111,19 @@ public class CaixaDeEntradaController implements Initializable {
 			if(selecionada.getStatus().equals(Solicitacao.ANALISANDO)){
 				FachadaPL.getInstance().recusarSolicitacao(selecionada);
 			}
+			if(selecionada.getStatus().equals(Solicitacao.ACEITO)){
+				Alert alerta = new Alert(AlertType.ERROR);
+				alerta.setHeaderText("Erro ao recusar");
+				alerta.setTitle("Erro");
+				alerta.setContentText("Esta solicitação já foi aceita");
+				alerta.show();	
+			}
 		}else {
-			
-			//TODO: Alert (Selecione uma solicitacao)
-			
+			Alert alerta = new Alert(AlertType.ERROR);
+			alerta.setHeaderText("Nenhuma solicitação selecionada");
+			alerta.setTitle("Erro");
+			alerta.setContentText("Selecione uma solicitação");
+			alerta.show();	
 		}
 		initTable();
 	}
