@@ -13,8 +13,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
@@ -40,20 +42,27 @@ public class EnviarSolicitacaoController implements Initializable{
 	}
 
 	@FXML
-	void handleConfirmar() throws SolicitacaoJaExisteException {
+	void handleConfirmar(){
 		Animal remetente = tabelaAnimais.getSelectionModel().getSelectedItem();
 		if(remetente != null) {
 			Solicitacao solicitacao = new Solicitacao(remetente.getId(), destinatario.getId(), remetente.getEmailDono(), destinatario.getEmailDono());
-			FachadaPL.getInstance().criarSolicitacao(solicitacao);
-
-			TelaPrincipalApp tela = new TelaPrincipalApp();
-			EnviarSolicitacaoApp.getStage().close();
-
 			try {
-				tela.start(new Stage());
-			} catch (Exception e) {
-				e.printStackTrace();
+				FachadaPL.getInstance().criarSolicitacao(solicitacao);
+				TelaPrincipalApp tela = new TelaPrincipalApp();
+				EnviarSolicitacaoApp.getStage().close();
+				try {
+					tela.start(new Stage());
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}catch(SolicitacaoJaExisteException e) {
+				Alert alerta = new Alert(AlertType.ERROR);
+				alerta.setHeaderText("Solicitação já existente");
+				alerta.setTitle("Erro");
+				alerta.setContentText("Você já tem uma solicitação para este animal");
+				alerta.show();
 			}
+			
 		}
 	}
 

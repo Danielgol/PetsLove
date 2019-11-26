@@ -19,9 +19,11 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
@@ -92,8 +94,11 @@ public class TelaPrincipalController implements Initializable{
 		Animal animalSelecionado = tabelaAnimais.getSelectionModel().getSelectedItem();
 		if(animalSelecionado != null) {
 			if(FachadaPL.getUsuarioLogado().equals(FachadaPL.getInstance().procurarUsuario(animalSelecionado.getEmailDono()))){
-				
-				//TODO: Colocar Alert dizendo: Esse animal já é seu!
+				Alert alerta = new Alert(AlertType.ERROR);
+				alerta.setHeaderText("Seleção inválida");
+				alerta.setTitle("Erro");
+				alerta.setContentText("Este animal lhe pertence");
+				alerta.show();
 				
 			}else {
 				EnviarSolicitacaoController.setDestinatario(animalSelecionado);
@@ -104,6 +109,12 @@ public class TelaPrincipalController implements Initializable{
 					e.printStackTrace();
 				}
 			}
+		}else {
+			Alert alerta = new Alert(AlertType.ERROR);
+			alerta.setHeaderText("Nenhum animal selecionado");
+			alerta.setTitle("Erro");
+			alerta.setContentText("Selecione o animal desejado");
+			alerta.show();
 		}
 	}
 
