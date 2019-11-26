@@ -88,6 +88,10 @@ public class FachadaPL {
 	public void removerAnimal(Animal animal) {
 		this.controladorAnimal.remover(animal);
 	}
+	
+	public Animal procurarAnimal(String id) {
+		return this.controladorAnimal.procurar(id);
+	}
 
 	public ArrayList<Animal> listarAnimais() {
 		return this.controladorAnimal.listar();
@@ -131,20 +135,20 @@ public class FachadaPL {
 		return this.controladorSolicitacao.listarSolicitacoesRecebidas(usuario);
 	}
 
-	public void criarSolicitacao(Solicitacao s) throws SolicitacaoJaExisteException {
-		this.controladorSolicitacao.criarSolicitacao(s);
+	public void criarSolicitacao(Solicitacao solicitacao) throws SolicitacaoJaExisteException {
+		this.controladorSolicitacao.criarSolicitacao(solicitacao);
 	}
 
-	public void removerSolicitacao(Solicitacao s) {
-		this.controladorSolicitacao.removerSolicitacao(s);
+	public void removerSolicitacao(Solicitacao solicitacao) {
+		this.controladorSolicitacao.removerSolicitacao(solicitacao);
 	}
 
-	public void aceitarSolicitacao(Solicitacao s) throws SolicitacaoNaoExisteException {
-		this.controladorSolicitacao.aceitarSolicitacao(s);
+	public void aceitarSolicitacao(Solicitacao solicitacao) throws SolicitacaoNaoExisteException {
+		this.controladorSolicitacao.aceitarSolicitacao(solicitacao);
 	}
 
-	public void recusarSolicitacao(Solicitacao s) throws SolicitacaoNaoExisteException {
-		this.controladorSolicitacao.recusarSolicitacao(s);
+	public void recusarSolicitacao(Solicitacao solicitacao) throws SolicitacaoNaoExisteException {
+		this.controladorSolicitacao.recusarSolicitacao(solicitacao);
 	}
 	
 }

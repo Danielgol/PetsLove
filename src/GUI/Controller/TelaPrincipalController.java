@@ -90,18 +90,19 @@ public class TelaPrincipalController implements Initializable{
 	void handleEnviarSolicitacao(ActionEvent event) {
 		EnviarSolicitacaoApp enviarSolicitacao = new EnviarSolicitacaoApp();
 		Animal animalSelecionado = tabelaAnimais.getSelectionModel().getSelectedItem();
-
-		if(FachadaPL.getUsuarioLogado().equals(FachadaPL.getInstance().procurarUsuario(animalSelecionado.getEmailDono()))){
-			
-			//TODO: Colocar Alert dizendo: Esse animal já é seu!
-			
-		}else if(animalSelecionado != null) {
-			EnviarSolicitacaoController.setDestinatario(animalSelecionado);
-			TelaPrincipalApp.getStage().close();
-			try {
-				enviarSolicitacao.start(new Stage());
-			} catch (Exception e) {
-				e.printStackTrace();
+		if(animalSelecionado != null) {
+			if(FachadaPL.getUsuarioLogado().equals(FachadaPL.getInstance().procurarUsuario(animalSelecionado.getEmailDono()))){
+				
+				//TODO: Colocar Alert dizendo: Esse animal já é seu!
+				
+			}else {
+				EnviarSolicitacaoController.setDestinatario(animalSelecionado);
+				TelaPrincipalApp.getStage().close();
+				try {
+					enviarSolicitacao.start(new Stage());
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
 		}
 	}

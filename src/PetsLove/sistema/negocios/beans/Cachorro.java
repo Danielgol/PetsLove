@@ -1,5 +1,7 @@
 package PetsLove.sistema.negocios.beans;
 
+import java.util.UUID;
+
 import PetsLove.sistema.negocios.beans.enums.EnumRacaCachorro;
 import PetsLove.sistema.negocios.beans.enums.EnumSexo;
 import PetsLove.sistema.negocios.beans.enums.EnumTamanho;
@@ -8,8 +10,14 @@ public class Cachorro extends Animal {
 
 	private EnumRacaCachorro raca;
 	private EnumTamanho tamanho;
+	
+	public Cachorro(int idade, EnumSexo sexo, String nome, String email, EnumRacaCachorro raca, EnumTamanho tamanho, String descricao) {
+		super(UUID.randomUUID().toString(), idade, sexo, nome, email, descricao);
+		this.raca = raca;
+		this.tamanho = tamanho;
+	}
 
-	public Cachorro(int id, int idade, EnumSexo sexo, String nome, String email, EnumRacaCachorro raca, EnumTamanho tamanho, String descricao) {
+	public Cachorro(String id, int idade, EnumSexo sexo, String nome, String email, EnumRacaCachorro raca, EnumTamanho tamanho, String descricao) {
 		super(id, idade, sexo, nome, email, descricao);
 		this.raca = raca;
 		this.tamanho = tamanho;

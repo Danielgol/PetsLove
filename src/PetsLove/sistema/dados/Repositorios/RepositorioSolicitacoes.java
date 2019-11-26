@@ -25,21 +25,27 @@ public class RepositorioSolicitacoes implements IRepositorioSolicitacoes {
 		}
 		return instance;
 	}
+	
+	//TODO: Atualizar banco de solicitacoes quando as restricoes forem completas
 
-	public void criarSolicitacao(Solicitacao s) {
-		this.solicitacoes.add(s);
+	public void criarSolicitacao(Solicitacao solicitacao) {
+		this.solicitacoes.add(solicitacao);
+		atualizarBanco();
 	}
 
-	public void removerSolicitacao(Solicitacao s) {
-		this.solicitacoes.remove(s);
+	public void removerSolicitacao(Solicitacao solicitacao) {
+		this.solicitacoes.remove(solicitacao);
+		atualizarBanco();
 	}
 
-	public void aceitarSolicitacao(Solicitacao s) {
-		s.setStatus(Solicitacao.ACEITO);
+	public void aceitarSolicitacao(Solicitacao solicitacao) {
+		solicitacao.setStatus(Solicitacao.ACEITO);
+		//atualizarBanco();
 	}
 
-	public void recusarSolicitacao(Solicitacao s) {
-		s.setStatus(Solicitacao.RECUSADO);
+	public void recusarSolicitacao(Solicitacao solicitacao) {
+		solicitacao.setStatus(Solicitacao.RECUSADO);
+		//atualizarBanco();
 	}
 
 	public boolean existe(Solicitacao s) {
@@ -53,23 +59,21 @@ public class RepositorioSolicitacoes implements IRepositorioSolicitacoes {
 	public ArrayList<Solicitacao> listar(){
 		return this.solicitacoes;
 	}
-
-	//TODO: Fazer Leitura e Escrita das solicitacoes (Reformular atributos solicitacoes)
 	
 	public void atualizarBanco() {
 		try {
-			FileWriter csvWriter = new FileWriter("Arquivos/usuarios.csv");
+			FileWriter csvWriter = new FileWriter("Arquivos/solicitacoes.csv");
 			for(Solicitacao s : this.solicitacoes) {
-				/*
-				csvWriter.append(s.getRemetente());
-				csvWriter.append(",");
-				csvWriter.append(s.getDestinatario());
-				csvWriter.append(",");
 				csvWriter.append(s.getIdRemetente());
 				csvWriter.append(",");
 				csvWriter.append(s.getIdDestinatario());
+				csvWriter.append(",");
+				csvWriter.append(s.getEmailDonoRemetente());
+				csvWriter.append(",");
+				csvWriter.append(s.getEmailDonoDestinatario());
+				csvWriter.append(",");
+				csvWriter.append(s.getStatus());
 				csvWriter.append("\n");
-				*/
 			}
 			csvWriter.close();
 		}catch(IOException e) {}
@@ -83,8 +87,10 @@ public class RepositorioSolicitacoes implements IRepositorioSolicitacoes {
 			try {
 				while((row = csvReader.readLine()) != null){
 					String[] dados = row.split(",");
-					//Solicitacao solicitacao = new Solicitacao(dados[0], dados[1], dados[2], dados[3]);
-					//solicitacoes.add(solicitacao);
+					if(dados.length > 4) {
+						Solicitacao solicitacao = new Solicitacao(dados[0], dados[1], dados[2], dados[3], dados[4]);
+						solicitacoes.add(solicitacao);
+					}
 				}
 				csvReader.close();
 			}catch (IOException e) {}

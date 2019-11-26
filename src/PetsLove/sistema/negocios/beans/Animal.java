@@ -4,14 +4,14 @@ import PetsLove.sistema.negocios.beans.enums.EnumSexo;
 
 public abstract class Animal {
 
-	private int id;
+	private String id;
 	private int idade;
 	private EnumSexo sexo;
 	private String nome;
 	private String emailDono;
 	private String descricao;
 
-	public Animal(int id, int idade, EnumSexo sexo, String nome, String emailDono, String descricao) {
+	public Animal(String id, int idade, EnumSexo sexo, String nome, String emailDono, String descricao) {
 		this.id = id;
 		this.idade = idade;
 		this.sexo = sexo;
@@ -19,24 +19,18 @@ public abstract class Animal {
 		this.emailDono = emailDono;
 		this.descricao = descricao;
 	}
-	
+
 	@Override
 	public boolean equals(Object animal) {
 		Animal outro = (Animal) animal;
-		if(outro != null && this.getEmailDono().equals(outro.getEmailDono())){
-			if (this.id == outro.id) {
-				return true;
-			}
+		if(outro != null && this.getId().equals(outro.getId())){
+			return true;
 		}
 		return false;
 	}
 
-	public int getId() {
+	public String getId() {
 		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public int getIdade() {

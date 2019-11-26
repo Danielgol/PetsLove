@@ -1,22 +1,20 @@
 package PetsLove.sistema.exceptions;
 
-import PetsLove.sistema.negocios.beans.Animal;
-
 public class SolicitacaoNaoExisteException extends Exception {
 
-	private Animal remetente, destinatario;
+	private String remetente, destinatario;
 
-	public SolicitacaoNaoExisteException(Animal remetente, Animal destinatario) {
+	public SolicitacaoNaoExisteException(String remetente, String destinatario) {
 		super("A solicitação de : " + remetente + " para " + destinatario + " não existe");
 		this.remetente = remetente;
 		this.destinatario = destinatario;
 	}
 
-	public Animal getRemetente() {
+	public String getRemetente() {
 		return remetente;
 	}
 
-	public Animal getDestinatario() {
+	public String getDestinatario() {
 		return destinatario;
 	}
 }

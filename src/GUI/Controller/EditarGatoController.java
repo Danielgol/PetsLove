@@ -4,7 +4,6 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ResourceBundle;
-import GUI.System.CadastrarGatoApp;
 import GUI.System.EditarGatoApp;
 import GUI.System.SeusAnimaisApp;
 import PetsLove.sistema.FachadaPL;
@@ -17,7 +16,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
@@ -38,6 +36,8 @@ public class EditarGatoController implements Initializable{
 	ObservableList<String> sexo = FXCollections.observableArrayList(EnumSexo.MACHO.valor, EnumSexo.FEMEA.valor);
 	ObservableList<String> pelagem = FXCollections.observableArrayList(EnumPelagem.FELPUDO.valor, EnumPelagem.MEDIO.valor, EnumPelagem.RASO.valor);
 	ObservableList<String> raca = FXCollections.observableArrayList(EnumRacaGato.getValues());
+	
+	//TODO: Quando carregar a tela, colocar automaticamente os dados atuais do animal nos campos
 
 	@FXML
 	void handleCancelar( ) {

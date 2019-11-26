@@ -55,9 +55,9 @@ public class RepositorioAnimais implements IRepositorioAnimais{
 		return this.animais;
 	}
 
-	public Animal procurar(int id) {
+	public Animal procurar(String id) {
 		for(Animal animal : this.animais) {
-			if(animal.getId() == id) {
+			if(animal.getId().equals(id)) {
 				return animal;
 			}
 		}
@@ -105,7 +105,7 @@ public class RepositorioAnimais implements IRepositorioAnimais{
 				while((row = csvReader.readLine()) != null){
 					
 					String[] dados = row.split(",");
-					int id = Integer.parseInt(dados[0]);
+					String id = dados[0];
 					int idade = Integer.parseInt(dados[1]);
 					String sexoDados = dados[2];
 					String nome = dados[3];

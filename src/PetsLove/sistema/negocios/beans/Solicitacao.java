@@ -6,20 +6,32 @@ public class Solicitacao {
 	public static final String ACEITO = "Aceito";
 	public static final String ANALISANDO = "Analisando";
 	
-	private Animal remetente;
-	private Animal destinatario;
+	private String idRemetente;
+	private String idDestinatario;
+	private String emailDonoRemetente;
+	private String emailDonoDestinatario;
 	private String status;
 
-	public Solicitacao(Animal remetente, Animal destinatario) {
-		this.remetente = remetente;
-		this.destinatario = destinatario;
+	public Solicitacao(String remetente, String destinatario, String emailDonoRemetente, String emailDonoDestinatario) {
+		this.idRemetente = remetente;
+		this.idDestinatario = destinatario;
+		this.emailDonoRemetente = emailDonoRemetente;
+		this.emailDonoDestinatario = emailDonoDestinatario;
 		this.status = ANALISANDO;
+	}
+	
+	public Solicitacao(String remetente, String destinatario, String emailDonoRemetente, String emailDonoDestinatario, String status) {
+		this.idRemetente = remetente;
+		this.idDestinatario = destinatario;
+		this.emailDonoRemetente = emailDonoRemetente;
+		this.emailDonoDestinatario = emailDonoDestinatario;
+		this.status = status;
 	}
 
 	@Override
 	public boolean equals(Object outra) {
 		Solicitacao s = (Solicitacao) outra;
-		if (s != null && this.remetente.equals(s.remetente) && this.destinatario.equals(s.destinatario)) {
+		if (s != null && this.idRemetente.equals(s.idRemetente) && this.idDestinatario.equals(s.idDestinatario)) {
 			return true;
 		}
 		return false;
@@ -31,20 +43,20 @@ public class Solicitacao {
 		return s;
 	}
 
-	public Animal getRemetente() {
-		return remetente;
+	public String getIdRemetente() {
+		return idRemetente;
 	}
 
-	public void setRemetente(Animal remetente) {
-		this.remetente = remetente;
+	public String getIdDestinatario() {
+		return idDestinatario;
 	}
 
-	public Animal getDestinatario() {
-		return destinatario;
+	public String getEmailDonoRemetente() {
+		return emailDonoRemetente;
 	}
 
-	public void setDestinatario(Animal destinatario) {
-		this.destinatario = destinatario;
+	public String getEmailDonoDestinatario() {
+		return emailDonoDestinatario;
 	}
 
 	public String getStatus() {

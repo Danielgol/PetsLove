@@ -42,16 +42,18 @@ public class EnviarSolicitacaoController implements Initializable{
 	@FXML
 	void handleConfirmar() throws SolicitacaoJaExisteException {
 		Animal remetente = tabelaAnimais.getSelectionModel().getSelectedItem();
-		Solicitacao solicitacao = new Solicitacao(remetente, destinatario);
-		FachadaPL.getInstance().criarSolicitacao(solicitacao);
-		
-		TelaPrincipalApp tela = new TelaPrincipalApp();
-		EnviarSolicitacaoApp.getStage().close();
+		if(remetente != null) {
+			Solicitacao solicitacao = new Solicitacao(remetente.getId(), destinatario.getId(), remetente.getEmailDono(), destinatario.getEmailDono());
+			FachadaPL.getInstance().criarSolicitacao(solicitacao);
 
-		try {
-			tela.start(new Stage());
-		} catch (Exception e) {
-			e.printStackTrace();
+			TelaPrincipalApp tela = new TelaPrincipalApp();
+			EnviarSolicitacaoApp.getStage().close();
+
+			try {
+				tela.start(new Stage());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 	}
 

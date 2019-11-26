@@ -20,6 +20,7 @@ public class Teste {
 	
 	public static void main(String[] args) throws UsuarioJaExisteException, SolicitacaoJaExisteException, SolicitacaoNaoExisteException {
 		
+		/*
 		FachadaPL fachada = FachadaPL.getInstance();
 		
 		Usuario u1 = new Usuario("Ben10", "99954-4213", "rogerinho..@hotmail.com", "321anhes");
@@ -27,9 +28,9 @@ public class Teste {
 		fachada.cadastrarUsuario(u1);
 		fachada.cadastrarUsuario(u2);
 		
-		Cachorro c1 = new Cachorro(321, 4, EnumSexo.MACHO, "Bob", "rogerinho..@hotmail.com", EnumRacaCachorro.PITBULL, EnumTamanho.ALTO, "teste");
-		Cachorro c2 = new Cachorro(331, 3, EnumSexo.FEMEA, "Mary", "Barbiegirl@hotmail.com", EnumRacaCachorro.PITBULL, EnumTamanho.ALTO, "teste");
-		Gato g1 = new Gato(213, 2, EnumSexo.FEMEA, "Meow", "rogerinho..@hotmail.com", EnumRacaGato.ABISSINIO, EnumPelagem.FELPUDO, "teste");
+		Cachorro c1 = new Cachorro("321", 4, EnumSexo.MACHO, "Bob", "rogerinho..@hotmail.com", EnumRacaCachorro.PITBULL, EnumTamanho.ALTO, "teste");
+		Cachorro c2 = new Cachorro("331", 3, EnumSexo.FEMEA, "Mary", "Barbiegirl@hotmail.com", EnumRacaCachorro.PITBULL, EnumTamanho.ALTO, "teste");
+		Gato g1 = new Gato("213", 2, EnumSexo.FEMEA, "Meow", "rogerinho..@hotmail.com", EnumRacaGato.ABISSINIO, EnumPelagem.FELPUDO, "teste");
 		fachada.cadastrarAnimal(c1);
 		fachada.cadastrarAnimal(c2);
 		fachada.cadastrarAnimal(g1);
@@ -57,8 +58,8 @@ public class Teste {
 		
 		
 		
-		Solicitacao s1 = new Solicitacao(c1, c2);
-		Solicitacao s2 = new Solicitacao(c2, c1);
+		Solicitacao s1 = new Solicitacao("", "","","");
+		Solicitacao s2 = new Solicitacao("", "","","");
 		fachada.criarSolicitacao(s1);
 		fachada.criarSolicitacao(s2);
 		
@@ -75,6 +76,7 @@ public class Teste {
 		for(Solicitacao solicitacao : solicitacoes) {
 			System.out.println(solicitacao);
 		}
+		*/
 		
 	}
 	

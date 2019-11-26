@@ -19,7 +19,7 @@ public class ControladorSolicitacao {
 		ArrayList<Solicitacao> repo = this.repositorioSolicitacoes.listar();
 		ArrayList<Solicitacao> solicitacoes = new ArrayList<Solicitacao>();
 		for(Solicitacao solicitacao : repo) {
-			if(solicitacao.getRemetente().getEmailDono().equals(usuario.getEmail())) {
+			if(solicitacao.getEmailDonoRemetente().equals(usuario.getEmail())) {
 				solicitacoes.add(solicitacao);
 			}
 		}
@@ -30,25 +30,25 @@ public class ControladorSolicitacao {
 		ArrayList<Solicitacao> repo = this.repositorioSolicitacoes.listar();
 		ArrayList<Solicitacao> solicitacoes = new ArrayList<Solicitacao>();
 		for(Solicitacao solicitacao : repo) {
-			if(solicitacao.getDestinatario().getEmailDono().equals(usuario.getEmail())) {
+			if(solicitacao.getEmailDonoDestinatario().equals(usuario.getEmail())) {
 				solicitacoes.add(solicitacao);
 			}
 		}
 		return solicitacoes;
 	}
 
-	public void criarSolicitacao(Solicitacao s) throws SolicitacaoJaExisteException {
-		if (s == null) {
+	public void criarSolicitacao(Solicitacao solicitacao) throws SolicitacaoJaExisteException {
+		if (solicitacao == null) {
 			throw new IllegalArgumentException("Parâmetro inválido");
-		} else if (!this.existe(s)) {
-			repositorioSolicitacoes.criarSolicitacao(s);
+		} else if (!this.existe(solicitacao)) {
+			repositorioSolicitacoes.criarSolicitacao(solicitacao);
 		} else {
-			throw new SolicitacaoJaExisteException(s.getRemetente(), s.getDestinatario());
+			throw new SolicitacaoJaExisteException(solicitacao.getIdRemetente(), solicitacao.getIdDestinatario());
 		}
 	}
 
-	public void removerSolicitacao(Solicitacao s) {
-		this.repositorioSolicitacoes.removerSolicitacao(s);
+	public void removerSolicitacao(Solicitacao solicitacao) {
+		this.repositorioSolicitacoes.removerSolicitacao(solicitacao);
 	}
 
 	public void aceitarSolicitacao(Solicitacao s) throws SolicitacaoNaoExisteException {
@@ -56,7 +56,7 @@ public class ControladorSolicitacao {
 		if (s1 != null) {
 			repositorioSolicitacoes.aceitarSolicitacao(s);
 		} else {
-			throw new SolicitacaoNaoExisteException(s.getRemetente(), s.getDestinatario());
+			throw new SolicitacaoNaoExisteException(s.getIdRemetente(), s.getIdDestinatario());
 		}
 	}
 
@@ -65,7 +65,7 @@ public class ControladorSolicitacao {
 		if(s1 != null) {
 			repositorioSolicitacoes.recusarSolicitacao(s);
 		}else {
-			throw new SolicitacaoNaoExisteException(s.getRemetente(), s.getDestinatario());
+			throw new SolicitacaoNaoExisteException(s.getIdRemetente(), s.getIdDestinatario());
 		}
 	}
 

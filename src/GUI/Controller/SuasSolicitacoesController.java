@@ -58,7 +58,7 @@ public class SuasSolicitacoesController implements Initializable {
 		Solicitacao selecionada = tabelaSolicitacoes.getSelectionModel().getSelectedItem();
 		if(selecionada.getStatus().equals(Solicitacao.ACEITO)){
 			DadosDoDonoController.setSelecionado(FachadaPL.getInstance()
-			.procurarUsuario(selecionada.getDestinatario().getEmailDono()));
+			.procurarUsuario(selecionada.getEmailDonoDestinatario()));
 			DadosDoDonoApp telaDono = new DadosDoDonoApp();
 			DadosDoDonoApp.setLocal(true);
 			SuasSolicitacoesApp.getStage().close();
@@ -81,7 +81,7 @@ public class SuasSolicitacoesController implements Initializable {
 	private void mostrarDetalhesAnimal(Solicitacao solicitacao) {
 		
 		if (solicitacao != null) {
-			Animal animal = solicitacao.getDestinatario();
+			Animal animal = FachadaPL.getInstance().procurarAnimal(solicitacao.getIdDestinatario());
 			labelNome.setText(animal.getNome());
 			labelSexo.setText(animal.getSexo().valor);
 			labelIdade.setText(Integer.toString(animal.getIdade()));
@@ -106,7 +106,8 @@ public class SuasSolicitacoesController implements Initializable {
 	}
 
 	public void initTable() {
-		colunaSolicitacoes.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDestinatario().getNome()));
+		colunaSolicitacoes.setCellValueFactory(cellData ->
+		new SimpleStringProperty( FachadaPL.getInstance().procurarAnimal( cellData.getValue().getIdDestinatario() ).getNome()) );
 		colunaStatus.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getStatus()));
 		tabelaSolicitacoes.setItems(atualizaTabela());
 	}

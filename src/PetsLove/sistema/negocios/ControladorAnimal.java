@@ -38,6 +38,16 @@ public class ControladorAnimal {
 		return this.repositorioAnimais.listar();
 	}
 	
+	public Animal procurar(String id) {
+		ArrayList<Animal> repo = this.listar();
+		for(Animal animal : repo) {
+			if(animal.getId().equals(id)) {
+				return animal;
+			}
+		}
+		return null;
+	}
+	
 	public ArrayList<Animal> listarPorDono(Usuario usuario) {
 		ArrayList<Animal> repo = this.listar();
 		ArrayList<Animal> animais = new ArrayList<Animal>();

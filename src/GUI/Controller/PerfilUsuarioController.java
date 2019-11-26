@@ -31,7 +31,7 @@ public class PerfilUsuarioController implements Initializable{
 	}
 
 	@FXML
-	void handleEditarDados( ) {
+	void handleEditarDados() {
 		EditarUsuarioApp editarDados = new EditarUsuarioApp();
 		PerfilUsuarioApp.getStage().close();
 

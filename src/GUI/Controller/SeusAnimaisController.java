@@ -66,7 +66,6 @@ public class SeusAnimaisController implements Initializable {
 	void handleEditar() {
 		Animal animalSelecionado = tabelaAnimais.getSelectionModel().getSelectedItem();
 		if(animalSelecionado instanceof Gato){
-			
 			EditarGatoController.setSelecionado(animalSelecionado);
 			EditarGatoApp editarGato = new EditarGatoApp();
 			SeusAnimaisApp.getStage().close();

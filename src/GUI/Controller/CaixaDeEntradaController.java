@@ -57,7 +57,7 @@ public class CaixaDeEntradaController implements Initializable {
 	void handleDadosDoDono() {
 		Solicitacao selecionada = tabelaSolicitacoes.getSelectionModel().getSelectedItem();
 		if(selecionada.getStatus().equals(Solicitacao.ACEITO)){
-			DadosDoDonoController.setSelecionado(FachadaPL.getInstance().procurarUsuario(selecionada.getRemetente().getEmailDono()));
+			DadosDoDonoController.setSelecionado(FachadaPL.getInstance().procurarUsuario(selecionada.getEmailDonoRemetente()));
 			DadosDoDonoApp telaDono = new DadosDoDonoApp();
 			DadosDoDonoApp.setLocal(false);
 			CaixaDeEntradaApp.getStage().close();
@@ -90,8 +90,9 @@ public class CaixaDeEntradaController implements Initializable {
 		initTable();
 	}
 
-	private void mostrarDetalhesAnimal(Animal animal) {
-		if (animal != null) {
+	private void mostrarDetalhesAnimal(Solicitacao solicitacao) {
+		if (solicitacao != null) {
+			Animal animal = FachadaPL.getInstance().procurarAnimal(solicitacao.getIdRemetente());
 			labelNome.setText(animal.getNome());
 			labelSexo.setText(animal.getSexo().valor);
 			labelIdade.setText(Integer.toString(animal.getIdade()));
@@ -116,7 +117,7 @@ public class CaixaDeEntradaController implements Initializable {
 	}
 	
 	public void initTable() {
-		colunaSolicitacoes.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDestinatario().getNome()));
+		colunaSolicitacoes.setCellValueFactory(cellData -> new SimpleStringProperty( FachadaPL.getInstance().procurarAnimal(cellData.getValue().getIdDestinatario()).getNome()));
 		colunaStatus.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getStatus()));
 		tabelaSolicitacoes.setItems(atualizaTabela());
 	}
@@ -129,7 +130,7 @@ public class CaixaDeEntradaController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		initTable();
 		tabelaSolicitacoes.getSelectionModel().selectedItemProperty()
-		.addListener((observable, oldValue, newValue) -> mostrarDetalhesAnimal(newValue.getRemetente()));
+		.addListener((observable, oldValue, newValue) -> mostrarDetalhesAnimal(newValue));
 	}
 	
 }
