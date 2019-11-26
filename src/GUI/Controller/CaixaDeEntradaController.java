@@ -49,34 +49,53 @@ public class CaixaDeEntradaController implements Initializable {
 	@FXML
 	void handleDadosDoDono() {
 		Solicitacao selecionada = tabelaSolicitacoes.getSelectionModel().getSelectedItem();
-		if(selecionada.getStatus().equals(Solicitacao.ACEITO)){
-			DadosDoDonoController.setSelecionado(FachadaPL.getInstance().procurarUsuario(selecionada.getEmailDonoRemetente()));
-			DadosDoDonoApp telaDono = new DadosDoDonoApp();
-			DadosDoDonoApp.setLocal(false);
-			CaixaDeEntradaApp.getStage().close();
+		if(selecionada != null) {
+			if(selecionada.getStatus().equals(Solicitacao.ACEITO)){
+				DadosDoDonoController.setSelecionado(FachadaPL.getInstance().procurarUsuario(selecionada.getEmailDonoRemetente()));
+				DadosDoDonoApp telaDono = new DadosDoDonoApp();
+				DadosDoDonoApp.setLocal(false);
+				CaixaDeEntradaApp.getStage().close();
 
-			try {
-				telaDono.start(new Stage());
-			} catch (Exception e) {
-				e.printStackTrace();
+				try {
+					telaDono.start(new Stage());
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
+		}else {
+			
+			//TODO: Alert (Selecione uma solicitacao)
+			
 		}
 	}
 
 	@FXML
 	void handleAceitar() throws SolicitacaoNaoExisteException {
 		Solicitacao selecionada = tabelaSolicitacoes.getSelectionModel().getSelectedItem();
-		if(selecionada.getStatus().equals(Solicitacao.ANALISANDO)){
-			FachadaPL.getInstance().aceitarSolicitacao(selecionada);
+		if(selecionada != null) {
+			if(selecionada.getStatus().equals(Solicitacao.ANALISANDO)){
+				FachadaPL.getInstance().aceitarSolicitacao(selecionada);
+			}
+		}else {
+			
+			//TODO: Alert (Selecione uma solicitacao)
+			
 		}
+		tabelaSolicitacoes.refresh();
 		initTable();
 	}
 
 	@FXML
 	void handleRecusar() throws SolicitacaoNaoExisteException {
 		Solicitacao selecionada = tabelaSolicitacoes.getSelectionModel().getSelectedItem();
-		if(selecionada.getStatus().equals(Solicitacao.ANALISANDO)){
-			FachadaPL.getInstance().recusarSolicitacao(selecionada);
+		if(selecionada != null) {
+			if(selecionada.getStatus().equals(Solicitacao.ANALISANDO)){
+				FachadaPL.getInstance().recusarSolicitacao(selecionada);
+			}
+		}else {
+			
+			//TODO: Alert (Selecione uma solicitacao)
+			
 		}
 		initTable();
 	}
@@ -108,7 +127,8 @@ public class CaixaDeEntradaController implements Initializable {
 	}
 	
 	public void initTable() {
-		colunaSolicitacoes.setCellValueFactory(cellData -> new SimpleStringProperty(FachadaPL.getInstance().procurarAnimal(cellData.getValue().getIdDestinatario()).getNome()));
+		colunaSolicitacoes.setCellValueFactory(cellData ->
+		new SimpleStringProperty(FachadaPL.getInstance().procurarAnimal(cellData.getValue().getIdDestinatario()).getNome()));
 		colunaStatus.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getStatus()));
 		tabelaSolicitacoes.setItems(atualizaTabela());
 	}

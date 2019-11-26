@@ -37,7 +37,13 @@ public class SuasSolicitacoesController implements Initializable {
 	@FXML
 	void handleApagarSolicitacao() throws SolicitacaoNaoExisteException {
 		Solicitacao selecionada = tabelaSolicitacoes.getSelectionModel().getSelectedItem();
-		FachadaPL.getInstance().removerSolicitacao(selecionada);
+		if(selecionada != null) {
+			FachadaPL.getInstance().removerSolicitacao(selecionada);
+		}else {
+			
+			//TODO: Alert (Selecione uma solicitacao)
+			
+		}
 		initTable();
 	}
 
@@ -56,18 +62,24 @@ public class SuasSolicitacoesController implements Initializable {
 	@FXML
 	void handleDadosDoDono() {
 		Solicitacao selecionada = tabelaSolicitacoes.getSelectionModel().getSelectedItem();
-		if(selecionada.getStatus().equals(Solicitacao.ACEITO)){
-			DadosDoDonoController.setSelecionado(FachadaPL.getInstance()
-			.procurarUsuario(selecionada.getEmailDonoDestinatario()));
-			DadosDoDonoApp telaDono = new DadosDoDonoApp();
-			DadosDoDonoApp.setLocal(true);
-			SuasSolicitacoesApp.getStage().close();
-			
-			try {
-				telaDono.start(new Stage());
-			} catch (Exception e) {
-				e.printStackTrace();
+		if(selecionada != null) {
+			if(selecionada.getStatus().equals(Solicitacao.ACEITO)){
+				DadosDoDonoController.setSelecionado(FachadaPL.getInstance()
+				.procurarUsuario(selecionada.getEmailDonoDestinatario()));
+				DadosDoDonoApp telaDono = new DadosDoDonoApp();
+				DadosDoDonoApp.setLocal(true);
+				SuasSolicitacoesApp.getStage().close();
+				
+				try {
+					telaDono.start(new Stage());
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
+		}else {
+			
+			//TODO: Alert (Selecione uma solicitacao)
+			
 		}
 	}
 
@@ -99,7 +111,7 @@ public class SuasSolicitacoesController implements Initializable {
 
 	public void initTable() {
 		colunaSolicitacoes.setCellValueFactory(cellData ->
-		new SimpleStringProperty( FachadaPL.getInstance().procurarAnimal( cellData.getValue().getIdDestinatario() ).getNome()) );
+		new SimpleStringProperty(FachadaPL.getInstance().procurarAnimal(cellData.getValue().getIdRemetente()).getNome()));
 		colunaStatus.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getStatus()));
 		tabelaSolicitacoes.setItems(atualizaTabela());
 	}

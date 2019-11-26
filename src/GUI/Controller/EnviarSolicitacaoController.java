@@ -62,6 +62,9 @@ public class EnviarSolicitacaoController implements Initializable{
 				alerta.setContentText("Você já tem uma solicitação para este animal");
 				alerta.show();
 			}
+		}else {
+			
+			//TODO: Alert (Selecione um animal)
 			
 		}
 	}

@@ -99,7 +99,6 @@ public class TelaPrincipalController implements Initializable{
 				alerta.setTitle("Erro");
 				alerta.setContentText("Este animal lhe pertence");
 				alerta.show();
-				
 			}else {
 				EnviarSolicitacaoController.setDestinatario(animalSelecionado);
 				TelaPrincipalApp.getStage().close();
