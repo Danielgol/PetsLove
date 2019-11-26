@@ -139,7 +139,7 @@ public class FachadaPL {
 		this.controladorSolicitacao.criarSolicitacao(solicitacao);
 	}
 
-	public void removerSolicitacao(Solicitacao solicitacao) {
+	public void removerSolicitacao(Solicitacao solicitacao) throws SolicitacaoNaoExisteException {
 		this.controladorSolicitacao.removerSolicitacao(solicitacao);
 	}
 

@@ -25,8 +25,6 @@ public class RepositorioSolicitacoes implements IRepositorioSolicitacoes {
 		}
 		return instance;
 	}
-	
-	//TODO: Atualizar banco de solicitacoes quando as restricoes forem completas
 
 	public void criarSolicitacao(Solicitacao solicitacao) {
 		this.solicitacoes.add(solicitacao);
@@ -59,7 +57,7 @@ public class RepositorioSolicitacoes implements IRepositorioSolicitacoes {
 	public ArrayList<Solicitacao> listar(){
 		return this.solicitacoes;
 	}
-	
+
 	public void atualizarBanco() {
 		try {
 			FileWriter csvWriter = new FileWriter("Arquivos/solicitacoes.csv");
@@ -85,12 +83,10 @@ public class RepositorioSolicitacoes implements IRepositorioSolicitacoes {
 			BufferedReader csvReader = new BufferedReader(new FileReader(arquivo));
 			String row = "";
 			try {
-				while((row = csvReader.readLine()) != null){
+				while((row = csvReader.readLine()) != null && !row.equals("")){
 					String[] dados = row.split(",");
-					if(dados.length > 4) {
-						Solicitacao solicitacao = new Solicitacao(dados[0], dados[1], dados[2], dados[3], dados[4]);
-						solicitacoes.add(solicitacao);
-					}
+					Solicitacao solicitacao = new Solicitacao(dados[0], dados[1], dados[2], dados[3], dados[4]);
+					solicitacoes.add(solicitacao);
 				}
 				csvReader.close();
 			}catch (IOException e) {}

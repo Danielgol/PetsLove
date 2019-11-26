@@ -34,8 +34,6 @@ public class CaixaDeEntradaController implements Initializable {
     @FXML private Label labelTituloTamPel;
     @FXML private Label labelPelagemPorte;
 
- 
-    
 	@FXML
 	void handleVoltar() {
 		TelaPrincipalApp telaPrinc = new TelaPrincipalApp();
@@ -66,21 +64,19 @@ public class CaixaDeEntradaController implements Initializable {
 	}
 
 	@FXML
-	void handleAceitar() {
+	void handleAceitar() throws SolicitacaoNaoExisteException {
 		Solicitacao selecionada = tabelaSolicitacoes.getSelectionModel().getSelectedItem();
-		if(selecionada.getStatus().equals(Solicitacao.ANALISANDO))
-		{
-			selecionada.setStatus(Solicitacao.ACEITO);
+		if(selecionada.getStatus().equals(Solicitacao.ANALISANDO)){
+			FachadaPL.getInstance().aceitarSolicitacao(selecionada);
 		}
 		initTable();
 	}
 
 	@FXML
-	void handleRecusar() {
+	void handleRecusar() throws SolicitacaoNaoExisteException {
 		Solicitacao selecionada = tabelaSolicitacoes.getSelectionModel().getSelectedItem();
-		if(selecionada.getStatus().equals(Solicitacao.ANALISANDO))
-		{
-			selecionada.setStatus(Solicitacao.RECUSADO);
+		if(selecionada.getStatus().equals(Solicitacao.ANALISANDO)){
+			FachadaPL.getInstance().recusarSolicitacao(selecionada);
 		}
 		initTable();
 	}
@@ -112,7 +108,7 @@ public class CaixaDeEntradaController implements Initializable {
 	}
 	
 	public void initTable() {
-		colunaSolicitacoes.setCellValueFactory(cellData -> new SimpleStringProperty( FachadaPL.getInstance().procurarAnimal(cellData.getValue().getIdDestinatario()).getNome()));
+		colunaSolicitacoes.setCellValueFactory(cellData -> new SimpleStringProperty(FachadaPL.getInstance().procurarAnimal(cellData.getValue().getIdDestinatario()).getNome()));
 		colunaStatus.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getStatus()));
 		tabelaSolicitacoes.setItems(atualizaTabela());
 	}

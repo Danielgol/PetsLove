@@ -22,8 +22,7 @@ public class DadosDoDonoController implements Initializable {
 	@FXML
 	void handleSair() {
 		
-		if(DadosDoDonoApp.isLocal())
-		{
+		if(DadosDoDonoApp.isLocal()){
 			SuasSolicitacoesApp tela = new SuasSolicitacoesApp();
 			DadosDoDonoApp.getStage().close();
 
@@ -32,9 +31,7 @@ public class DadosDoDonoController implements Initializable {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}
-		else if(!DadosDoDonoApp.isLocal())
-		{
+		}else if(!DadosDoDonoApp.isLocal())	{
 			CaixaDeEntradaApp tela = new CaixaDeEntradaApp();
 			DadosDoDonoApp.getStage().close();
 
@@ -52,11 +49,10 @@ public class DadosDoDonoController implements Initializable {
 	}
 	
 	private void mostrarDetalhesDono(Usuario usuario) {
-		if (usuario != null) {
+		if(usuario != null) {
 			nomeDono.setText(usuario.getNome());
 			numeroDono.setText(usuario.getNumero());
 			emailDono.setText(usuario.getEmail());
-
 		}else {
 			nomeDono.setText("");
 			emailDono.setText("");

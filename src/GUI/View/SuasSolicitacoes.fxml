@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.SuasSolicitacoesController">
+<AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="GUI.Controller.SuasSolicitacoesController">
    <children>
       <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="410.0" prefWidth="610.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -41,7 +41,6 @@
                                  </font>
                               </Label>
                               <Button layoutX="78.0" layoutY="284.0" mnemonicParsing="false" onAction="#handleDadosDoDono" text="Dados do dono" />
-                              <Button layoutX="182.0" layoutY="284.0" mnemonicParsing="false" onAction="#handleCancelarSolicitacao" prefHeight="25.0" prefWidth="122.0" text="Cancelar Solicitação" />
                               <GridPane layoutX="15.0" layoutY="51.0" prefHeight="216.0" prefWidth="290.0">
                                  <columnConstraints>
                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -94,7 +93,7 @@
                                     <Label fx:id="labelPelagemPorte" prefHeight="22.0" prefWidth="107.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                                  </children>
                               </GridPane>
-                              <Button layoutX="182.0" layoutY="255.0" mnemonicParsing="false" onAction="#handleApagarSolicitacao" prefHeight="25.0" prefWidth="122.0" text="Apagar Solicitação" />
+                              <Button layoutX="182.0" layoutY="284.0" mnemonicParsing="false" onAction="#handleApagarSolicitacao" prefHeight="25.0" prefWidth="122.0" text="Apagar Solicitação" />
                            </children>
                         </Pane>
                      </items>

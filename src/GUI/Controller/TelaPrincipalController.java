@@ -122,7 +122,7 @@ public class TelaPrincipalController implements Initializable{
 	}
 
 	private void mostrarDetalhesAnimal(Animal animal) {
-		if (animal != null) {
+		if(animal != null) {
 			labelNome.setText(animal.getNome());
 			labelSexo.setText(animal.getSexo().valor);
 			labelIdade.setText(Integer.toString(animal.getIdade()));

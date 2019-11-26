@@ -37,17 +37,8 @@ public class SuasSolicitacoesController implements Initializable {
 	@FXML
 	void handleApagarSolicitacao() throws SolicitacaoNaoExisteException {
 		Solicitacao selecionada = tabelaSolicitacoes.getSelectionModel().getSelectedItem();
-		if(selecionada.getStatus().equals("Recusado"))
-		{
-			FachadaPL.getInstance().removerSolicitacao(selecionada);
-			initTable();
-		}
-		else
-		{
-			//TODO: Colocar alerta de que só dá pra apagar se a solicitação for cancelada ou recusada.
-			
-		}
-		
+		FachadaPL.getInstance().removerSolicitacao(selecionada);
+		initTable();
 	}
 
 	@FXML
@@ -80,15 +71,7 @@ public class SuasSolicitacoesController implements Initializable {
 		}
 	}
 
-	@FXML
-	void handleCancelarSolicitacao() {
-		Solicitacao selecionada = tabelaSolicitacoes.getSelectionModel().getSelectedItem();
-		selecionada.setStatus(Solicitacao.RECUSADO);
-		initTable();
-	}
-
 	private void mostrarDetalhesAnimal(Solicitacao solicitacao) {
-		
 		if (solicitacao != null) {
 			Animal animal = FachadaPL.getInstance().procurarAnimal(solicitacao.getIdDestinatario());
 			labelNome.setText(animal.getNome());

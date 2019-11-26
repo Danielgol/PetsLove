@@ -30,7 +30,7 @@ public class ControladorSolicitacao {
 		ArrayList<Solicitacao> repo = this.repositorioSolicitacoes.listar();
 		ArrayList<Solicitacao> solicitacoes = new ArrayList<Solicitacao>();
 		for(Solicitacao solicitacao : repo) {
-			if(solicitacao.getEmailDonoDestinatario().equals(usuario.getEmail())) {
+			if(solicitacao.getEmailDonoDestinatario().equals(usuario.getEmail()) && !solicitacao.getStatus().equals(Solicitacao.RECUSADO)) {
 				solicitacoes.add(solicitacao);
 			}
 		}
@@ -47,8 +47,13 @@ public class ControladorSolicitacao {
 		}
 	}
 
-	public void removerSolicitacao(Solicitacao solicitacao) {
-		this.repositorioSolicitacoes.removerSolicitacao(solicitacao);
+	public void removerSolicitacao(Solicitacao solicitacao) throws SolicitacaoNaoExisteException {
+		Solicitacao s1 = solicitacao;
+		if(s1 != null) {
+			this.repositorioSolicitacoes.removerSolicitacao(solicitacao);
+		}else {
+			throw new SolicitacaoNaoExisteException(solicitacao.getIdRemetente(), solicitacao.getIdDestinatario());
+		}
 	}
 
 	public void aceitarSolicitacao(Solicitacao s) throws SolicitacaoNaoExisteException {

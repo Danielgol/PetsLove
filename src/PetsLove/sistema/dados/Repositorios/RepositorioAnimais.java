@@ -37,12 +37,12 @@ public class RepositorioAnimais implements IRepositorioAnimais{
 
 	public void cadastrar(Animal animal) {
 		this.animais.add(animal);
-		//atualizarBanco();
+		atualizarBanco();
 	}
 
 	public void remover(Animal animal) {
 		this.animais.remove(animal);
-		//atualizarBanco();
+		atualizarBanco();
 	}
 
 	public void atualizar(Animal animal) {
@@ -102,7 +102,7 @@ public class RepositorioAnimais implements IRepositorioAnimais{
 			String row = "";
 			try {
 				
-				while((row = csvReader.readLine()) != null){
+				while((row = csvReader.readLine()) != null && !row.equals("")){
 					
 					String[] dados = row.split(",");
 					String id = dados[0];

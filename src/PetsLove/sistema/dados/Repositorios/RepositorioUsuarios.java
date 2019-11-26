@@ -79,7 +79,7 @@ public class RepositorioUsuarios implements IRepositorioUsuarios {
         	BufferedReader csvReader = new BufferedReader(new FileReader(arquivo));
         	String row = "";
         	try {
-        		while((row = csvReader.readLine()) != null){
+        		while((row = csvReader.readLine()) != null && !row.equals("")){
         			String[] dados = row.split(",");
         			Usuario usuario = new Usuario(dados[0], dados[1], dados[2], dados[3]);
         			usuarios.add(usuario);
