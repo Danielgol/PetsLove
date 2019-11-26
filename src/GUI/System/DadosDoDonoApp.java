@@ -9,13 +9,13 @@ import javafx.stage.Stage;
 
 public class DadosDoDonoApp extends Application {
 
-private static Stage stage;
-private static boolean local;
-	
+	private static Stage stage;
+	private static boolean local;
+
 	public static void main(String[] args) {
 		launch(args);
 	}
-	
+
 	@Override
 	public void start(Stage stage) throws Exception {
 		Parent root = FXMLLoader.load(getClass().getResource("../View/DadosDoDono.fxml"));
@@ -35,7 +35,7 @@ private static boolean local;
 
 	public static void setStage(Stage stage) {
 		DadosDoDonoApp.stage = stage;
-	
+
 	}
 
 	public static boolean isLocal() {
@@ -45,5 +45,5 @@ private static boolean local;
 	public static void setLocal(boolean local) {
 		DadosDoDonoApp.local = local;
 	}
-	 
+
 }

@@ -56,7 +56,7 @@ public class CaixaDeEntradaController implements Initializable {
 	@FXML
 	void handleDadosDoDono() {
 		Solicitacao selecionada = tabelaSolicitacoes.getSelectionModel().getSelectedItem();
-		if(selecionada.getStatus().equals("Aceito")){
+		if(selecionada.getStatus().equals(Solicitacao.ACEITO)){
 			DadosDoDonoController.setSelecionado(FachadaPL.getInstance().procurarUsuario(selecionada.getRemetente().getEmailDono()));
 			DadosDoDonoApp telaDono = new DadosDoDonoApp();
 			DadosDoDonoApp.setLocal(false);
@@ -72,12 +72,22 @@ public class CaixaDeEntradaController implements Initializable {
 
 	@FXML
 	void handleAceitar() {
-		//TODO: Aceitar Solicitacao
+		Solicitacao selecionada = tabelaSolicitacoes.getSelectionModel().getSelectedItem();
+		if(selecionada.getStatus().equals(Solicitacao.ANALISANDO))
+		{
+			selecionada.setStatus(Solicitacao.ACEITO);
+		}
+		initTable();
 	}
 
 	@FXML
 	void handleRecusar() {
-		//TODO: Recusar Solicitacao
+		Solicitacao selecionada = tabelaSolicitacoes.getSelectionModel().getSelectedItem();
+		if(selecionada.getStatus().equals(Solicitacao.ANALISANDO))
+		{
+			selecionada.setStatus(Solicitacao.RECUSADO);
+		}
+		initTable();
 	}
 
 	private void mostrarDetalhesAnimal(Animal animal) {
@@ -104,7 +114,7 @@ public class CaixaDeEntradaController implements Initializable {
 			labelPelagemTamanho.setText("");
 		}
 	}
-
+	
 	public void initTable() {
 		colunaSolicitacoes.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDestinatario().getNome()));
 		colunaStatus.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getStatus()));

@@ -57,12 +57,12 @@ public class SuasSolicitacoesController implements Initializable {
 	@FXML
 	void handleDadosDoDono() {
 		Solicitacao selecionada = tabelaSolicitacoes.getSelectionModel().getSelectedItem();
-		if(selecionada.getStatus().equals("Aceito")){
+		if(selecionada.getStatus().equals(Solicitacao.ACEITO)){
 			DadosDoDonoController.setSelecionado(FachadaPL.getInstance()
 			.procurarUsuario(selecionada.getDestinatario().getEmailDono()));
 			DadosDoDonoApp telaDono = new DadosDoDonoApp();
-			DadosDoDonoApp.setLocal(false);
-			CaixaDeEntradaApp.getStage().close();
+			DadosDoDonoApp.setLocal(true);
+			SuasSolicitacoesApp.getStage().close();
 			
 			try {
 				telaDono.start(new Stage());
@@ -74,7 +74,9 @@ public class SuasSolicitacoesController implements Initializable {
 
 	@FXML
 	void handleCancelarSolicitacao() {
-		//TODO: Cancelar Solicitacao
+		Solicitacao selecionada = tabelaSolicitacoes.getSelectionModel().getSelectedItem();
+		selecionada.setStatus(Solicitacao.RECUSADO);
+		initTable();
 	}
 
 	private void mostrarDetalhesAnimal(Animal animal) {

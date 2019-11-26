@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import GUI.System.CaixaDeEntradaApp;
 import GUI.System.DadosDoDonoApp;
+import GUI.System.SuasSolicitacoesApp;
 import PetsLove.sistema.negocios.beans.Usuario;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -20,14 +21,30 @@ public class DadosDoDonoController implements Initializable {
 
 	@FXML
 	void handleSair() {
-		CaixaDeEntradaApp tela = new CaixaDeEntradaApp();
-		DadosDoDonoApp.getStage().close();
+		
+		if(DadosDoDonoApp.isLocal())
+		{
+			SuasSolicitacoesApp tela = new SuasSolicitacoesApp();
+			DadosDoDonoApp.getStage().close();
 
-		try {
-			tela.start(new Stage());
-		} catch (Exception e) {
-			e.printStackTrace();
+			try {
+				tela.start(new Stage());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
+		else if(!DadosDoDonoApp.isLocal())
+		{
+			CaixaDeEntradaApp tela = new CaixaDeEntradaApp();
+			DadosDoDonoApp.getStage().close();
+
+			try {
+				tela.start(new Stage());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
 	}
 
 	public static void setSelecionado(Usuario dono){
