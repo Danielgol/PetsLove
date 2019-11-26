@@ -31,8 +31,27 @@ public class CadastroUsuarioController implements Initializable{
 	@FXML
 	private void handleCadastrar() throws UsuarioJaExisteException {
 		this.usuario = new Usuario(tfNome.getText(), tfTelefone.getText(), tfEmail.getText(), pfSenha.getText());
+		
+		int countPonto = 0;
+		int posPonto = tfEmail.getText().indexOf(".");
+		
+		while ( posPonto != -1 ) {
+		   countPonto++;
+		   posPonto = tfEmail.getText().indexOf( ".",posPonto + 1 );
+		}
+		
+		int countArroba = 0;
+		int posArroba = tfEmail.getText().indexOf("@");
+		
+		while ( posArroba != -1 ) {
+		   countArroba++;
+		   posArroba = tfEmail.getText().indexOf( "@",posArroba + 1 );
+		}
+		
+		
 		if(fachada.usuarioExiste(tfEmail.getText()) == false && !tfEmail.getText().equals("") 
-				&& tfEmail.getText().indexOf(" ") == -1 && tfEmail.getText().endsWith(".com") && tfEmail.getText().indexOf("@") != -1) {
+				&& tfEmail.getText().indexOf(" ") == -1 && tfEmail.getText().endsWith(".com")
+				&& countArroba == 1 && countPonto == 1) {
 			if(!tfNome.getText().equals("") && tfNome.getText().matches("^[A-Za-z·‡‚„ÈËÍÌÔÛÙıˆ˚˙ÁÒ¡¿¬√… »Õœ”‘’÷⁄€«— ]+$") == true) {
 				if(!pfSenha.getText().equals("")){
 					if(tfTelefone.getText().length() == 9 && tfTelefone.getText().matches("[0-9]+") == true
