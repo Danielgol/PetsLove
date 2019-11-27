@@ -89,7 +89,7 @@ public class SeusAnimaisController implements Initializable {
 			Alert alerta = new Alert(AlertType.ERROR);
 			alerta.setHeaderText("Nenhum animal foi selecionado");
 			alerta.setTitle("Erro");
-			alerta.setContentText("Selecione um animal para remover");
+			alerta.setContentText("Selecione um animal para editar");
 			alerta.show();
 		}
 	}

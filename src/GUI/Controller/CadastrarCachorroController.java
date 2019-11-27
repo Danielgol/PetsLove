@@ -15,66 +15,128 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
-public class CadastrarCachorroController implements Initializable{
+public class CadastrarCachorroController implements Initializable {
 
-	@FXML private ComboBox<String> cbSexo;
-	@FXML private ComboBox<String> cbRaca;
-	@FXML private TextArea taDescricao;
-	@FXML private TextField tfNome;
-	@FXML private DatePicker dpDataDeNascimento;
-	@FXML private ComboBox<String> cbPorte;
+	@FXML
+	private ComboBox<String> cbSexo;
+	@FXML
+	private ComboBox<String> cbRaca;
+	@FXML
+	private TextArea taDescricao;
+	@FXML
+	private TextField tfNome;
+	@FXML
+	private DatePicker dpDataDeNascimento;
+	@FXML
+	private ComboBox<String> cbPorte;
 
 	ObservableList<String> sexo = FXCollections.observableArrayList(EnumSexo.MACHO.valor, EnumSexo.FEMEA.valor);
-	ObservableList<String> porte = FXCollections.observableArrayList(EnumPorte.GRANDE.valor, EnumPorte.PEQUENO.valor, EnumPorte.MEDIO.valor);
+	ObservableList<String> porte = FXCollections.observableArrayList(EnumPorte.GRANDE.valor, EnumPorte.PEQUENO.valor,
+			EnumPorte.MEDIO.valor);
 	ObservableList<String> raca = FXCollections.observableArrayList(EnumRacaCachorro.getValues());
 
 	@FXML
 	void handleCadastrar() {
 
+		boolean cadastrar = false;
+
+		if (!tfNome.getText().equals("")
+				&& tfNome.getText().matches("^[A-Za-z·‡‚„ÈËÍÌÔÛÙıˆ˚˙ÁÒ¡¿¬√… »Õœ”‘’÷⁄€«— ]+$") == true) {
+			if (dpDataDeNascimento.getValue() != null) {
+				if (cbSexo != null && cbSexo.getValue() != null) {
+					if (cbRaca != null && cbRaca.getValue() != null) {
+						if (cbPorte != null && cbPorte.getValue() != null) {
+							if (!taDescricao.getText().equals("")) {
+								cadastrar = true;
+							} else {
+								Alert alerta = new Alert(AlertType.ERROR);
+								alerta.setHeaderText("Erro ao cadastrar");
+								alerta.setTitle("Erro");
+								alerta.setContentText("DescriÁ„o inv·lida");
+								alerta.show();
+							}
+						} else {
+							Alert alerta = new Alert(AlertType.ERROR);
+							alerta.setHeaderText("Erro ao cadastrar");
+							alerta.setTitle("Erro");
+							alerta.setContentText("Porte inv·lido");
+							alerta.show();
+						}
+					} else {
+						Alert alerta = new Alert(AlertType.ERROR);
+						alerta.setHeaderText("Erro ao cadastrar");
+						alerta.setTitle("Erro");
+						alerta.setContentText("RaÁa inv·lida");
+						alerta.show();
+					}
+				} else {
+					Alert alerta = new Alert(AlertType.ERROR);
+					alerta.setHeaderText("Erro ao cadastrar");
+					alerta.setTitle("Erro");
+					alerta.setContentText("Sexo inv·lido");
+					alerta.show();
+				}
+			} else {
+				Alert alerta = new Alert(AlertType.ERROR);
+				alerta.setHeaderText("Erro ao cadastrar");
+				alerta.setTitle("Erro");
+				alerta.setContentText("Data de nascimento inv·lida");
+				alerta.show();
+			}
+		} else {
+			Alert alerta = new Alert(AlertType.ERROR);
+			alerta.setHeaderText("Erro ao cadastrar");
+			alerta.setTitle("Erro");
+			alerta.setContentText("Nome inv·lido");
+			alerta.show();
+		}
+
 		int idade = Period.between(dpDataDeNascimento.getValue(), LocalDate.now()).getYears();
 
 		EnumSexo sexo = null;
-		if(cbSexo.getValue().equals(EnumSexo.MACHO.valor)){
+		if (cbSexo.getValue().equals(EnumSexo.MACHO.valor)) {
 			sexo = EnumSexo.MACHO;
-		}else if(cbSexo.getValue().equals(EnumSexo.FEMEA.valor)){
+		} else if (cbSexo.getValue().equals(EnumSexo.FEMEA.valor)) {
 			sexo = EnumSexo.FEMEA;
 		}
 
 		EnumPorte porte = null;
-		for(EnumPorte e: EnumPorte.values()){
-			if(e.valor.equals(cbPorte.getValue())){
+		for (EnumPorte e : EnumPorte.values()) {
+			if (e.valor.equals(cbPorte.getValue())) {
 				porte = e;
 				break;
 			}
 		}
 
 		EnumRacaCachorro raca = null;
-		for(EnumRacaCachorro e: EnumRacaCachorro.values()){
-			if(e.valor.equals(cbRaca.getValue())){
+		for (EnumRacaCachorro e : EnumRacaCachorro.values()) {
+			if (e.valor.equals(cbRaca.getValue())) {
 				raca = e;
 				break;
 			}
 		}
-		
-		//TODO: Colocar Regras de Cadastro (Todos os campos devem ser preenchidos)
 
-		Cachorro cachorro = new Cachorro
-		(idade, sexo, tfNome.getText(), FachadaPL.getUsuarioLogado().getEmail(), raca, porte, taDescricao.getText());
-		FachadaPL.getInstance().cadastrarAnimal(cachorro);
+		if (cadastrar) {
+			Cachorro cachorro = new Cachorro(idade, sexo, tfNome.getText(), FachadaPL.getUsuarioLogado().getEmail(),
+					raca, porte, taDescricao.getText());
+			FachadaPL.getInstance().cadastrarAnimal(cachorro);
 
-		SeusAnimaisApp seusAnimais = new SeusAnimaisApp();
-		CadastrarCachorroApp.getStage().close();
+			SeusAnimaisApp seusAnimais = new SeusAnimaisApp();
+			CadastrarCachorroApp.getStage().close();
 
-		try {
-			seusAnimais.start(new Stage());
-		} catch (Exception e) {
-			e.printStackTrace();
+			try {
+				seusAnimais.start(new Stage());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
