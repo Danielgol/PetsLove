@@ -19,18 +19,15 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 public class CadastroUsuarioController implements Initializable{
-	
-	private Usuario usuario;
-	private FachadaPL fachada = FachadaPL.getInstance();
 
 	@FXML private TextField tfNome;
-	@FXML private TextField tfTelefone;
 	@FXML private TextField tfEmail;
+	@FXML private TextField tfTelefone;
 	@FXML private PasswordField pfSenha;
 	
 	@FXML
 	private void handleCadastrar() throws UsuarioJaExisteException {
-		this.usuario = new Usuario(tfNome.getText(), tfTelefone.getText(), tfEmail.getText(), pfSenha.getText());
+		Usuario usuario = new Usuario(tfNome.getText(), tfTelefone.getText(), tfEmail.getText(), pfSenha.getText());
 		
 		int countPonto = 0;
 		int posPonto = tfEmail.getText().indexOf(".");
@@ -48,15 +45,14 @@ public class CadastroUsuarioController implements Initializable{
 		   posArroba = tfEmail.getText().indexOf( "@",posArroba + 1 );
 		}
 		
-		
-		if(fachada.usuarioExiste(tfEmail.getText()) == false && !tfEmail.getText().equals("") 
+		if(FachadaPL.getInstance().usuarioExiste(tfEmail.getText()) == false && !tfEmail.getText().equals("") 
 				&& tfEmail.getText().indexOf(" ") == -1 && tfEmail.getText().endsWith(".com")
 				&& countArroba == 1 && countPonto == 1) {
 			if(!tfNome.getText().equals("") && tfNome.getText().matches("^[A-Za-z·‡‚„ÈËÍÌÔÛÙıˆ˚˙ÁÒ¡¿¬√… »Õœ”‘’÷⁄€«— ]+$") == true) {
 				if(!pfSenha.getText().equals("")){
 					if(tfTelefone.getText().length() == 9 && tfTelefone.getText().matches("[0-9]+") == true
 							&& tfTelefone.getText().indexOf(" ") == -1){
-						fachada.cadastrarUsuario(usuario);
+						FachadaPL.getInstance().cadastrarUsuario(usuario);
 						LoginApp tela = new LoginApp();
 						CadastroApp.getStage().close();
 						try {
@@ -94,7 +90,7 @@ public class CadastroUsuarioController implements Initializable{
 				}
 			}
 		}else {
-			if(fachada.usuarioExiste(tfEmail.getText()) == true){
+			if(FachadaPL.getInstance().usuarioExiste(tfEmail.getText()) == true){
 				Alert alerta = new Alert(AlertType.ERROR);
 				alerta.setHeaderText("Email j· existe");
 				alerta.setTitle("Erro");

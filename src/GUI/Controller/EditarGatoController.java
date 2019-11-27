@@ -28,12 +28,12 @@ public class EditarGatoController implements Initializable {
 
 	public static Gato selecionado;
 
+	@FXML private TextField tfNome;
+	@FXML private TextArea taDescricao;
+	@FXML private DatePicker dpDataDeNascimento;
 	@FXML private ComboBox<String> cbSexo;
 	@FXML private ComboBox<String> cbPelagem;
-	@FXML private TextArea taDescricao;
-	@FXML private TextField tfNome;
 	@FXML private ComboBox<String> cbRaca;
-	@FXML private DatePicker dpDataDeNascimento;
 
 	ObservableList<String> sexo = FXCollections.observableArrayList(EnumSexo.MACHO.valor, EnumSexo.FEMEA.valor);
 	ObservableList<String> pelagem = FXCollections.observableArrayList(EnumPelagem.FELPUDO.valor, EnumPelagem.MEDIO.valor, EnumPelagem.RASO.valor);
@@ -41,6 +41,7 @@ public class EditarGatoController implements Initializable {
 
 	@FXML
 	void handleCancelar() {
+		selecionado = null;
 		SeusAnimaisApp seusAnimais = new SeusAnimaisApp();
 		EditarGatoApp.getStage().close();
 
@@ -57,35 +58,41 @@ public class EditarGatoController implements Initializable {
 		if (tfNome.getText().equals("")
 				|| !tfNome.getText().matches("^[A-Za-z·‡‚„ÈËÍÌÔÛÙıˆ˚˙ÁÒ¡¿¬√… »Õœ”‘’÷⁄€«— ]+$")) {
 			Alert alerta = new Alert(AlertType.ERROR);
-			alerta.setHeaderText("Erro ao cadastrar");
+			alerta.setHeaderText("Erro ao editar");
 			alerta.setTitle("Erro");
 			alerta.setContentText("Nome inv·lido");
 			alerta.show();
 		} else if (dpDataDeNascimento.getValue() == null) {
 			Alert alerta = new Alert(AlertType.ERROR);
-			alerta.setHeaderText("Erro ao cadastrar");
+			alerta.setHeaderText("Erro ao editar");
 			alerta.setTitle("Erro");
 			alerta.setContentText("Data de nascimento inv·lida");
 			alerta.show();
 		} else if (cbSexo.getValue() == null) {
 			Alert alerta = new Alert(AlertType.ERROR);
-			alerta.setHeaderText("Erro ao cadastrar");
+			alerta.setHeaderText("Erro ao editar");
 			alerta.setTitle("Erro");
 			alerta.setContentText("Sexo inv·lido");
 			alerta.show();
 		} else if (cbPelagem.getValue() == null) {
 			Alert alerta = new Alert(AlertType.ERROR);
-			alerta.setHeaderText("Erro ao cadastrar");
+			alerta.setHeaderText("Erro ao editar");
 			alerta.setTitle("Erro");
 			alerta.setContentText("Pelagem inv·lida");
 			alerta.show();
 		} else if (cbRaca.getValue() == null) {
 			Alert alerta = new Alert(AlertType.ERROR);
-			alerta.setHeaderText("Erro ao cadastrar");
+			alerta.setHeaderText("Erro ao editar");
 			alerta.setTitle("Erro");
 			alerta.setContentText("RaÁa inv·lida");
 			alerta.show();
-		} else {
+		}else if(taDescricao.getText().equals("")) {
+			Alert alerta = new Alert(AlertType.ERROR);
+			alerta.setHeaderText("Erro ao editar");
+			alerta.setTitle("Erro");
+			alerta.setContentText("Gato sem descriÁ„o");
+			alerta.show();
+		}else {
 			int idade = Period.between(dpDataDeNascimento.getValue(), LocalDate.now()).getYears();
 
 			EnumSexo sexo = EnumSexo.MACHO;
@@ -113,27 +120,25 @@ public class EditarGatoController implements Initializable {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-
 		}
-	}
-
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		cbSexo.setItems(sexo);
-		cbPelagem.setItems(pelagem);
-		cbRaca.setItems(raca);
-		
-		tfNome.setText(selecionado.getNome());
-		taDescricao.setText(selecionado.getDescricao());
-		cbSexo.getSelectionModel().select(selecionado.getSexo().valor);
-		cbPelagem.getSelectionModel().select(selecionado.getPelagem().valor);
-		cbRaca.getSelectionModel().select(selecionado.getRaca().valor);
 	}
 
 	public static void setSelecionado(Animal animal) {
 		if (FachadaPL.getUsuarioLogado().equals(FachadaPL.getInstance().procurarUsuario(animal.getEmailDono()))) {
 			selecionado = (Gato) animal;
 		}
+	}
+	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		cbSexo.setItems(sexo);
+		cbPelagem.setItems(pelagem);
+		cbRaca.setItems(raca);
+		tfNome.setText(selecionado.getNome());
+		taDescricao.setText(selecionado.getDescricao());
+		cbSexo.getSelectionModel().select(selecionado.getSexo().valor);
+		cbPelagem.getSelectionModel().select(selecionado.getPelagem().valor);
+		cbRaca.getSelectionModel().select(selecionado.getRaca().valor);
 	}
 
 }

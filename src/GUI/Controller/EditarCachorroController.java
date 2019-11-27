@@ -44,6 +44,7 @@ public class EditarCachorroController implements Initializable {
 		selecionado = null;
 		SeusAnimaisApp seusAnimaisTela = new SeusAnimaisApp();
 		EditarCachorroApp.getStage().close();
+		
 		try {
 			seusAnimaisTela.start(new Stage());
 		} catch (Exception e) {
@@ -57,35 +58,41 @@ public class EditarCachorroController implements Initializable {
 		if (tfNome.getText().equals("")
 				|| !tfNome.getText().matches("^[A-Za-z·‡‚„ÈËÍÌÔÛÙıˆ˚˙ÁÒ¡¿¬√… »Õœ”‘’÷⁄€«— ]+$")) {
 			Alert alerta = new Alert(AlertType.ERROR);
-			alerta.setHeaderText("Erro ao cadastrar");
+			alerta.setHeaderText("Erro ao editar");
 			alerta.setTitle("Erro");
 			alerta.setContentText("Nome inv·lido");
 			alerta.show();
 		} else if (dpDataDeNascimento.getValue() == null) {
 			Alert alerta = new Alert(AlertType.ERROR);
-			alerta.setHeaderText("Erro ao cadastrar");
+			alerta.setHeaderText("Erro ao editar");
 			alerta.setTitle("Erro");
 			alerta.setContentText("Data de nascimento inv·lida");
 			alerta.show();
 		} else if (cbSexo.getValue() == null) {
 			Alert alerta = new Alert(AlertType.ERROR);
-			alerta.setHeaderText("Erro ao cadastrar");
+			alerta.setHeaderText("Erro ao editar");
 			alerta.setTitle("Erro");
 			alerta.setContentText("Sexo inv·lido");
 			alerta.show();
 		} else if (cbRaca.getValue() == null) {
 			Alert alerta = new Alert(AlertType.ERROR);
-			alerta.setHeaderText("Erro ao cadastrar");
+			alerta.setHeaderText("Erro ao editar");
 			alerta.setTitle("Erro");
 			alerta.setContentText("RaÁa inv·lida");
 			alerta.show();
 		} else if (cbPorte.getValue() == null) {
 			Alert alerta = new Alert(AlertType.ERROR);
-			alerta.setHeaderText("Erro ao cadastrar");
+			alerta.setHeaderText("Erro ao editar");
 			alerta.setTitle("Erro");
 			alerta.setContentText("Porte inv·lido");
 			alerta.show();
-		} else {
+		}else if(taDescricao.getText().equals("")) {
+			Alert alerta = new Alert(AlertType.ERROR);
+			alerta.setHeaderText("Erro ao editar");
+			alerta.setTitle("Erro");
+			alerta.setContentText("Cachorro sem descriÁ„o");
+			alerta.show();
+		}else {
 			int idade = Period.between(dpDataDeNascimento.getValue(), LocalDate.now()).getYears();
 
 			EnumSexo sexo = EnumSexo.MACHO;
@@ -104,6 +111,7 @@ public class EditarCachorroController implements Initializable {
 			selecionado.setSexo(sexo);
 
 			FachadaPL.getInstance().atualizarAnimal(selecionado);
+			
 			SeusAnimaisApp seusAnimais = new SeusAnimaisApp();
 			EditarCachorroApp.getStage().close();
 
@@ -126,7 +134,6 @@ public class EditarCachorroController implements Initializable {
 		cbSexo.setItems(sexo);
 		cbPorte.setItems(porte);
 		cbRaca.setItems(raca);
-
 		tfNome.setText(selecionado.getNome());
 		taDescricao.setText(selecionado.getDescricao());
 		cbSexo.getSelectionModel().select(selecionado.getSexo().valor);

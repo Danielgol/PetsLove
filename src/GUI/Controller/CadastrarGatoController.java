@@ -25,11 +25,11 @@ import javafx.stage.Stage;
 
 public class CadastrarGatoController implements Initializable {
 
-	@FXML private ComboBox<String> cbSexo;
-	@FXML private ComboBox<String> cbPelagem;
-	@FXML private TextArea taDescricao;
 	@FXML private TextField tfNome;
+	@FXML private TextArea taDescricao;
+	@FXML private ComboBox<String> cbSexo;
 	@FXML private ComboBox<String> cbRaca;
+	@FXML private ComboBox<String> cbPelagem;
 	@FXML private DatePicker dpDataDeNascimento;
 
 	ObservableList<String> sexo = FXCollections.observableArrayList(EnumSexo.MACHO.valor, EnumSexo.FEMEA.valor);
@@ -37,7 +37,7 @@ public class CadastrarGatoController implements Initializable {
 	ObservableList<String> raca = FXCollections.observableArrayList(EnumRacaGato.getValues());
 
 	@FXML
-	public void handleCadastrar() {
+	void handleCadastrar() {
 
 		if (tfNome.getText().equals("")
 				|| !tfNome.getText().matches("^[A-Za-z·‡‚„ÈËÍÌÔÛÙıˆ˚˙ÁÒ¡¿¬√… »Õœ”‘’÷⁄€«— ]+$")) {
@@ -70,7 +70,14 @@ public class CadastrarGatoController implements Initializable {
 			alerta.setTitle("Erro");
 			alerta.setContentText("RaÁa inv·lida");
 			alerta.show();
-		} else {
+		}else if(taDescricao.getText().equals("")) {
+			Alert alerta = new Alert(AlertType.ERROR);
+			alerta.setHeaderText("Erro ao cadastrar");
+			alerta.setTitle("Erro");
+			alerta.setContentText("Gato sem descriÁ„o");
+			alerta.show();
+		}else {
+			
 			int idade = Period.between(dpDataDeNascimento.getValue(), LocalDate.now()).getYears();
 
 			EnumSexo sexo = EnumSexo.MACHO;
@@ -94,11 +101,10 @@ public class CadastrarGatoController implements Initializable {
 				e.printStackTrace();
 			}
 		}
-
 	}
 
 	@FXML
-	public void handleCancelar() {
+	void handleCancelar() {
 		SeusAnimaisApp seusAnimais = new SeusAnimaisApp();
 		CadastrarGatoApp.getStage().close();
 

@@ -15,8 +15,8 @@ import javafx.stage.Stage;
 public class PerfilUsuarioController implements Initializable{
 
 	@FXML private Label labelNome;
-	@FXML private Label labelTelefone;
 	@FXML private Label labelEmail;
+	@FXML private Label labelTelefone;
 
 	@FXML
 	private void handleAlterarSenha() {

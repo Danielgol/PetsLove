@@ -103,9 +103,7 @@ public class RepositorioAnimais implements IRepositorioAnimais{
 			BufferedReader csvReader = new BufferedReader(new FileReader(arquivo));
 			String row = "";
 			try {
-
 				while((row = csvReader.readLine()) != null && !row.equals("")){
-
 					String[] dados = row.split(",");
 					String id = dados[0];
 					int idade = Integer.parseInt(dados[1]);
@@ -115,12 +113,10 @@ public class RepositorioAnimais implements IRepositorioAnimais{
 					String racaDados = dados[5];
 					String atributo = dados[6];
 					String descricao = dados[7];
-
 					EnumSexo sexo = EnumSexo.MACHO;
 					if(sexoDados.equals(EnumSexo.FEMEA.valor)) {
 						sexo = EnumSexo.FEMEA;
 					}
-
 					if(EnumRacaCachorro.getValues().contains(racaDados)) {
 						EnumRacaCachorro raca = EnumRacaCachorro.getRaca(racaDados);
 						EnumPorte porte = EnumPorte.getPorte(atributo);
@@ -132,10 +128,8 @@ public class RepositorioAnimais implements IRepositorioAnimais{
 						Gato gato = new Gato(id, idade, sexo, nome, email, raca, pelagem, descricao);
 						animais.add(gato);
 					}
-
 				}
 				csvReader.close();
-
 			}catch (IOException e) {}
 		}catch (FileNotFoundException e) {
 			System.out.println("Arquivo não encontrado!");

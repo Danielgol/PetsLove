@@ -32,6 +32,7 @@ public class EditarUsuarioController implements Initializable{
 
 	@FXML
 	void handleSalvar() throws UsuarioNaoExisteException {
+		
 		if(tfNome.getText().equals("")
 				|| !tfNome.getText().matches("^[A-Za-záàâãéèêíïóôõöûúçñÁÀÂÃÉÊÈÍÏÓÔÕÖÚÛÇÑ ]+$")) {
 			Alert alerta = new Alert(AlertType.ERROR);

@@ -25,17 +25,17 @@ import javafx.stage.Stage;
 
 public class CaixaDeEntradaController implements Initializable {
 
-	@FXML private TableView<Solicitacao> tabelaSolicitacoes;
-    @FXML private TableColumn<Solicitacao, String> colunaSolicitacoes;
-    @FXML private TableColumn<Solicitacao, String> colunaStatus;
-    @FXML private Label labelNome;
+	@FXML private Label labelNome;
     @FXML private Label labelSexo;
     @FXML private Label labelIdade;
     @FXML private Label labelRaca;
     @FXML private Label labelDescricao;
     @FXML private Label labelTituloTamPel;
     @FXML private Label labelPelagemPorte;
-
+	@FXML private TableView<Solicitacao> tabelaSolicitacoes;
+    @FXML private TableColumn<Solicitacao, String> colunaSolicitacoes;
+    @FXML private TableColumn<Solicitacao, String> colunaStatus;
+    
 	@FXML
 	void handleVoltar() {
 		TelaPrincipalApp telaPrinc = new TelaPrincipalApp();

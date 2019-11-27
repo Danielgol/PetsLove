@@ -29,9 +29,6 @@ import javafx.stage.Stage;
 
 public class TelaPrincipalController implements Initializable{
 
-	@FXML private TableView<Animal> tabelaAnimais;
-	@FXML private TableColumn<Animal, String> colunaAnimais;
-	@FXML private TableColumn<Animal, String> colunaTipo;
 	@FXML private Label labelNome;
 	@FXML private Label labelSexo;
 	@FXML private Label labelIdade;
@@ -39,6 +36,9 @@ public class TelaPrincipalController implements Initializable{
 	@FXML private Label labelDescricao;
 	@FXML private Label labelTituloTamPel;
 	@FXML private Label labelPelagemPorte;
+	@FXML private TableView<Animal> tabelaAnimais;
+	@FXML private TableColumn<Animal, String> colunaAnimais;
+	@FXML private TableColumn<Animal, String> colunaTipo;
 
 	@FXML
 	private void handleSeusAnimais() {

@@ -25,12 +25,12 @@ import javafx.stage.Stage;
 
 public class CadastrarCachorroController implements Initializable {
 
+	@FXML private TextField tfNome;
+	@FXML private TextArea taDescricao;
 	@FXML private ComboBox<String> cbSexo;
 	@FXML private ComboBox<String> cbRaca;
-	@FXML private TextArea taDescricao;
-	@FXML private TextField tfNome;
-	@FXML private DatePicker dpDataDeNascimento;
 	@FXML private ComboBox<String> cbPorte;
+	@FXML private DatePicker dpDataDeNascimento;
 
 	ObservableList<String> sexo = FXCollections.observableArrayList(EnumSexo.MACHO.valor, EnumSexo.FEMEA.valor);
 	ObservableList<String> porte = FXCollections.observableArrayList(EnumPorte.GRANDE.valor, EnumPorte.PEQUENO.valor, EnumPorte.MEDIO.valor);
@@ -70,7 +70,13 @@ public class CadastrarCachorroController implements Initializable {
 			alerta.setTitle("Erro");
 			alerta.setContentText("Porte inválido");
 			alerta.show();
-		} else {
+		}else if(taDescricao.getText().equals("")) {
+			Alert alerta = new Alert(AlertType.ERROR);
+			alerta.setHeaderText("Erro ao cadastrar");
+			alerta.setTitle("Erro");
+			alerta.setContentText("Cachorro sem descrição");
+			alerta.show();
+		}else {
 
 			int idade = Period.between(dpDataDeNascimento.getValue(), LocalDate.now()).getYears();
 
@@ -94,7 +100,6 @@ public class CadastrarCachorroController implements Initializable {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-
 		}
 	}
 

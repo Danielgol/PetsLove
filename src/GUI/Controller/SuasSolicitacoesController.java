@@ -25,9 +25,6 @@ import javafx.stage.Stage;
 
 public class SuasSolicitacoesController implements Initializable {
 
-	@FXML private TableView<Solicitacao> tabelaSolicitacoes;
-	@FXML private TableColumn<Solicitacao, String> colunaStatus;
-	@FXML private TableColumn<Solicitacao, String> colunaSolicitacoes;
 	@FXML private Label labelNome;
 	@FXML private Label labelSexo;
 	@FXML private Label labelIdade;
@@ -35,6 +32,9 @@ public class SuasSolicitacoesController implements Initializable {
 	@FXML private Label labelDescricao;
 	@FXML private Label labelTituloTamPel;
 	@FXML private Label labelPelagemPorte;
+	@FXML private TableView<Solicitacao> tabelaSolicitacoes;
+	@FXML private TableColumn<Solicitacao, String> colunaStatus;
+	@FXML private TableColumn<Solicitacao, String> colunaSolicitacoes;
 	
 	@FXML
 	void handleApagarSolicitacao() throws SolicitacaoNaoExisteException {

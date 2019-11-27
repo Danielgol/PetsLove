@@ -38,12 +38,12 @@ public class RepositorioSolicitacoes implements IRepositorioSolicitacoes {
 
 	public void aceitarSolicitacao(Solicitacao solicitacao) {
 		solicitacao.setStatus(Solicitacao.ACEITO);
-		//atualizarBanco();
+		atualizarBanco();
 	}
 
 	public void recusarSolicitacao(Solicitacao solicitacao) {
 		solicitacao.setStatus(Solicitacao.RECUSADO);
-		//atualizarBanco();
+		atualizarBanco();
 	}
 
 	public boolean existe(Solicitacao s) {

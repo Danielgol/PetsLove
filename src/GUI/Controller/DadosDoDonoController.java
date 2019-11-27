@@ -16,12 +16,11 @@ public class DadosDoDonoController implements Initializable {
 	public static Usuario selecionado;
 
 	@FXML private Label nomeDono;
-	@FXML private Label numeroDono;
 	@FXML private Label emailDono;
+	@FXML private Label numeroDono;
 
 	@FXML
 	void handleSair() {
-		
 		if(DadosDoDonoApp.isLocal()){
 			SuasSolicitacoesApp tela = new SuasSolicitacoesApp();
 			DadosDoDonoApp.getStage().close();
@@ -41,11 +40,6 @@ public class DadosDoDonoController implements Initializable {
 				e.printStackTrace();
 			}
 		}
-		
-	}
-
-	public static void setSelecionado(Usuario dono){
-		selecionado = dono;
 	}
 	
 	private void mostrarDetalhesDono(Usuario usuario) {
@@ -58,6 +52,10 @@ public class DadosDoDonoController implements Initializable {
 			emailDono.setText("");
 			numeroDono.setText("");
 		}
+	}
+
+	public static void setSelecionado(Usuario dono){
+		selecionado = dono;
 	}
 	
 	@Override
