@@ -46,85 +46,48 @@ public class CadastrarCachorroController implements Initializable {
 	@FXML
 	void handleCadastrar() {
 
-		boolean cadastrar = false;
-
-		if (!tfNome.getText().equals("")
-				&& tfNome.getText().matches("^[A-Za-z·‡‚„ÈËÍÌÔÛÙıˆ˚˙ÁÒ¡¿¬√… »Õœ”‘’÷⁄€«— ]+$") == true) {
-			if (dpDataDeNascimento.getValue() != null) {
-				if (cbSexo != null && cbSexo.getValue() != null) {
-					if (cbRaca != null && cbRaca.getValue() != null) {
-						if (cbPorte != null && cbPorte.getValue() != null) {
-							if (!taDescricao.getText().equals("")) {
-								cadastrar = true;
-							} else {
-								Alert alerta = new Alert(AlertType.ERROR);
-								alerta.setHeaderText("Erro ao cadastrar");
-								alerta.setTitle("Erro");
-								alerta.setContentText("DescriÁ„o inv·lida");
-								alerta.show();
-							}
-						} else {
-							Alert alerta = new Alert(AlertType.ERROR);
-							alerta.setHeaderText("Erro ao cadastrar");
-							alerta.setTitle("Erro");
-							alerta.setContentText("Porte inv·lido");
-							alerta.show();
-						}
-					} else {
-						Alert alerta = new Alert(AlertType.ERROR);
-						alerta.setHeaderText("Erro ao cadastrar");
-						alerta.setTitle("Erro");
-						alerta.setContentText("RaÁa inv·lida");
-						alerta.show();
-					}
-				} else {
-					Alert alerta = new Alert(AlertType.ERROR);
-					alerta.setHeaderText("Erro ao cadastrar");
-					alerta.setTitle("Erro");
-					alerta.setContentText("Sexo inv·lido");
-					alerta.show();
-				}
-			} else {
-				Alert alerta = new Alert(AlertType.ERROR);
-				alerta.setHeaderText("Erro ao cadastrar");
-				alerta.setTitle("Erro");
-				alerta.setContentText("Data de nascimento inv·lida");
-				alerta.show();
-			}
-		} else {
+		if (tfNome.getText().equals("")
+				|| !tfNome.getText().matches("^[A-Za-z·‡‚„ÈËÍÌÔÛÙıˆ˚˙ÁÒ¡¿¬√… »Õœ”‘’÷⁄€«— ]+$")) {
 			Alert alerta = new Alert(AlertType.ERROR);
 			alerta.setHeaderText("Erro ao cadastrar");
 			alerta.setTitle("Erro");
 			alerta.setContentText("Nome inv·lido");
 			alerta.show();
-		}
+		} else if (dpDataDeNascimento.getValue() == null) {
+			Alert alerta = new Alert(AlertType.ERROR);
+			alerta.setHeaderText("Erro ao cadastrar");
+			alerta.setTitle("Erro");
+			alerta.setContentText("Data de nascimento inv·lida");
+			alerta.show();
+		} else if (cbSexo.getValue() == null) {
+			Alert alerta = new Alert(AlertType.ERROR);
+			alerta.setHeaderText("Erro ao cadastrar");
+			alerta.setTitle("Erro");
+			alerta.setContentText("Sexo inv·lido");
+			alerta.show();
+		} else if (cbRaca.getValue() == null) {
+			Alert alerta = new Alert(AlertType.ERROR);
+			alerta.setHeaderText("Erro ao cadastrar");
+			alerta.setTitle("Erro");
+			alerta.setContentText("RaÁa inv·lida");
+			alerta.show();
+		} else if (cbPorte.getValue() == null) {
+			Alert alerta = new Alert(AlertType.ERROR);
+			alerta.setHeaderText("Erro ao cadastrar");
+			alerta.setTitle("Erro");
+			alerta.setContentText("Porte inv·lido");
+			alerta.show();
+		} else {
 
-		int idade = Period.between(dpDataDeNascimento.getValue(), LocalDate.now()).getYears();
+			int idade = Period.between(dpDataDeNascimento.getValue(), LocalDate.now()).getYears();
 
-		EnumSexo sexo = null;
-		if (cbSexo.getValue().equals(EnumSexo.MACHO.valor)) {
-			sexo = EnumSexo.MACHO;
-		} else if (cbSexo.getValue().equals(EnumSexo.FEMEA.valor)) {
-			sexo = EnumSexo.FEMEA;
-		}
-
-		EnumPorte porte = null;
-		for (EnumPorte e : EnumPorte.values()) {
-			if (e.valor.equals(cbPorte.getValue())) {
-				porte = e;
-				break;
+			EnumSexo sexo = EnumSexo.MACHO;
+			if (cbSexo.getValue().equals(EnumSexo.FEMEA.valor)) {
+				sexo = EnumSexo.FEMEA;
 			}
-		}
+			EnumPorte porte = EnumPorte.getPorte(cbPorte.getValue());
+			EnumRacaCachorro raca = EnumRacaCachorro.getRaca(cbRaca.getValue());
 
-		EnumRacaCachorro raca = null;
-		for (EnumRacaCachorro e : EnumRacaCachorro.values()) {
-			if (e.valor.equals(cbRaca.getValue())) {
-				raca = e;
-				break;
-			}
-		}
-
-		if (cadastrar) {
 			Cachorro cachorro = new Cachorro(idade, sexo, tfNome.getText(), FachadaPL.getUsuarioLogado().getEmail(),
 					raca, porte, taDescricao.getText());
 			FachadaPL.getInstance().cadastrarAnimal(cachorro);
@@ -137,6 +100,7 @@ public class CadastrarCachorroController implements Initializable {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+
 		}
 	}
 
