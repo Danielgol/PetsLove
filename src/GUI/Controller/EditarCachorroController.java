@@ -54,8 +54,6 @@ public class EditarCachorroController implements Initializable{
 	@FXML
 	void handleSalvar() {
 
-		//TODO: Colocar Regras de Cadastro (Todos os campos devem ser preenchidos)
-
 		int idade = Period.between(dpDataDeNascimento.getValue(), LocalDate.now()).getYears();
 
 		EnumSexo sexo = null;
@@ -83,6 +81,8 @@ public class EditarCachorroController implements Initializable{
 			//TODO: Tirar esse pritln ladkoaekdoadlaedk
 			System.out.println("NULOOOOOOOOOOOOOOOOOO IDIOTA");
 		}
+		
+		//TODO: Colocar Regras de Cadastro (Todos os campos devem ser preenchidos)
 
 		selecionado.setNome(tfNome.getText());
 		selecionado.setIdade(idade);

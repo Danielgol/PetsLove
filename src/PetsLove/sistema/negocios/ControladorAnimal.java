@@ -20,8 +20,6 @@ public class ControladorAnimal {
 		this.repositorioAnimais = instanciaRepositorio;
 	}
 	
-	// TODO: Colocar as regras de negócio em cada um dos métodos abaixo.
-	
 	public void cadastrar(Animal animal) {
 		this.repositorioAnimais.cadastrar(animal);
 	}

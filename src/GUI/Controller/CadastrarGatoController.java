@@ -37,8 +37,6 @@ public class CadastrarGatoController implements Initializable{
 	@FXML
 	public void handleCadastrar() {
 
-		//TODO: Colocar Regras de Cadastro (Todos os campos devem ser preenchidos)
-
 		int idade = Period.between(dpDataDeNascimento.getValue(), LocalDate.now()).getYears();
 
 		EnumSexo sexo = null;
@@ -63,6 +61,8 @@ public class CadastrarGatoController implements Initializable{
 			}
 		}
 
+		//TODO: Colocar Regras de Cadastro (Todos os campos devem ser preenchidos)
+		
 		Gato gato = new Gato
 		(idade, sexo, tfNome.getText(), FachadaPL.getUsuarioLogado().getEmail(), raca, pelagem, taDescricao.getText());
 		FachadaPL.getInstance().cadastrarAnimal(gato);

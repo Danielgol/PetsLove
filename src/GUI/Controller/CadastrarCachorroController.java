@@ -35,9 +35,7 @@ public class CadastrarCachorroController implements Initializable{
 	ObservableList<String> raca = FXCollections.observableArrayList(EnumRacaCachorro.getValues());
 
 	@FXML
-	void handleCadastrar( ) {
-
-		//TODO: Colocar Regras de Cadastro (Todos os campos devem ser preenchidos)
+	void handleCadastrar() {
 
 		int idade = Period.between(dpDataDeNascimento.getValue(), LocalDate.now()).getYears();
 
@@ -63,6 +61,8 @@ public class CadastrarCachorroController implements Initializable{
 				break;
 			}
 		}
+		
+		//TODO: Colocar Regras de Cadastro (Todos os campos devem ser preenchidos)
 
 		Cachorro cachorro = new Cachorro
 		(idade, sexo, tfNome.getText(), FachadaPL.getUsuarioLogado().getEmail(), raca, porte, taDescricao.getText());

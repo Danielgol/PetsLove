@@ -29,6 +29,11 @@ public class EditarUsuarioController {
 	void handleSalvar() throws UsuarioNaoExisteException {
 		FachadaPL.getUsuarioLogado().setNome(tfNome.getText());
 		FachadaPL.getUsuarioLogado().setNumero(tfTelefone.getText());
+		
+		//TODO: Colocar Regras de Cadastro (Todos os campos devem ser preenchidos)
+		
+		//TODO: Quando carregar a tela, colocar automaticamente os dados atuais do usuario nos campos
+		
 		FachadaPL.getInstance().atualizarUsuario(FachadaPL.getUsuarioLogado());
 
 		PerfilUsuarioApp perfilUsuario = new PerfilUsuarioApp();

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import PetsLove.sistema.dados.IRepositorioSolicitacoes;
 import PetsLove.sistema.exceptions.SolicitacaoJaExisteException;
 import PetsLove.sistema.exceptions.SolicitacaoNaoExisteException;
+import PetsLove.sistema.negocios.beans.Animal;
 import PetsLove.sistema.negocios.beans.Solicitacao;
 import PetsLove.sistema.negocios.beans.Usuario;
 
@@ -14,7 +15,7 @@ public class ControladorSolicitacao {
 	public ControladorSolicitacao(IRepositorioSolicitacoes instanciaRepositorio) {
 		this.repositorioSolicitacoes = instanciaRepositorio;
 	}
-	
+
 	public ArrayList<Solicitacao> listarSolicitacoesEnviadas(Usuario usuario) {
 		ArrayList<Solicitacao> repo = this.repositorioSolicitacoes.listar();
 		ArrayList<Solicitacao> solicitacoes = new ArrayList<Solicitacao>();
@@ -25,7 +26,7 @@ public class ControladorSolicitacao {
 		}
 		return solicitacoes;
 	}
-	
+
 	public ArrayList<Solicitacao> listarSolicitacoesRecebidas(Usuario usuario) {
 		ArrayList<Solicitacao> repo = this.repositorioSolicitacoes.listar();
 		ArrayList<Solicitacao> solicitacoes = new ArrayList<Solicitacao>();
@@ -35,6 +36,18 @@ public class ControladorSolicitacao {
 			}
 		}
 		return solicitacoes;
+	}
+
+	public void removerSolicitacoesComAnimal(Animal animal) {
+		ArrayList<Solicitacao> remover = new ArrayList<Solicitacao>();
+		for(Solicitacao solicitacao : this.repositorioSolicitacoes.listar()) {
+			if(solicitacao.getIdRemetente().equals(animal.getId()) || solicitacao.getIdDestinatario().equals(animal.getId())) {
+				remover.add(solicitacao);
+			}
+		}
+		for(Solicitacao solicitacao : remover) {
+			this.repositorioSolicitacoes.removerSolicitacao(solicitacao);
+		}
 	}
 
 	public void criarSolicitacao(Solicitacao solicitacao) throws SolicitacaoJaExisteException {

@@ -2,7 +2,6 @@ package GUI.Controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import GUI.System.CadastrarCachorroApp;
 import GUI.System.CadastrarGatoApp;
 import GUI.System.EditarCachorroApp;
@@ -13,15 +12,16 @@ import PetsLove.sistema.FachadaPL;
 import PetsLove.sistema.negocios.beans.Animal;
 import PetsLove.sistema.negocios.beans.Cachorro;
 import PetsLove.sistema.negocios.beans.Gato;
-
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
@@ -85,13 +85,27 @@ public class SeusAnimaisController implements Initializable {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}else {
+			Alert alerta = new Alert(AlertType.ERROR);
+			alerta.setHeaderText("Nenhum animal foi selecionado");
+			alerta.setTitle("Erro");
+			alerta.setContentText("Selecione um animal para remover");
+			alerta.show();
 		}
 	}
 
 	@FXML
 	void handleRemover() {
 		Animal animalSelecionado = tabelaAnimais.getSelectionModel().getSelectedItem();
-		FachadaPL.getInstance().removerAnimal(animalSelecionado);
+		if(animalSelecionado != null) {
+			FachadaPL.getInstance().removerAnimal(animalSelecionado);
+		}else {
+			Alert alerta = new Alert(AlertType.ERROR);
+			alerta.setHeaderText("Nenhum animal foi selecionado");
+			alerta.setTitle("Erro");
+			alerta.setContentText("Selecione um animal para remover");
+			alerta.show();
+		}
 		initTable();
 	}
 	

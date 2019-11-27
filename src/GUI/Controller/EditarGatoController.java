@@ -54,8 +54,6 @@ public class EditarGatoController implements Initializable{
 	@FXML
 	void handleSalvar( ) {
 
-		//TODO: Colocar Regras de Cadastro (Todos os campos devem ser preenchidos)
-
 		int idade = Period.between(dpDataDeNascimento.getValue(), LocalDate.now()).getYears();
 
 		EnumSexo sexo = null;
@@ -78,6 +76,8 @@ public class EditarGatoController implements Initializable{
 				raca = e;
 			}
 		}
+		
+		//TODO: Colocar Regras de Cadastro (Todos os campos devem ser preenchidos)
 
 		selecionado.setNome(tfNome.getText());
 		selecionado.setIdade(idade);

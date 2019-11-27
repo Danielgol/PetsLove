@@ -87,6 +87,7 @@ public class FachadaPL {
 	
 	public void removerAnimal(Animal animal) {
 		this.controladorAnimal.remover(animal);
+		this.controladorSolicitacao.removerSolicitacoesComAnimal(animal);
 	}
 	
 	public Animal procurarAnimal(String id) {

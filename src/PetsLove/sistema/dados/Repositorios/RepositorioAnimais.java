@@ -32,8 +32,6 @@ public class RepositorioAnimais implements IRepositorioAnimais{
 		}
 		return instance;
 	}
-	
-	//TODO: Atualizar Banco de Animais quando as restricoes forem completas
 
 	public void cadastrar(Animal animal) {
 		this.animais.add(animal);
@@ -48,11 +46,16 @@ public class RepositorioAnimais implements IRepositorioAnimais{
 	public void atualizar(Animal animal) {
 		int indexUsuario = this.animais.indexOf(animal);
 		this.animais.set(indexUsuario, animal);
+		//TODO: Atualizar Banco de Animais quando as restricoes forem completas
 		//atualizarBanco();
 	}
 
 	public ArrayList<Animal> listar() {
 		return this.animais;
+	}
+	
+	public boolean existe(String id) {
+		return procurar(id) != null;
 	}
 
 	public Animal procurar(String id) {
