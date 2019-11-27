@@ -124,13 +124,6 @@ public class EditarCachorroController implements Initializable {
 				e.printStackTrace();
 			}
 		}
-		/*
-		 * nao entendi pra que serve isso 
-		 * 
-		 * if(selecionado == null){ //TODO: Tirar esse pritln ladkoaekdoadlaedk 
-		 * System.out.println("NULOOOOOOOOOOOOOOOOOO IDIOTA");
-		 * }
-		 */
 	}
 
 	public static void setSelecionado(Animal animal) {
