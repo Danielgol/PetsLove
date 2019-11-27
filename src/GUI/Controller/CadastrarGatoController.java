@@ -9,8 +9,6 @@ import GUI.System.SeusAnimaisApp;
 import PetsLove.sistema.FachadaPL;
 import PetsLove.sistema.negocios.beans.Gato;
 import PetsLove.sistema.negocios.beans.enums.EnumPelagem;
-import PetsLove.sistema.negocios.beans.enums.EnumPorte;
-import PetsLove.sistema.negocios.beans.enums.EnumRacaCachorro;
 import PetsLove.sistema.negocios.beans.enums.EnumRacaGato;
 import PetsLove.sistema.negocios.beans.enums.EnumSexo;
 import javafx.collections.FXCollections;
@@ -27,22 +25,15 @@ import javafx.stage.Stage;
 
 public class CadastrarGatoController implements Initializable {
 
-	@FXML
-	private ComboBox<String> cbSexo;
-	@FXML
-	private ComboBox<String> cbPelagem;
-	@FXML
-	private TextArea taDescricao;
-	@FXML
-	private TextField tfNome;
-	@FXML
-	private ComboBox<String> cbRaca;
-	@FXML
-	private DatePicker dpDataDeNascimento;
+	@FXML private ComboBox<String> cbSexo;
+	@FXML private ComboBox<String> cbPelagem;
+	@FXML private TextArea taDescricao;
+	@FXML private TextField tfNome;
+	@FXML private ComboBox<String> cbRaca;
+	@FXML private DatePicker dpDataDeNascimento;
 
 	ObservableList<String> sexo = FXCollections.observableArrayList(EnumSexo.MACHO.valor, EnumSexo.FEMEA.valor);
-	ObservableList<String> pelagem = FXCollections.observableArrayList(EnumPelagem.FELPUDO.valor,
-			EnumPelagem.MEDIO.valor, EnumPelagem.RASO.valor);
+	ObservableList<String> pelagem = FXCollections.observableArrayList(EnumPelagem.FELPUDO.valor,EnumPelagem.MEDIO.valor, EnumPelagem.RASO.valor);
 	ObservableList<String> raca = FXCollections.observableArrayList(EnumRacaGato.getValues());
 
 	@FXML
@@ -86,11 +77,12 @@ public class CadastrarGatoController implements Initializable {
 			if (cbSexo.getValue().equals(EnumSexo.FEMEA.valor)) {
 				sexo = EnumSexo.FEMEA;
 			}
+			
 			EnumPelagem pelagem = EnumPelagem.getPelagem(cbPelagem.getValue());
 			EnumRacaGato raca = EnumRacaGato.getRaca(cbRaca.getValue());
 
-			Gato gato = new Gato(idade, sexo, tfNome.getText(), FachadaPL.getUsuarioLogado().getEmail(), raca, pelagem,
-					taDescricao.getText());
+			Gato gato = new Gato
+			(idade, sexo, tfNome.getText(), FachadaPL.getUsuarioLogado().getEmail(), raca, pelagem, taDescricao.getText());
 			FachadaPL.getInstance().cadastrarAnimal(gato);
 
 			SeusAnimaisApp seusAnimais = new SeusAnimaisApp();

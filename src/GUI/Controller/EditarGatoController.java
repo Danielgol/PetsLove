@@ -4,8 +4,6 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ResourceBundle;
-
-import GUI.System.CadastrarGatoApp;
 import GUI.System.EditarGatoApp;
 import GUI.System.SeusAnimaisApp;
 import PetsLove.sistema.FachadaPL;
@@ -30,26 +28,16 @@ public class EditarGatoController implements Initializable {
 
 	public static Gato selecionado;
 
-	@FXML
-	private ComboBox<String> cbSexo;
-	@FXML
-	private ComboBox<String> cbPelagem;
-	@FXML
-	private TextArea taDescricao;
-	@FXML
-	private TextField tfNome;
-	@FXML
-	private ComboBox<String> cbRaca;
-	@FXML
-	private DatePicker dpDataDeNascimento;
+	@FXML private ComboBox<String> cbSexo;
+	@FXML private ComboBox<String> cbPelagem;
+	@FXML private TextArea taDescricao;
+	@FXML private TextField tfNome;
+	@FXML private ComboBox<String> cbRaca;
+	@FXML private DatePicker dpDataDeNascimento;
 
 	ObservableList<String> sexo = FXCollections.observableArrayList(EnumSexo.MACHO.valor, EnumSexo.FEMEA.valor);
-	ObservableList<String> pelagem = FXCollections.observableArrayList(EnumPelagem.FELPUDO.valor,
-			EnumPelagem.MEDIO.valor, EnumPelagem.RASO.valor);
+	ObservableList<String> pelagem = FXCollections.observableArrayList(EnumPelagem.FELPUDO.valor, EnumPelagem.MEDIO.valor, EnumPelagem.RASO.valor);
 	ObservableList<String> raca = FXCollections.observableArrayList(EnumRacaGato.getValues());
-
-	// TODO: Quando carregar a tela, colocar automaticamente os dados atuais do
-	// animal nos campos
 
 	@FXML
 	void handleCancelar() {
@@ -104,6 +92,7 @@ public class EditarGatoController implements Initializable {
 			if (cbSexo.getValue().equals(EnumSexo.FEMEA.valor)) {
 				sexo = EnumSexo.FEMEA;
 			}
+			
 			EnumPelagem pelagem = EnumPelagem.getPelagem(cbPelagem.getValue());
 			EnumRacaGato raca = EnumRacaGato.getRaca(cbRaca.getValue());
 
@@ -133,6 +122,12 @@ public class EditarGatoController implements Initializable {
 		cbSexo.setItems(sexo);
 		cbPelagem.setItems(pelagem);
 		cbRaca.setItems(raca);
+		
+		tfNome.setText(selecionado.getNome());
+		taDescricao.setText(selecionado.getDescricao());
+		cbSexo.getSelectionModel().select(selecionado.getSexo().valor);
+		cbPelagem.getSelectionModel().select(selecionado.getPelagem().valor);
+		cbRaca.getSelectionModel().select(selecionado.getRaca().valor);
 	}
 
 	public static void setSelecionado(Animal animal) {

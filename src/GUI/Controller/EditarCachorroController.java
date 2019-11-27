@@ -4,8 +4,6 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ResourceBundle;
-
-import GUI.System.CadastrarCachorroApp;
 import GUI.System.EditarCachorroApp;
 import GUI.System.SeusAnimaisApp;
 import PetsLove.sistema.FachadaPL;
@@ -30,26 +28,16 @@ public class EditarCachorroController implements Initializable {
 
 	public static Cachorro selecionado;
 
-	@FXML
-	private TextArea taDescricao;
-	@FXML
-	private TextField tfNome;
-	@FXML
-	private DatePicker dpDataDeNascimento;
-	@FXML
-	private ComboBox<String> cbSexo;
-	@FXML
-	private ComboBox<String> cbPorte;
-	@FXML
-	private ComboBox<String> cbRaca;
+	@FXML private TextArea taDescricao;
+	@FXML private TextField tfNome;
+	@FXML private DatePicker dpDataDeNascimento;
+	@FXML private ComboBox<String> cbSexo;
+	@FXML private ComboBox<String> cbPorte;
+	@FXML private ComboBox<String> cbRaca;
 
 	ObservableList<String> sexo = FXCollections.observableArrayList(EnumSexo.MACHO.valor, EnumSexo.FEMEA.valor);
-	ObservableList<String> porte = FXCollections.observableArrayList(EnumPorte.GRANDE.valor, EnumPorte.PEQUENO.valor,
-			EnumPorte.MEDIO.valor);
+	ObservableList<String> porte = FXCollections.observableArrayList(EnumPorte.GRANDE.valor, EnumPorte.PEQUENO.valor, EnumPorte.MEDIO.valor);
 	ObservableList<String> raca = FXCollections.observableArrayList(EnumRacaCachorro.getValues());
-
-	// TODO: Quando carregar a tela, colocar automaticamente os dados atuais do
-	// animal nos campos
 
 	@FXML
 	void handleCancelar() {
@@ -104,6 +92,7 @@ public class EditarCachorroController implements Initializable {
 			if (cbSexo.getValue().equals(EnumSexo.FEMEA.valor)) {
 				sexo = EnumSexo.FEMEA;
 			}
+
 			EnumPorte porte = EnumPorte.getPorte(cbPorte.getValue());
 			EnumRacaCachorro raca = EnumRacaCachorro.getRaca(cbRaca.getValue());
 
@@ -137,6 +126,12 @@ public class EditarCachorroController implements Initializable {
 		cbSexo.setItems(sexo);
 		cbPorte.setItems(porte);
 		cbRaca.setItems(raca);
+
+		tfNome.setText(selecionado.getNome());
+		taDescricao.setText(selecionado.getDescricao());
+		cbSexo.getSelectionModel().select(selecionado.getSexo().valor);
+		cbPorte.getSelectionModel().select(selecionado.getPorte().valor);
+		cbRaca.getSelectionModel().select(selecionado.getRaca().valor);
 	}
 
 }

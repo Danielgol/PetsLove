@@ -46,14 +46,13 @@ public class RepositorioAnimais implements IRepositorioAnimais{
 	public void atualizar(Animal animal) {
 		int indexUsuario = this.animais.indexOf(animal);
 		this.animais.set(indexUsuario, animal);
-		//TODO: Atualizar Banco de Animais quando as restricoes forem completas
-		//atualizarBanco();
+		atualizarBanco();
 	}
 
 	public ArrayList<Animal> listar() {
 		return this.animais;
 	}
-	
+
 	public boolean existe(String id) {
 		return procurar(id) != null;
 	}
@@ -104,9 +103,9 @@ public class RepositorioAnimais implements IRepositorioAnimais{
 			BufferedReader csvReader = new BufferedReader(new FileReader(arquivo));
 			String row = "";
 			try {
-				
+
 				while((row = csvReader.readLine()) != null && !row.equals("")){
-					
+
 					String[] dados = row.split(",");
 					String id = dados[0];
 					int idade = Integer.parseInt(dados[1]);
@@ -133,10 +132,10 @@ public class RepositorioAnimais implements IRepositorioAnimais{
 						Gato gato = new Gato(id, idade, sexo, nome, email, raca, pelagem, descricao);
 						animais.add(gato);
 					}
-					
+
 				}
 				csvReader.close();
-				
+
 			}catch (IOException e) {}
 		}catch (FileNotFoundException e) {
 			System.out.println("Arquivo não encontrado!");

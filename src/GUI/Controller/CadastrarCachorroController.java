@@ -25,22 +25,15 @@ import javafx.stage.Stage;
 
 public class CadastrarCachorroController implements Initializable {
 
-	@FXML
-	private ComboBox<String> cbSexo;
-	@FXML
-	private ComboBox<String> cbRaca;
-	@FXML
-	private TextArea taDescricao;
-	@FXML
-	private TextField tfNome;
-	@FXML
-	private DatePicker dpDataDeNascimento;
-	@FXML
-	private ComboBox<String> cbPorte;
+	@FXML private ComboBox<String> cbSexo;
+	@FXML private ComboBox<String> cbRaca;
+	@FXML private TextArea taDescricao;
+	@FXML private TextField tfNome;
+	@FXML private DatePicker dpDataDeNascimento;
+	@FXML private ComboBox<String> cbPorte;
 
 	ObservableList<String> sexo = FXCollections.observableArrayList(EnumSexo.MACHO.valor, EnumSexo.FEMEA.valor);
-	ObservableList<String> porte = FXCollections.observableArrayList(EnumPorte.GRANDE.valor, EnumPorte.PEQUENO.valor,
-			EnumPorte.MEDIO.valor);
+	ObservableList<String> porte = FXCollections.observableArrayList(EnumPorte.GRANDE.valor, EnumPorte.PEQUENO.valor, EnumPorte.MEDIO.valor);
 	ObservableList<String> raca = FXCollections.observableArrayList(EnumRacaCachorro.getValues());
 
 	@FXML
@@ -85,11 +78,12 @@ public class CadastrarCachorroController implements Initializable {
 			if (cbSexo.getValue().equals(EnumSexo.FEMEA.valor)) {
 				sexo = EnumSexo.FEMEA;
 			}
+			
 			EnumPorte porte = EnumPorte.getPorte(cbPorte.getValue());
 			EnumRacaCachorro raca = EnumRacaCachorro.getRaca(cbRaca.getValue());
 
-			Cachorro cachorro = new Cachorro(idade, sexo, tfNome.getText(), FachadaPL.getUsuarioLogado().getEmail(),
-					raca, porte, taDescricao.getText());
+			Cachorro cachorro = new Cachorro
+			(idade, sexo, tfNome.getText(), FachadaPL.getUsuarioLogado().getEmail(), raca, porte, taDescricao.getText());
 			FachadaPL.getInstance().cadastrarAnimal(cachorro);
 
 			SeusAnimaisApp seusAnimais = new SeusAnimaisApp();
