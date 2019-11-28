@@ -85,8 +85,7 @@ public class CaixaDeEntradaController implements Initializable {
 		if(selecionada != null) {
 			if(selecionada.getStatus().equals(Solicitacao.ANALISANDO)){
 				FachadaPL.getInstance().aceitarSolicitacao(selecionada);
-			}
-			if(selecionada.getStatus().equals(Solicitacao.ACEITO)){
+			}else if(selecionada.getStatus().equals(Solicitacao.ACEITO)){
 				Alert alerta = new Alert(AlertType.ERROR);
 				alerta.setHeaderText("Erro ao aceitar");
 				alerta.setTitle("Erro");
